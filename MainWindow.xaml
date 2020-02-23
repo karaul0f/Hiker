@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Hiker" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TreeView Grid.Row="1" Grid.RowSpan="2">
+            <TreeViewItem Header="Sprites">
+                <TreeViewItem Header="Empty" />
+            </TreeViewItem>
+            <TreeViewItem Header="Scripts">
+                <TreeViewItem Header="Empty" />
+            </TreeViewItem>
+            <TreeViewItem Header="Objects">
+                <TreeViewItem Header="Empty" />
+            </TreeViewItem>
+            <TreeViewItem Header="Rooms">
+                <TreeViewItem Header="Empty" />
+            </TreeViewItem>
+        </TreeView>
+
+        <DockPanel Grid.ColumnSpan="2">
+            <ToolBarTray DockPanel.Dock="Top">
+                <ToolBar>
+                    <Button Command="New" Content="New" />
+                    <Button Command="Open" Content="Open" />
+                    <Button Command="Save" Content="Save" />
+                </ToolBar>
+            </ToolBarTray>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
     </Grid>
 </Window>
