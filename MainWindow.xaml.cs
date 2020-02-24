@@ -24,5 +24,21 @@ namespace Hiker_Editor
         {
             InitializeComponent();
         }
+
+        private void CommonCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (TreeViewItem item in StructureProject.Items)
+            {
+                if(item.Header as string == "Rooms")
+                {
+                    item.Items.Add("room");
+                }
+            }
+        }
     }
 }

@@ -6,9 +6,13 @@
         xmlns:local="clr-namespace:Hiker_Editor"
         mc:Ignorable="d"
         Title="Hiker" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="CommonCommandBinding_CanExecute" />
+        <CommandBinding Command="Open" CanExecute="CommonCommandBinding_CanExecute" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="18"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
@@ -16,30 +20,53 @@
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TreeView Grid.Row="1" Grid.RowSpan="2">
+
+        <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <MenuItem Header="File">
+                <MenuItem Header="New Project" ></MenuItem>
+                <MenuItem Header="Open Project" ></MenuItem>
+                <MenuItem Header="Save Project" ></MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Project" >
+                <MenuItem Header="Run Game" ></MenuItem>
+                <MenuItem Header="Build Project" ></MenuItem>
+                <MenuItem Header="Setting Project" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help" ></MenuItem>
+        </Menu>
+
+        <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2">
             <TreeViewItem Header="Sprites">
-                <TreeViewItem Header="Empty" />
+                <TreeViewItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add sprite"></MenuItem>
+                    </ContextMenu>
+                </TreeViewItem.ContextMenu>
             </TreeViewItem>
             <TreeViewItem Header="Scripts">
-                <TreeViewItem Header="Empty" />
+                <TreeViewItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add script"></MenuItem>
+                    </ContextMenu>
+                </TreeViewItem.ContextMenu>
             </TreeViewItem>
             <TreeViewItem Header="Objects">
-                <TreeViewItem Header="Empty" />
+                <TreeViewItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add object"></MenuItem>
+                    </ContextMenu>
+                </TreeViewItem.ContextMenu>
             </TreeViewItem>
             <TreeViewItem Header="Rooms">
-                <TreeViewItem Header="Empty" />
+                <TreeViewItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add room" Click="Button_Click"></MenuItem>
+                    </ContextMenu>
+                </TreeViewItem.ContextMenu>
+                <!--<TreeViewItem Header="Empty" />-->
             </TreeViewItem>
         </TreeView>
-
-        <DockPanel Grid.ColumnSpan="2">
-            <ToolBarTray DockPanel.Dock="Top">
-                <ToolBar>
-                    <Button Command="New" Content="New" />
-                    <Button Command="Open" Content="Open" />
-                    <Button Command="Save" Content="Save" />
-                </ToolBar>
-            </ToolBarTray>
-            <TextBox AcceptsReturn="True" />
-        </DockPanel>
     </Grid>
 </Window>
