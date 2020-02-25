@@ -1,4 +1,4 @@
-﻿<Window x:Class="Hiker_Editor.MainWindow"
+﻿<Window x:Name="HikerMainWindow" x:Class="Hiker_Editor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -37,36 +37,12 @@
             <MenuItem Header="Help" ></MenuItem>
         </Menu>
 
-        <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2">
-            <TreeViewItem Header="Sprites">
-                <TreeViewItem.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Add sprite"></MenuItem>
-                    </ContextMenu>
-                </TreeViewItem.ContextMenu>
-            </TreeViewItem>
-            <TreeViewItem Header="Scripts">
-                <TreeViewItem.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Add script"></MenuItem>
-                    </ContextMenu>
-                </TreeViewItem.ContextMenu>
-            </TreeViewItem>
-            <TreeViewItem Header="Objects">
-                <TreeViewItem.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Add object"></MenuItem>
-                    </ContextMenu>
-                </TreeViewItem.ContextMenu>
-            </TreeViewItem>
-            <TreeViewItem Header="Rooms">
-                <TreeViewItem.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Add room" Click="Button_Click"></MenuItem>
-                    </ContextMenu>
-                </TreeViewItem.ContextMenu>
-                <!--<TreeViewItem Header="Empty" />-->
-            </TreeViewItem>
+        <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2" >
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
         </TreeView>
     </Grid>
 </Window>
