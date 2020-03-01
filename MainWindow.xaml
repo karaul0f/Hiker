@@ -6,10 +6,6 @@
         xmlns:local="clr-namespace:Hiker_Editor"
         mc:Ignorable="d"
         Title="Hiker" Height="450" Width="800">
-    <Window.CommandBindings>
-        <CommandBinding Command="New" CanExecute="CommonCommandBinding_CanExecute" />
-        <CommandBinding Command="Open" CanExecute="CommonCommandBinding_CanExecute" />
-    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="18"></RowDefinition>
@@ -40,7 +36,11 @@
         <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2" >
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}">
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name}" >
+                        <TextBlock.ContextMenu>
+                            <ContextMenu ItemsSource="{Binding Path=MenuItems}"/>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>

@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Hiker_Editor.ViewModels;
+
+
 namespace Hiker_Editor
 {
     /// <summary>
@@ -21,19 +24,23 @@ namespace Hiker_Editor
     /// </summary> 
     public partial class MainWindow : Window
     {
+        
         ObservableCollection<Node> nodes;
         public MainWindow()
         {
             InitializeComponent();
 
-        nodes = new ObservableCollection<Node>
-        {
-            new Node { Name="Sprites" },
-            new Node { Name="Scripts" },
-            new Node { Name="Objects" },
-            new Node { Name="Rooms" }
-        };
-        StructureProject.ItemsSource = nodes;
+            
+
+            nodes = new ObservableCollection<Node>
+            {
+                new Node { Name="Sprites" },
+                new Node { Name="Scripts" },
+                new Node { Name="Objects" },
+                new Node { Name="Rooms" }
+              };
+
+            StructureProject.ItemsSource = nodes;
         }
 
         private void CommonCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -43,7 +50,17 @@ namespace Hiker_Editor
     }
     public class Node
     {
+        public Node()
+        {
+            MenuItems = new List<MenuItem>()
+            {
+                new MenuItem() { Header = "Add"},
+                new MenuItem() { Header = "Edit"},
+                new MenuItem() { Header = "Delete"},
+            };
+        }
         public string Name { get; set; }
+        public List<MenuItem> MenuItems { get; set; }
         public ObservableCollection<Node> Nodes { get; set; }
     }
 }
