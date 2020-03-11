@@ -24,43 +24,13 @@ namespace Hiker_Editor
     /// </summary> 
     public partial class MainWindow : Window
     {
-        
-        ObservableCollection<Node> nodes;
         public MainWindow()
         {
             InitializeComponent();
-
+            DataContext = new MainWindowViewModel();
             
-
-            nodes = new ObservableCollection<Node>
-            {
-                new Node { Name="Sprites" },
-                new Node { Name="Scripts" },
-                new Node { Name="Objects" },
-                new Node { Name="Rooms" }
-              };
-
-            StructureProject.ItemsSource = nodes;
         }
 
-        private void CommonCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-    }
-    public class Node
-    {
-        public Node()
-        {
-            MenuItems = new List<MenuItem>()
-            {
-                new MenuItem() { Header = "Add"},
-                new MenuItem() { Header = "Edit"},
-                new MenuItem() { Header = "Delete"},
-            };
-        }
-        public string Name { get; set; }
-        public List<MenuItem> MenuItems { get; set; }
-        public ObservableCollection<Node> Nodes { get; set; }
+        
     }
 }

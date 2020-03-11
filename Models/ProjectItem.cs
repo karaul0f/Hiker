@@ -10,12 +10,13 @@ using System.Collections.ObjectModel;
 
 namespace Hiker_Editor.Models
 {
-    class ProjectItem : INotifyPropertyChanged
+    public class ProjectItem : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
         private string _name;
         public string Name
@@ -26,9 +27,8 @@ namespace Hiker_Editor.Models
                 _name = value;
                 OnPropertyChanged();
             }
-        
         }
-        public List<MenuItem> MenuItems { get; set; }
-        public ObservableCollection<Node> Nodes { get; set; }
+        public ObservableCollection<MenuItem> ItemsOperation { get; set; }
+        public ObservableCollection<ProjectItem> Items { get; set; }
     }
 }

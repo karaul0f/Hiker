@@ -33,12 +33,12 @@
             <MenuItem Header="Help" ></MenuItem>
         </Menu>
 
-        <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2" >
+        <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}">
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
                     <TextBlock Text="{Binding Name}" >
                         <TextBlock.ContextMenu>
-                            <ContextMenu ItemsSource="{Binding Path=MenuItems}"/>
+                            <ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>
                         </TextBlock.ContextMenu>
                     </TextBlock>
                 </HierarchicalDataTemplate>
