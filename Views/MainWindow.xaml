@@ -30,7 +30,11 @@
                 <MenuItem Header="Build Project" ></MenuItem>
                 <MenuItem Header="Setting Project" ></MenuItem>
             </MenuItem>
-            <MenuItem Header="Help" ></MenuItem>
+            <MenuItem Header="Help" >
+                <MenuItem Header="Documentation" ></MenuItem>
+                <Separator />
+                <MenuItem Header="About" ></MenuItem>
+            </MenuItem>
         </Menu>
 
         <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
