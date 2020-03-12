@@ -40,10 +40,13 @@
         <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
-                    <TextBlock Text="{Binding Name}" >
-                        <TextBlock.ContextMenu>
+                    <TextBlock>
+                        <Image Source="\Images\folder.png" Width="12" Height="12" />
+                        <TextBlock Text="{Binding Name}">
+                            <TextBlock.ContextMenu>
                             <ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>
                         </TextBlock.ContextMenu>
+                    </TextBlock>
                     </TextBlock>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
