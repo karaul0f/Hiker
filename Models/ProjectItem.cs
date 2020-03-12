@@ -28,6 +28,19 @@ namespace Hiker_Editor.Models
                 OnPropertyChanged();
             }
         }
+
+        public static ObservableCollection<ProjectItem> InitializationStructureProject()
+        {
+            ObservableCollection<ProjectItem> structureProject = new ObservableCollection<ProjectItem>
+            {
+                new ProjectItem { Name="Sprites", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add sprite" } } },
+                new ProjectItem { Name="Scripts", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add script" } } },
+                new ProjectItem { Name="Objects", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add object" } } },
+                new ProjectItem { Name="Rooms", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add room" } } }
+            };
+            return structureProject;
+        }
+
         public ObservableCollection<MenuItem> ItemsOperation { get; set; }
         public ObservableCollection<ProjectItem> Items { get; set; }
     }

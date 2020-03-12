@@ -24,13 +24,7 @@ namespace Hiker_Editor.ViewModels
         }
         public MainWindowViewModel()
         {
-            StructureProject = new ObservableCollection<ProjectItem>
-            {
-                new ProjectItem { Name="Sprites", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add" } } },
-                new ProjectItem { Name="Scripts" },
-                new ProjectItem { Name="Objects" },
-                new ProjectItem { Name="Rooms" }
-            };
+            StructureProject = ProjectItem.InitializationStructureProject();
         }
     }
 }
