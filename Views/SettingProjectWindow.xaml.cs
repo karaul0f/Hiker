@@ -8,29 +8,20 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using Hiker_Editor.ViewModels;
-
-
-namespace Hiker_Editor
+namespace Hiker_Editor.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary> 
-    public partial class MainWindow : Window
+    /// Логика взаимодействия для SettingProjectWindow.xaml
+    /// </summary>
+    public partial class SettingProjectWindow : Window
     {
-        public MainWindow()
+        public SettingProjectWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
-            
         }
-
-        
     }
 }
