@@ -33,7 +33,7 @@
             <MenuItem Header="Help" >
                 <MenuItem Header="Documentation" ></MenuItem>
                 <Separator />
-                <MenuItem Header="About"></MenuItem>
+                <MenuItem Header="About" Command="{Binding OpenAbout}"></MenuItem>
             </MenuItem>
         </Menu>
 

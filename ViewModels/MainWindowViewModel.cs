@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 using Hiker_Editor.Models;
+using Hiker_Editor.Views;
 
 namespace Hiker_Editor.ViewModels
 {
@@ -27,6 +28,19 @@ namespace Hiker_Editor.ViewModels
         {
             StructureProject = ProjectItem.InitializationStructureProject();
             StructureProject[Sprites].Items.Add(new ProjectItem { Name = "testElem", ImagePath = "/Images/file.png", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Edit Sprite" }, new MenuItem { Header = "Delete Sprite" } } });
+        }
+        private RelayCommand openAbout;
+        public RelayCommand OpenAbout
+        {
+            get
+            {
+                return openAbout ??
+                  (openAbout = new RelayCommand(obj =>
+                  {
+                      AboutWindow aboutWindow = new AboutWindow();
+                      aboutWindow.Show();
+                  }));
+            }
         }
     }
 }
