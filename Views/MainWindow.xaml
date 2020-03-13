@@ -33,7 +33,7 @@
             <MenuItem Header="Help" >
                 <MenuItem Header="Documentation" ></MenuItem>
                 <Separator />
-                <MenuItem Header="About" ></MenuItem>
+                <MenuItem Header="About"></MenuItem>
             </MenuItem>
         </Menu>
 
@@ -44,9 +44,9 @@
                         <Image Source="{Binding ImagePath}" Width="12" Height="12" />
                         <TextBlock Text="{Binding Name}">
                             <TextBlock.ContextMenu>
-                            <ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>
-                        </TextBlock.ContextMenu>
-                    </TextBlock>
+                                <ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
                     </TextBlock>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>

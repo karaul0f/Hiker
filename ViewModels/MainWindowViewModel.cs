@@ -15,16 +15,18 @@ namespace Hiker_Editor.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<ProjectItem> StructureProject { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+        public const int Sprites = 0, Scripts = 1, Objects = 2, Rooms = 3;
+        public ObservableCollection<ProjectItem> StructureProject { get; set; }
         public MainWindowViewModel()
         {
             StructureProject = ProjectItem.InitializationStructureProject();
+            StructureProject[Sprites].Items.Add(new ProjectItem { Name = "testElem", ImagePath = "/Images/file.png", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Edit Sprite" }, new MenuItem { Header = "Delete Sprite" } } });
         }
     }
 }

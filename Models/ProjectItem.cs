@@ -18,7 +18,18 @@ namespace Hiker_Editor.Models
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-        private string _imagePath;
+        private string _name = "";
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value == _name) return;
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _imagePath = "";
         public string ImagePath
         {
             get { return _imagePath; }
@@ -29,29 +40,38 @@ namespace Hiker_Editor.Models
                 OnPropertyChanged();
             }
         }
-        private string _name;
-        public string Name
-        { 
-            get { return _name; }
-            set
-            {
-                if (value == _name) return;
-                _name = value;
-                OnPropertyChanged();
-            }
-        }
+        public ObservableCollection<MenuItem> ItemsOperation { get; set; }
+        public ObservableCollection<ProjectItem> Items { get; set; }
         public static ObservableCollection<ProjectItem> InitializationStructureProject()
         {
             ObservableCollection<ProjectItem> structureProject = new ObservableCollection<ProjectItem>
             {
-                new ProjectItem { Name="Sprites", ImagePath = "/Images/folder.png", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add sprite" } } },
-                new ProjectItem { Name="Scripts", ImagePath = "/Images/folder.png", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add script" } } },
-                new ProjectItem { Name="Objects", ImagePath = "/Images/folder.png", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add object" } } },
-                new ProjectItem { Name="Rooms", ImagePath = "/Images/folder.png", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add room" } } }
+                new ProjectItem { 
+                    Items = new ObservableCollection<ProjectItem>(), 
+                    Name="Sprites", 
+                    ImagePath = "/Images/folder.png", 
+                    ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add sprite" } } 
+                },
+                new ProjectItem { 
+                    Items = new ObservableCollection<ProjectItem>(), 
+                    Name="Scripts", 
+                    ImagePath = "/Images/folder.png", 
+                    ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add script" } } 
+                },
+                new ProjectItem {
+                    Items = new ObservableCollection<ProjectItem>(),
+                    Name="Objects", 
+                    ImagePath = "/Images/folder.png", 
+                    ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add object" } } 
+                },
+                new ProjectItem { 
+                    Items = new ObservableCollection<ProjectItem>(), 
+                    Name="Rooms", 
+                    ImagePath = "/Images/folder.png", 
+                    ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Add room" } } 
+                }
             };
             return structureProject;
         }
-        public ObservableCollection<MenuItem> ItemsOperation { get; set; }
-        public ObservableCollection<ProjectItem> Items { get; set; }
     }
 }
