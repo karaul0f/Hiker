@@ -17,5 +17,6 @@ namespace Hiker_Editor.ViewModels
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+
     }
 }

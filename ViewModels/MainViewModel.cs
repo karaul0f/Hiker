@@ -68,6 +68,20 @@ namespace Hiker_Editor.ViewModels
                 return newProject ??
                   (newProject = new RelayCommand(obj =>
                   {
+                      //SaveFileDialog openFileDialog = new SaveFileDialog();
+                      //openFileDialog.ShowDialog();
+                  }));
+            }
+        }
+
+        private RelayCommand openProject;
+        public RelayCommand OpenProject
+        {
+            get
+            {
+                return newProject ??
+                  (newProject = new RelayCommand(obj =>
+                  {
                       OpenFileDialog openFileDialog = new OpenFileDialog();
                       openFileDialog.ShowDialog();
                   }));

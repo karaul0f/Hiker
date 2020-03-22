@@ -59,6 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\ProjectItem.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Models\ProjectItemBuilder.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
