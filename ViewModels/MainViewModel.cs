@@ -16,6 +16,7 @@ using Hiker_Editor.Views;
 
 namespace Hiker_Editor.ViewModels
 {
+    public enum Folders { Sprites = 0, Scripts = 1, Objects = 2, Rooms = 3 };
     public partial class MainWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -25,12 +26,11 @@ namespace Hiker_Editor.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        public const int Sprites = 0, Scripts = 1, Objects = 2, Rooms = 3;
         public ObservableCollection<ProjectItem> StructureProject { get; set; }
         public MainWindowViewModel()
         {
             StructureProject = ProjectItem.InitializationStructureProject();
-            StructureProject[Sprites].Items.Add(new ProjectItem { Name = "testElem", ImagePath = "/Images/file.png", ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Edit Sprite" }, new MenuItem { Header = "Delete Sprite" } } });
+            StructureProject[(int)Folders.Sprites].Items.Add(new ProjectItemBuilder().SetType(ProjectItemType.File).SetName("TestElem"));
         }
 
         private RelayCommand openAbout;
