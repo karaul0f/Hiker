@@ -33,7 +33,7 @@ namespace Hiker_Editor.Models
                 OnPropertyChanged();
             }
         }
-        private string _imagePath = "/Images/file.png";
+        private string _imagePath = "";
         public string ImagePath
         {
             get { return _imagePath; }

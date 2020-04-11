@@ -57,11 +57,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ProjectLoader.cs" />
     <Compile Include="Models\ProjectItem.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\ProjectItemBuilder.cs" />
     <Compile Include="ViewModels\ObjectViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -77,8 +79,8 @@
     <Compile Include="Views\ScriptWindow.xaml.cs">
       <DependentUpon>ScriptWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingProjectWindow.xaml.cs">
-      <DependentUpon>SettingProjectWindow.xaml</DependentUpon>
+    <Compile Include="Views\SettingWindow.xaml.cs">
+      <DependentUpon>SettingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="Views\AboutWindow.xaml">
@@ -113,7 +115,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingProjectWindow.xaml">
+    <Page Include="Views\SettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,10 +148,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\folder.png" />
+    <Resource Include="Resources\Images\folder.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\file.png" />
+    <Resource Include="Resources\Images\file.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

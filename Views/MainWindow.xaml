@@ -23,13 +23,11 @@
                 <MenuItem Header="Open Project" ></MenuItem>
                 <MenuItem Header="Save Project" ></MenuItem>
                 <Separator />
+                <MenuItem Header="Run Game" ></MenuItem>
+                <Separator />
                 <MenuItem Header="Exit" Command="{Binding ExitProgram}"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Project" >
-                <MenuItem Header="Run Game" ></MenuItem>
-                <MenuItem Header="Build Project" ></MenuItem>
-                <MenuItem Header="Setting Project" ></MenuItem>
-            </MenuItem>
+            <MenuItem Header="Setting" Command="{Binding OpenSetting}" />
             <MenuItem Header="Help" >
                 <MenuItem Header="Documentation" ></MenuItem>
                 <Separator />

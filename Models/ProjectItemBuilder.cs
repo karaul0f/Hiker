@@ -25,7 +25,7 @@ namespace Hiker_Editor.Models
                 _projectItem.ItemsOperation[0].IsEnabled = true;
                 _projectItem.ItemsOperation[1].IsEnabled = false;
                 _projectItem.ItemsOperation[2].IsEnabled = false;
-                SetImage("/Images/folder.png");
+                SetImage("/Resources/Images/folder.png");
             }
             else
             {
@@ -33,7 +33,7 @@ namespace Hiker_Editor.Models
                 _projectItem.ItemsOperation[1].IsEnabled = true;
                 _projectItem.ItemsOperation[2].IsEnabled = true;
                 _projectItem.Items = null;
-                SetImage("/Images/file.png");
+                SetImage("/Resources/Images/file.png");
             }
             return this;
         }
