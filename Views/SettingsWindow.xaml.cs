@@ -17,9 +17,9 @@ namespace Hiker_Editor.Views
     /// <summary>
     /// Логика взаимодействия для SettingProjectWindow.xaml
     /// </summary>
-    public partial class SettingWindow : Window
+    public partial class SettingsWindow : Window
     {
-        public SettingWindow()
+        public SettingsWindow()
         {
             InitializeComponent();
         }

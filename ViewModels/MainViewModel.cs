@@ -47,15 +47,15 @@ namespace Hiker_Editor.ViewModels
             }
         }
 
-        private RelayCommand openSetting;
-        public RelayCommand OpenSetting
+        private RelayCommand openSettings;
+        public RelayCommand OpenSettings
         {
             get
             {
-                return openSetting ??
-                  (openSetting = new RelayCommand(obj =>
+                return openSettings ??
+                  (openSettings = new RelayCommand(obj =>
                   {
-                      SettingWindow settingWindow = new SettingWindow();
+                      SettingsWindow settingWindow = new SettingsWindow();
                       settingWindow.Show();
                   }));
             }

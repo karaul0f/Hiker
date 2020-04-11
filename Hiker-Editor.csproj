@@ -79,8 +79,8 @@
     <Compile Include="Views\ScriptWindow.xaml.cs">
       <DependentUpon>ScriptWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingWindow.xaml.cs">
-      <DependentUpon>SettingWindow.xaml</DependentUpon>
+    <Compile Include="Views\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="Views\AboutWindow.xaml">
@@ -115,7 +115,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingWindow.xaml">
+    <Page Include="Views\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

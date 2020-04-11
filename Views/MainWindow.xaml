@@ -29,7 +29,7 @@
                 <Separator />
                 <MenuItem Header="Exit" Command="{Binding ExitProgram}"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Setting" Command="{Binding OpenSetting}" />
+            <MenuItem Header="Settings" Command="{Binding OpenSettings}" />
             <MenuItem Header="Help" >
                 <MenuItem Header="Documentation" ></MenuItem>
                 <Separator />
@@ -40,14 +40,13 @@
         <TreeView x:Name="StructureProject" Grid.Row="2" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
-                    <TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.ContextMenu>
+                            <ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>
+                        </StackPanel.ContextMenu>
                         <Image Source="{Binding ImagePath}" Width="12" Height="12" />
-                        <TextBlock Text="{Binding Name}">
-                            <TextBlock.ContextMenu>
-                                <ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>
-                            </TextBlock.ContextMenu>
-                        </TextBlock>
-                    </TextBlock>
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
@@ -84,7 +83,7 @@
                 <Button ToolTip="Play Game">
                     <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
                 </Button>
-                <Button ToolTip="Game settings">
+                <Button ToolTip="Game Settings">
                     <Image Width="16" Height="16" Source="/Resources/Images/setting_project.png" />
                 </Button>
             </ToolBar>
