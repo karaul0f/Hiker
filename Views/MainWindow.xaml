@@ -55,7 +55,7 @@
             <Image Width="16" Height="16" Source="/Resources/Images/view.png" />
             <TextBlock TextWrapping="Wrap" Text="Hello, world!"/>
         </StatusBar>
-        
+
         <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2">
             <ToolBar>
                 <Button ToolTip="New Project">
@@ -77,7 +77,7 @@
                 <Button ToolTip="New Object">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
                 </Button>
-                <Button ToolTip="New Room"> 
+                <Button ToolTip="New Room">
                     <Image Width="16" Height="16" Source="/Resources/Images/room.png" />
                 </Button>
                 <Separator/>
@@ -89,6 +89,7 @@
                 </Button>
             </ToolBar>
         </ToolBarTray>
+        <WebBrowser Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,0"/>
 
     </Grid>
 </Window>
