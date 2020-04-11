@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="Hiker" Height="450" Width="800">
+        Title="Hiker" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="18"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
@@ -21,7 +23,7 @@
             <MenuItem Header="File">
                 <MenuItem Header="New Project" Command="{Binding NewProject}" ></MenuItem>
                 <MenuItem Header="Open Project" ></MenuItem>
-                <MenuItem Header="Save Project" ></MenuItem>
+                <MenuItem Header="Save Project" Command="{Binding ApplicationCommands.SaveAs}"></MenuItem>
                 <Separator />
                 <MenuItem Header="Run Game" ></MenuItem>
                 <Separator />
@@ -35,7 +37,7 @@
             </MenuItem>
         </Menu>
 
-        <TreeView x:Name="StructureProject" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
+        <TreeView x:Name="StructureProject" Grid.Row="2" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
                     <TextBlock>
@@ -49,5 +51,44 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
+        <StatusBar Grid.Row="4" Grid.ColumnSpan="2">
+            <Image Width="16" Height="16" Source="/Resources/Images/view.png" />
+            <TextBlock TextWrapping="Wrap" Text="Hello, world!"/>
+        </StatusBar>
+        
+        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2">
+            <ToolBar>
+                <Button ToolTip="New Project">
+                    <Image Width="16" Height="16" Source="/Resources/Images/file.png" />
+                </Button>
+                <Button ToolTip="Open Project">
+                    <Image Width="16" Height="16" Source="/Resources/Images/open.png" />
+                </Button>
+                <Button ToolTip="Save Project">
+                    <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
+                </Button>
+                <Separator/>
+                <Button ToolTip="New Sprite">
+                    <Image Width="16" Height="16" Source="/Resources/Images/sprite.png" />
+                </Button>
+                <Button ToolTip="New Script">
+                    <Image Width="16" Height="16" Source="/Resources/Images/script.png" />
+                </Button>
+                <Button ToolTip="New Object">
+                    <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
+                </Button>
+                <Button ToolTip="New Room"> 
+                    <Image Width="16" Height="16" Source="/Resources/Images/room.png" />
+                </Button>
+                <Separator/>
+                <Button ToolTip="Play Game">
+                    <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
+                </Button>
+                <Button ToolTip="Game settings">
+                    <Image Width="16" Height="16" Source="/Resources/Images/setting_project.png" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
     </Grid>
 </Window>

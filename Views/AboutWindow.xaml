@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="About" Height="320" Width="480">
+        Title="About" Height="320" Width="480" Icon="/Hiker-Editor;component/Resources/Images/about.png">
     <Grid>
 
     </Grid>

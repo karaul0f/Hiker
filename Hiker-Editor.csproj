@@ -153,6 +153,44 @@
   <ItemGroup>
     <Resource Include="Resources\Images\file.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\hiker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\documentation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\sprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\script.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\object.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\room.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\setting_project.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

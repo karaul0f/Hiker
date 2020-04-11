@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="Setting" Height="380" Width="600">
+        Title="Setting" Height="380" Width="600" Icon="/Hiker-Editor;component/Resources/Images/setting.png" ShowInTaskbar="False">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="59*"/>
         </Grid.ColumnDefinitions>
-        <ListBox HorizontalAlignment="Left" Height="349" VerticalAlignment="Top" Width="120">
+        <ListBox>
             <ListBoxItem Background="White" Content="Main" Foreground="Black" IsSelected="True" VerticalAlignment="Top"/>
             <ListBoxItem Content="Project"/>
             <ListBoxItem Content="Code Editor"/>
