@@ -17,6 +17,16 @@
             <ListBoxItem Content="Code Editor"/>
             <ListBoxItem Content="Other"/>
         </ListBox>
+        
+        <ListBox Grid.Column="1">
+            <StackPanel Margin="2" Orientation="Horizontal">
+                <TextBlock Text="Language: " />
+                <ComboBox Width="361" VerticalAlignment="Top">
+                    <TextBlock>English</TextBlock>
+                    <TextBlock>Русский</TextBlock>
+                </ComboBox>
+            </StackPanel>
+        </ListBox>
 
     </Grid>
 </Window>
