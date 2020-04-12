@@ -12,17 +12,23 @@ namespace Hiker_Editor.Models
 {
     public class ProjectItem : INotifyPropertyChanged
     {
+        private string _name = "";
+        private string _imagePath = "";
+        public ObservableCollection<MenuItem> ItemsOperation { get; set; }
+        public ObservableCollection<ProjectItem> Items { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ProjectItem()
         {
             ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Create", IsEnabled = false }, new MenuItem { Header = "Edit", IsEnabled = false }, new MenuItem { Header = "Delete", IsEnabled = false } };
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-        private string _name = "";
+
         public string Name
         {
             get { return _name; }
@@ -33,7 +39,7 @@ namespace Hiker_Editor.Models
                 OnPropertyChanged();
             }
         }
-        private string _imagePath = "";
+        
         public string ImagePath
         {
             get { return _imagePath; }
@@ -44,8 +50,7 @@ namespace Hiker_Editor.Models
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<MenuItem> ItemsOperation { get; set; }
-        public ObservableCollection<ProjectItem> Items { get; set; }
+
         public static ObservableCollection<ProjectItem> InitializationStructureProject()
         {
             ObservableCollection<ProjectItem> _structureProject = new ObservableCollection<ProjectItem>

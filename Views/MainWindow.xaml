@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
         Title="Hiker" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
@@ -22,7 +23,7 @@
         <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="File">
                 <MenuItem Header="New Project" Command="{Binding NewProject}" ></MenuItem>
-                <MenuItem Header="Open Project" ></MenuItem>
+                <MenuItem Header="Open Project"></MenuItem>
                 <MenuItem Header="Save Project" Command="{Binding ApplicationCommands.SaveAs}"></MenuItem>
                 <Separator />
                 <MenuItem Header="Run Game" ></MenuItem>

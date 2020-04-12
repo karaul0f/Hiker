@@ -13,7 +13,6 @@ namespace Hiker_Editor
     /// </summary>
     public partial class App : Application
     {
-        string nameProject = "Untitled";
-        string pathToProject = "";
+        
     }
 }

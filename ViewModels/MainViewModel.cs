@@ -19,27 +19,32 @@ namespace Hiker_Editor.ViewModels
     public enum Folders { Sprites = 0, Scripts = 1, Objects = 2, Rooms = 3 };
     public partial class MainWindowViewModel : INotifyPropertyChanged
     {
+        private RelayCommand _openAbout;
+        private RelayCommand _openSettings;
+        private RelayCommand _exitProgram;
+        private RelayCommand _newProject;
+        private RelayCommand _openProject;
+        public ObservableCollection<ProjectItem> StructureProject { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        public ObservableCollection<ProjectItem> StructureProject { get; set; }
         public MainWindowViewModel()
         {
             StructureProject = ProjectItem.InitializationStructureProject();
             StructureProject[(int)Folders.Sprites].Items.Add(new ProjectItemBuilder().SetType(ProjectItemType.File).SetName("TestElem"));
         }
 
-        private RelayCommand openAbout;
         public RelayCommand OpenAbout
         {
             get
             {
-                return openAbout ??
-                  (openAbout = new RelayCommand(obj =>
+                return _openAbout ??
+                  (_openAbout = new RelayCommand(obj =>
                   {
                       AboutWindow aboutWindow = new AboutWindow();
                       aboutWindow.Show();
@@ -47,13 +52,12 @@ namespace Hiker_Editor.ViewModels
             }
         }
 
-        private RelayCommand openSettings;
         public RelayCommand OpenSettings
         {
             get
             {
-                return openSettings ??
-                  (openSettings = new RelayCommand(obj =>
+                return _openSettings ??
+                  (_openSettings = new RelayCommand(obj =>
                   {
                       SettingsWindow settingWindow = new SettingsWindow();
                       settingWindow.Show();
@@ -61,26 +65,24 @@ namespace Hiker_Editor.ViewModels
             }
         }
 
-        private RelayCommand exitProgram;
         public RelayCommand ExitProgram
         {
             get
             {
-                return exitProgram ??
-                  (exitProgram = new RelayCommand(obj =>
+                return _exitProgram ??
+                  (_exitProgram = new RelayCommand(obj =>
                   {
                       Application.Current.Shutdown();
                   }));
             }
         }
 
-        private RelayCommand newProject;
         public RelayCommand NewProject
         {
             get
             {
-                return newProject ??
-                  (newProject = new RelayCommand(obj =>
+                return _newProject ??
+                  (_newProject = new RelayCommand(obj =>
                   {
                       //SaveFileDialog openFileDialog = new SaveFileDialog();
                       //openFileDialog.ShowDialog();
@@ -88,13 +90,12 @@ namespace Hiker_Editor.ViewModels
             }
         }
 
-        private RelayCommand openProject;
         public RelayCommand OpenProject
         {
             get
             {
-                return newProject ??
-                  (newProject = new RelayCommand(obj =>
+                return _openProject ??
+                  (_openProject = new RelayCommand(obj =>
                   {
                       OpenFileDialog openFileDialog = new OpenFileDialog();
                       openFileDialog.ShowDialog();
