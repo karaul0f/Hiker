@@ -28,7 +28,6 @@ namespace Hiker_Editor.Views
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel();
-            
         }
     }
 }

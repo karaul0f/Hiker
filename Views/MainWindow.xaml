@@ -21,75 +21,79 @@
         </Grid.ColumnDefinitions>
 
         <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <MenuItem Header="File">
-                <MenuItem Header="New Project" Command="{Binding NewProject}" ></MenuItem>
-                <MenuItem Header="Open Project"></MenuItem>
-                <MenuItem Header="Save Project" Command="{Binding ApplicationCommands.SaveAs}"></MenuItem>
+            <MenuItem Header="{DynamicResource File}">
+                <MenuItem Header="{DynamicResource NewProject}" Command="{Binding NewProject}" ></MenuItem>
+                <MenuItem Header="{DynamicResource OpenProject}"></MenuItem>
+                <MenuItem Header="{DynamicResource SaveProject}" Command="{Binding ApplicationCommands.SaveAs}"></MenuItem>
                 <Separator />
-                <MenuItem Header="Run Game" ></MenuItem>
+                <MenuItem Header="{DynamicResource RunGame}" ></MenuItem>
                 <Separator />
-                <MenuItem Header="Exit" Command="{Binding ExitProgram}"></MenuItem>
+                <MenuItem Header="{DynamicResource Exit}" Command="{Binding ExitProgram}"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Settings" Command="{Binding OpenSettings}" />
-            <MenuItem Header="Help" >
-                <MenuItem Header="Documentation" ></MenuItem>
+            <MenuItem Header="{DynamicResource Settings}" Command="{Binding OpenSettings}" />
+            <MenuItem Header="{DynamicResource Help}">
+                <MenuItem Header="{DynamicResource Documentation}" ></MenuItem>
                 <Separator />
-                <MenuItem Header="About" Command="{Binding OpenAbout}"></MenuItem>
+                <MenuItem Header="{DynamicResource About}" Command="{Binding OpenAbout}"></MenuItem>
             </MenuItem>
         </Menu>
 
-        <TreeView x:Name="StructureProject" Grid.Row="2" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
+        <TreeView Grid.Row="2" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel.ContextMenu>
-                            <ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>
+                            <!--<ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>-->
+                            <ContextMenu>
+                                <MenuItem Header="{DynamicResource Create}" IsEnabled="{Binding IsAvailableCreate}"></MenuItem>
+                                <MenuItem Header="{DynamicResource Edit}" IsEnabled="{Binding IsAvailableEdit}"></MenuItem>
+                                <MenuItem Header="{DynamicResource Delete}" IsEnabled="{Binding IsAvailableDelete}"></MenuItem>
+                            </ContextMenu>
                         </StackPanel.ContextMenu>
                         <Image Source="{Binding ImagePath}" Width="12" Height="12" />
-                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Name}"/>
                     </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <StatusBar Grid.Row="4" Grid.ColumnSpan="2">
+        <StatusBar Grid.Row="4" Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
             <Image Width="16" Height="16" Source="/Resources/Images/view.png" />
             <TextBlock TextWrapping="Wrap" Text="Hello, world!"/>
         </StatusBar>
 
         <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2">
             <ToolBar>
-                <Button ToolTip="New Project">
+                <Button ToolTip="{DynamicResource NewProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/file.png" />
                 </Button>
-                <Button ToolTip="Open Project">
+                <Button ToolTip="{DynamicResource OpenProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/open.png" />
                 </Button>
-                <Button ToolTip="Save Project">
+                <Button ToolTip="{DynamicResource SaveProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
                 </Button>
                 <Separator/>
-                <Button ToolTip="New Sprite">
+                <Button ToolTip="{DynamicResource NewSprite}">
                     <Image Width="16" Height="16" Source="/Resources/Images/sprite.png" />
                 </Button>
-                <Button ToolTip="New Script">
+                <Button ToolTip="{DynamicResource NewScript}">
                     <Image Width="16" Height="16" Source="/Resources/Images/script.png" />
                 </Button>
-                <Button ToolTip="New Object">
+                <Button ToolTip="{DynamicResource NewObject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
                 </Button>
-                <Button ToolTip="New Room">
+                <Button ToolTip="{DynamicResource NewRoom}">
                     <Image Width="16" Height="16" Source="/Resources/Images/room.png" />
                 </Button>
                 <Separator/>
-                <Button ToolTip="Play Game">
+                <Button ToolTip="{DynamicResource RunGame}">
                     <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
                 </Button>
-                <Button ToolTip="Game Settings">
+                <Button ToolTip="{DynamicResource Settings}">
                     <Image Width="16" Height="16" Source="/Resources/Images/setting_project.png" />
                 </Button>
             </ToolBar>
         </ToolBarTray>
-        <WebBrowser Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,0"/>
-
+        <WebBrowser Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,0" />
     </Grid>
 </Window>

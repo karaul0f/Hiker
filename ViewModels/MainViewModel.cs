@@ -27,6 +27,34 @@ namespace Hiker_Editor.ViewModels
         public ObservableCollection<ProjectItem> StructureProject { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public bool _isAvailableCreate = true;
+        public bool _isAvailableEdit = true;
+        public bool _isAvailableDelete = true;
+
+        public bool IsAvailableCreate
+        {
+            get
+            {
+                return _isAvailableCreate;
+            }
+        }
+
+        public bool IsAvailableEdit
+        {
+            get
+            {
+                return _isAvailableEdit;
+            }
+        }
+
+        public bool IsAvailableDelete
+        {
+            get
+            {
+                return _isAvailableDelete;
+            }
+        }
+
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
@@ -37,6 +65,7 @@ namespace Hiker_Editor.ViewModels
         {
             StructureProject = ProjectItem.InitializationStructureProject();
             StructureProject[(int)Folders.Sprites].Items.Add(new ProjectItemBuilder().SetType(ProjectItemType.File).SetName("TestElem"));
+            
         }
 
         public RelayCommand OpenAbout
