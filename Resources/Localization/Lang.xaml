@@ -8,7 +8,9 @@
     <v:String x:Key="SaveProject">Save Project</v:String>
     <v:String x:Key="Exit">Exit</v:String>
     <v:String x:Key="RunGame">Run Game</v:String>
+    <v:String x:Key="RunGameInDebug">Run in Debug Mode</v:String>
     <v:String x:Key="Settings">Settings</v:String>
+    <v:String x:Key="Preferences">Preferences</v:String>
     <v:String x:Key="Help">Help</v:String>
     <v:String x:Key="Documentation">Documentation</v:String>
     <v:String x:Key="About">About</v:String>
@@ -20,6 +22,14 @@
     <v:String x:Key="NewScript">New Script</v:String>
     <v:String x:Key="NewObject">New Object</v:String>
     <v:String x:Key="NewRoom">New Room</v:String>
+    <v:String x:Key="Sprite">Sprite</v:String>
+    <v:String x:Key="Script">Script</v:String>
+    <v:String x:Key="Object">Object</v:String>
+    <v:String x:Key="Room">Room</v:String>
     <v:String x:Key="CreateStandAlone">Create Standalone</v:String>
     <v:String x:Key="Properties">Properties</v:String>
+    <v:String x:Key="Rename">Rename</v:String>
+    <v:String x:Key="Add">Add</v:String>
+    <v:String x:Key="Run">Run</v:String>
+    
 </ResourceDictionary>

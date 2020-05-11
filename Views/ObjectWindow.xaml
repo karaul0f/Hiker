@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="Object Editor" Height="533.767" Width="600">
+        Title="Room Properties" Height="533.767" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="49*"/>

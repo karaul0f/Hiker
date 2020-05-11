@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="ScriptWindow" Height="450" Width="800">
+        Title="Script Properties" Height="450" Width="800">
     <Grid>
         
     </Grid>

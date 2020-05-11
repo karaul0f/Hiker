@@ -28,7 +28,7 @@ namespace Hiker_Editor.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public bool _isAvailableCreate = true;
-        public bool _isAvailableEdit = true;
+        public bool _isAvailableRename = true;
         public bool _isAvailableDelete = true;
         public bool _isAvailableProperties = true;
 
@@ -40,11 +40,11 @@ namespace Hiker_Editor.ViewModels
             }
         }
 
-        public bool IsAvailableEdit
+        public bool IsAvailableRename
         {
             get
             {
-                return _isAvailableEdit;
+                return _isAvailableRename;
             }
         }
 

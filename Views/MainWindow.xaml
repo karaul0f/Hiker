@@ -23,20 +23,81 @@
 
         <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="{DynamicResource File}">
-                <MenuItem Header="{DynamicResource NewProject}" Command="{Binding NewProject}" ></MenuItem>
-                <MenuItem Header="{DynamicResource OpenProject}"></MenuItem>
-                <MenuItem Header="{DynamicResource SaveProject}" Command="{Binding ApplicationCommands.SaveAs}"></MenuItem>
+                <MenuItem Header="{DynamicResource NewProject}" Command="{Binding NewProject}" >
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/file.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource OpenProject}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/open.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource SaveProject}" Command="{Binding ApplicationCommands.SaveAs}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/save.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator />
-                <MenuItem Header="{DynamicResource RunGame}" ></MenuItem>
-                <MenuItem Header="{DynamicResource CreateStandAlone}" ></MenuItem>
+                <MenuItem Header="{DynamicResource CreateStandAlone}" >
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/program.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator />
-                <MenuItem Header="{DynamicResource Exit}" Command="{Binding ExitProgram}"></MenuItem>
+                <MenuItem Header="{DynamicResource Exit}" Command="{Binding ExitProgram}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/exit.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Add}">
+                <MenuItem Header="{DynamicResource Sprite}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/sprite.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Script}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/script.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Object}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/object.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Room}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/room.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Run}">
+                <MenuItem Header="{DynamicResource RunGame}" >
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/play.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource RunGameInDebug}" >
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/debug.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Settings}" Command="{Binding OpenSettings}" />
             <MenuItem Header="{DynamicResource Help}">
-                <MenuItem Header="{DynamicResource Documentation}" ></MenuItem>
+                <MenuItem Header="{DynamicResource Documentation}" >
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/documentation.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator />
-                <MenuItem Header="{DynamicResource About}" Command="{Binding OpenAbout}"></MenuItem>
+                <MenuItem Header="{DynamicResource About}" Command="{Binding OpenAbout}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/about.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
 
@@ -47,11 +108,27 @@
                         <StackPanel.ContextMenu>
                             <!--<ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>-->
                             <ContextMenu>
-                                <MenuItem Header="{DynamicResource Create}" IsEnabled="{Binding IsAvailableCreate}"></MenuItem>
-                                <MenuItem Header="{DynamicResource Edit}" IsEnabled="{Binding IsAvailableEdit}"></MenuItem>
-                                <MenuItem Header="{DynamicResource Delete}" IsEnabled="{Binding IsAvailableDelete}"></MenuItem>
+                                <MenuItem Header="{DynamicResource Create}" IsEnabled="{Binding IsAvailableCreate}">
+                                    <MenuItem.Icon>
+                                        <Image Source="/Resources/Images/add.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="{DynamicResource Rename}" IsEnabled="{Binding IsAvailableRename}">
+                                    <MenuItem.Icon>
+                                        <Image Source="/Resources/Images/rename.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="{DynamicResource Delete}" IsEnabled="{Binding IsAvailableDelete}">
+                                    <MenuItem.Icon>
+                                        <Image Source="/Resources/Images/delete.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
                                 <Separator />
-                                <MenuItem Header="{DynamicResource Properties}" IsEnabled="{Binding IsAvailableProperties}"></MenuItem>
+                                <MenuItem Header="{DynamicResource Properties}" IsEnabled="{Binding IsAvailableProperties}">
+                                    <MenuItem.Icon>
+                                        <Image Source="/Resources/Images/properties.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
                             </ContextMenu>
                         </StackPanel.ContextMenu>
                         <Image Source="{Binding ImagePath}" Width="12" Height="12" />

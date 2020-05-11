@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="SpriteWindow" Height="450" Width="800">
+        Title="Sprite Properties" Height="301.056" Width="491.021">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="120*"/>
+        </Grid.ColumnDefinitions>
     </Grid>
 </Window>
