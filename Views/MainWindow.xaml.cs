@@ -29,6 +29,7 @@ namespace Hiker_Editor.Views
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel();
+            HikerMainWindow.Title = "Hiker: " + "<new game>";
         }
     }
 }

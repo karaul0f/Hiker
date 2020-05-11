@@ -245,6 +245,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\HTML\index.html" />
+    <Resource Include="Resources\Images\debug.png" />
+    <Resource Include="Resources\Images\exit.png" />
+    <Resource Include="Resources\Images\properties.png" />
+    <Resource Include="Resources\Images\program.png" />
+    <Resource Include="Resources\Images\delete.png" />
+    <Resource Include="Resources\Images\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

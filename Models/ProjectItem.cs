@@ -14,6 +14,7 @@ namespace Hiker_Editor.Models
     {
         protected string _name = "";
         protected string _imagePath = "";
+        protected string _resourcePath = "";
         public ObservableCollection<MenuItem> ItemsOperation { get; set; }
         public ObservableCollection<ProjectItem> Items { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;

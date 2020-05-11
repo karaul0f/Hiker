@@ -7,8 +7,10 @@
     <v:String x:Key="OpenProject">Открыть проект</v:String>
     <v:String x:Key="SaveProject">Сохранить проект</v:String>
     <v:String x:Key="RunGame">Запустить игру</v:String>
+    <v:String x:Key="RunGameInDebug">Запуск с отладкой</v:String>
     <v:String x:Key="Exit">Выход</v:String>
     <v:String x:Key="Settings">Настройки</v:String>
+    <v:String x:Key="Preferences">Настройки</v:String>
     <v:String x:Key="Help">Справка</v:String>
     <v:String x:Key="Documentation">Документация</v:String>
     <v:String x:Key="About">О программе</v:String>
@@ -20,5 +22,11 @@
     <v:String x:Key="NewScript">Создать скрипт</v:String>
     <v:String x:Key="NewObject">Создать объект</v:String>
     <v:String x:Key="NewRoom">Создать комнату</v:String>
+    <v:String x:Key="Sprite">Спрайт</v:String>
+    <v:String x:Key="Script">Скрипт</v:String>
+    <v:String x:Key="Object">Объект</v:String>
+    <v:String x:Key="Room">Комната</v:String>
     <v:String x:Key="CreateStandAlone">Create Standalone</v:String>
+    <v:String x:Key="Add">Добавить</v:String>
+    <v:String x:Key="Run">Запустить</v:String>
 </ResourceDictionary>
