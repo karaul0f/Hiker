@@ -12,13 +12,14 @@
             <RowDefinition Height="18"></RowDefinition>
             <RowDefinition Height="24"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition MinWidth="100" Width="0.3*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+
+        <GridSplitter Grid.Column="1" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
 
         <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="{DynamicResource File}">
@@ -27,6 +28,7 @@
                 <MenuItem Header="{DynamicResource SaveProject}" Command="{Binding ApplicationCommands.SaveAs}"></MenuItem>
                 <Separator />
                 <MenuItem Header="{DynamicResource RunGame}" ></MenuItem>
+                <MenuItem Header="{DynamicResource CreateStandAlone}" ></MenuItem>
                 <Separator />
                 <MenuItem Header="{DynamicResource Exit}" Command="{Binding ExitProgram}"></MenuItem>
             </MenuItem>
@@ -38,7 +40,7 @@
             </MenuItem>
         </Menu>
 
-        <TreeView Grid.Row="2" Grid.RowSpan="2" ItemsSource="{Binding StructureProject}">
+        <TreeView Grid.Row="2" ItemsSource="{Binding StructureProject}">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
                     <StackPanel Orientation="Horizontal">
@@ -48,15 +50,18 @@
                                 <MenuItem Header="{DynamicResource Create}" IsEnabled="{Binding IsAvailableCreate}"></MenuItem>
                                 <MenuItem Header="{DynamicResource Edit}" IsEnabled="{Binding IsAvailableEdit}"></MenuItem>
                                 <MenuItem Header="{DynamicResource Delete}" IsEnabled="{Binding IsAvailableDelete}"></MenuItem>
+                                <Separator />
+                                <MenuItem Header="{DynamicResource Properties}" IsEnabled="{Binding IsAvailableProperties}"></MenuItem>
                             </ContextMenu>
                         </StackPanel.ContextMenu>
                         <Image Source="{Binding ImagePath}" Width="12" Height="12" />
+                        <TextBlock Text=" "/>
                         <TextBlock Text="{Binding Name}"/>
                     </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <StatusBar Grid.Row="4" Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
             <Image Width="16" Height="16" Source="/Resources/Images/view.png" />
             <TextBlock TextWrapping="Wrap" Text="Hello, world!"/>
         </StatusBar>
@@ -94,6 +99,6 @@
                 </Button>
             </ToolBar>
         </ToolBarTray>
-        <WebBrowser Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,0" />
+        <WebBrowser x:Name="webBrowser" Grid.Column="1" Grid.Row="2" Margin="3,0,0,0" />
     </Grid>
 </Window>

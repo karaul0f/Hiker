@@ -12,15 +12,15 @@ namespace Hiker_Editor.Models
 {
     public class ProjectItem : INotifyPropertyChanged
     {
-        private string _name = "";
-        private string _imagePath = "";
+        protected string _name = "";
+        protected string _imagePath = "";
         public ObservableCollection<MenuItem> ItemsOperation { get; set; }
         public ObservableCollection<ProjectItem> Items { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ProjectItem()
         {
-            ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Create", IsEnabled = false }, new MenuItem { Header = "Edit", IsEnabled = false }, new MenuItem { Header = "Delete", IsEnabled = false } };
+            //ItemsOperation = new ObservableCollection<MenuItem> { new MenuItem { Header = "Create", IsEnabled = false }, new MenuItem { Header = "Edit", IsEnabled = false }, new MenuItem { Header = "Delete", IsEnabled = false } };
         }
 
         public void OnPropertyChanged([CallerMemberName]string prop = "")
@@ -55,10 +55,10 @@ namespace Hiker_Editor.Models
         {
             ObservableCollection<ProjectItem> _structureProject = new ObservableCollection<ProjectItem>
             {
-                new ProjectItemBuilder().SetType(ProjectItemType.Folder).SetName("Sprites"),
-                new ProjectItemBuilder().SetType(ProjectItemType.Folder).SetName("Scripts"),
-                new ProjectItemBuilder().SetType(ProjectItemType.Folder).SetName("Objects"),
-                new ProjectItemBuilder().SetType(ProjectItemType.Folder).SetName("Rooms")
+                new Folder() { Name = "Sprites" },
+                new Folder() { Name = "Scripts" },
+                new Folder() { Name = "Objects" },
+                new Folder() { Name = "Rooms" }
             };
             return _structureProject;
         }

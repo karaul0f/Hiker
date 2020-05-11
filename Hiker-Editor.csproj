@@ -86,9 +86,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\ProjectLoader.cs" />
+    <Compile Include="Models\Folder.cs" />
+    <Compile Include="Models\Object.cs" />
     <Compile Include="Models\ProjectItem.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\ProjectItemBuilder.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\Script.cs" />
+    <Compile Include="Models\Sprite.cs" />
     <Compile Include="ViewModels\ObjectViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
@@ -111,6 +116,9 @@
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\SpriteWindow.xaml.cs">
+      <DependentUpon>SpriteWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Resources\Localization\lang.ru-RU.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -152,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SpriteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\hiker_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\HTML\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

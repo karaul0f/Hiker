@@ -20,4 +20,5 @@
     <v:String x:Key="NewScript">Создать скрипт</v:String>
     <v:String x:Key="NewObject">Создать объект</v:String>
     <v:String x:Key="NewRoom">Создать комнату</v:String>
+    <v:String x:Key="CreateStandAlone">Create Standalone</v:String>
 </ResourceDictionary>

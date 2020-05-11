@@ -30,6 +30,7 @@ namespace Hiker_Editor.ViewModels
         public bool _isAvailableCreate = true;
         public bool _isAvailableEdit = true;
         public bool _isAvailableDelete = true;
+        public bool _isAvailableProperties = true;
 
         public bool IsAvailableCreate
         {
@@ -55,6 +56,14 @@ namespace Hiker_Editor.ViewModels
             }
         }
 
+        public bool IsAvailableProperties
+        {
+            get
+            {
+                return _isAvailableProperties;
+            }
+        }
+
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
@@ -64,7 +73,7 @@ namespace Hiker_Editor.ViewModels
         public MainWindowViewModel()
         {
             StructureProject = ProjectItem.InitializationStructureProject();
-            StructureProject[(int)Folders.Sprites].Items.Add(new ProjectItemBuilder().SetType(ProjectItemType.File).SetName("TestElem"));
+            //StructureProject[(int)Folders.Sprites].Items.Add(new ProjectItemBuilder().SetType(ProjectItemType.File).SetName("TestElem"));
             
         }
 

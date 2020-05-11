@@ -20,5 +20,6 @@
     <v:String x:Key="NewScript">New Script</v:String>
     <v:String x:Key="NewObject">New Object</v:String>
     <v:String x:Key="NewRoom">New Room</v:String>
-    
+    <v:String x:Key="CreateStandAlone">Create Standalone</v:String>
+    <v:String x:Key="Properties">Properties</v:String>
 </ResourceDictionary>
