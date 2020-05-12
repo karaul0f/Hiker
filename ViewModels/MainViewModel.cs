@@ -24,13 +24,23 @@ namespace Hiker_Editor.ViewModels
         private RelayCommand _exitProgram;
         private RelayCommand _newProject;
         private RelayCommand _openProject;
+        private RelayCommand _addObject;
         public ObservableCollection<ProjectItem> StructureProject { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
+        
         public bool _isAvailableCreate = true;
         public bool _isAvailableRename = true;
         public bool _isAvailableDelete = true;
         public bool _isAvailableProperties = true;
+
+        public string MainTitle
+        {
+            get
+            {
+                return "Hiker: <new game>";
+            }
+        }
 
         public bool IsAvailableCreate
         {
@@ -73,9 +83,8 @@ namespace Hiker_Editor.ViewModels
         public MainWindowViewModel()
         {
             StructureProject = ProjectItem.InitializationStructureProject();
-            //StructureProject[(int)Folders.Sprites].Items.Add(new ProjectItemBuilder().SetType(ProjectItemType.File).SetName("TestElem"));
-            
         }
+
 
         public RelayCommand OpenAbout
         {
@@ -86,6 +95,18 @@ namespace Hiker_Editor.ViewModels
                   {
                       AboutWindow aboutWindow = new AboutWindow();
                       aboutWindow.Show();
+                  }));
+            }
+        }
+
+        public RelayCommand AddObject
+        {
+            get
+            {
+                return _addObject ??
+                  (_addObject = new RelayCommand(obj =>
+                  {
+                      StructureProject[(int)Folders.Sprites].Items.Add(new Sprite());
                   }));
             }
         }

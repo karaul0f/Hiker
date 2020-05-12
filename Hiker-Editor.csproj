@@ -85,11 +85,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\ProjectLoader.cs" />
+    <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\Folder.cs" />
     <Compile Include="Models\Object.cs" />
     <Compile Include="Models\ProjectItem.cs" />
-    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="Models\ProjectItemBuilder.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Script.cs" />
@@ -252,6 +252,9 @@
     <Resource Include="Resources\Images\program.png" />
     <Resource Include="Resources\Images\delete.png" />
     <Resource Include="Resources\Images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

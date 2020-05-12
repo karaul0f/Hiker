@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
+        xmlns:utils="clr-namespace:Hiker_Editor.Utils"
         mc:Ignorable="d"
-        Title="Hiker" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
+        Title="{Binding MainTitle}" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
     <Grid>
+        <Grid.Resources>
+            <utils:BindingProxy x:Key="Proxy" Data="{Binding}" />
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="18"></RowDefinition>
             <RowDefinition Height="24"></RowDefinition>
@@ -106,9 +110,8 @@
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel.ContextMenu>
-                            <!--<ContextMenu ItemsSource="{Binding Path=ItemsOperation}"/>-->
                             <ContextMenu>
-                                <MenuItem Header="{DynamicResource Create}" IsEnabled="{Binding IsAvailableCreate}">
+                                <MenuItem Header="{DynamicResource Create}" Command="{Binding Source={StaticResource Proxy}, Path=Data.AddObject}" IsEnabled="{Binding IsAvailableCreate}">
                                     <MenuItem.Icon>
                                         <Image Source="/Resources/Images/add.png" />
                                     </MenuItem.Icon>

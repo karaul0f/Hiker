@@ -11,5 +11,18 @@
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="120*"/>
         </Grid.ColumnDefinitions>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" Text="sprite0" VerticalAlignment="Top" Width="101"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="ID: 1" VerticalAlignment="Top" Margin="10,54,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
+        <Button HorizontalAlignment="Left" Margin="10,240,0,10" Width="101">
+            <StackPanel Margin="2" Orientation="Horizontal">
+                <Image Source= "/Resources/Images/open.png" />
+                <TextBlock Text=" Load Sprite" />
+            </StackPanel>
+        </Button>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
+        <Border BorderThickness="1" Grid.Column="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Image  Source="/Resources/Images/hiker.png" Grid.Column="1" Stretch="None" Margin="0,0,0,0"/>
+        </Border>
     </Grid>
 </Window>
