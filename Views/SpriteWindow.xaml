@@ -20,7 +20,7 @@
                 <TextBlock Text=" Load Sprite" FontSize="11" />
             </StackPanel>
         </Button>
-        <Border  Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
+        <Border  Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Panel.ZIndex="-1"/>
         <Border BorderThickness="1" Grid.Column="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image  Source="/Resources/Images/hiker.png" Grid.Column="1" Stretch="None" Margin="0,0,0,0"/>
         </Border>
