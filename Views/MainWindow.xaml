@@ -127,7 +127,7 @@
                                     </MenuItem.Icon>
                                 </MenuItem>
                                 <Separator />
-                                <MenuItem Header="{DynamicResource Properties}" IsEnabled="{Binding IsAvailableProperties}">
+                                <MenuItem Header="{DynamicResource Properties}" Command="{Binding Source={StaticResource Proxy}, Path=Data.OpenProperties}" IsEnabled="{Binding IsAvailableProperties}">
                                     <MenuItem.Icon>
                                         <Image Source="/Resources/Images/properties.png" />
                                     </MenuItem.Icon>

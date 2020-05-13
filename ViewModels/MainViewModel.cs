@@ -25,6 +25,7 @@ namespace Hiker_Editor.ViewModels
         private RelayCommand _newProject;
         private RelayCommand _openProject;
         private RelayCommand _addObject;
+        private RelayCommand _openProperties;
         public ObservableCollection<ProjectItem> StructureProject { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -107,6 +108,19 @@ namespace Hiker_Editor.ViewModels
                   (_addObject = new RelayCommand(obj =>
                   {
                       StructureProject[(int)Folders.Sprites].Items.Add(new Sprite());
+                  }));
+            }
+        }
+
+        public RelayCommand OpenProperties
+        {
+            get
+            {
+                return _openProperties ??
+                  (_openProperties = new RelayCommand(obj =>
+                  {
+                      SpriteWindow spriteWindow = new SpriteWindow();
+                      spriteWindow.Show();
                   }));
             }
         }

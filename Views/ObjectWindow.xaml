@@ -5,33 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="Room Properties" Height="533.767" Width="600">
+        Title="Object Properties" Height="457.767" Width="526">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="49*"/>
-            <RowDefinition Height="38*"/>
-            <RowDefinition Height="354*"/>
-            <RowDefinition Height="62*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="572" Height="29" Grid.ColumnSpan="2">
-            <ListBoxItem Content="123"/>
-            <ListBoxItem Content="456"/>
-            <ListBoxItem Content="789"/>
-        </ComboBox>
-        <Button Content="Add item" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="276" Height="32"/>
-        <Button Content="Delete item" HorizontalAlignment="Left" Margin="158,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="128" Height="32" Grid.Column="1"/>
-        <ListBox HorizontalAlignment="Left" Height="334" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="276">
-            <ListBoxItem Content="Sprite"/>
-            <ListBoxItem Content="Script"/>
-        </ListBox>
-        <ListBox HorizontalAlignment="Left" Height="328" Margin="10,16,0,0" Grid.Row="2" VerticalAlignment="Top" Width="276" Grid.Column="1"/>
-        <Label Content="Possible items" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="276"/>
-        <Label Content="Current items" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Width="276" Grid.Column="1"/>
-        <Button Content="Edit item" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="143" Height="32"/>
 
     </Grid>
 </Window>
