@@ -119,7 +119,8 @@ namespace Hiker_Editor.ViewModels
                 return _openProperties ??
                   (_openProperties = new RelayCommand(obj =>
                   {
-                      SpriteWindow spriteWindow = new SpriteWindow();
+                      Sprite sprite = new Sprite() { Name = "123" };
+                      SpriteWindow spriteWindow = new SpriteWindow(ref sprite);
                       spriteWindow.Show();
                   }));
             }

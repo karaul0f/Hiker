@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Hiker_Editor.Models;
 using Hiker_Editor.ViewModels;
 
 namespace Hiker_Editor.Views
@@ -21,10 +21,10 @@ namespace Hiker_Editor.Views
     /// </summary>
     public partial class SpriteWindow : Window
     {
-        public SpriteWindow()
+        public SpriteWindow(ref Sprite sprite)
         {
             InitializeComponent();
-            DataContext = new SpriteViewModel();
+            DataContext = new SpriteViewModel(ref sprite);
         }
     }
 }
