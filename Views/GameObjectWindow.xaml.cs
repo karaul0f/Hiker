@@ -12,16 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Hiker_Editor.Models;
+using Hiker_Editor.ViewModels;
+
 namespace Hiker_Editor.Views
 {
     /// <summary>
     /// Логика взаимодействия для ObjectWindow.xaml
     /// </summary>
-    public partial class ObjectWindow : Window
+    public partial class GameObjectWindow : Window
     {
-        public ObjectWindow()
+        public GameObjectWindow(ref GameObject gameObject, ref Sprite[] sprites)
         {
             InitializeComponent();
+            DataContext = new GameObjectViewModel(ref gameObject, ref sprites);
         }
     }
 }

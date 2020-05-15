@@ -87,14 +87,14 @@
     </ApplicationDefinition>
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\Folder.cs" />
-    <Compile Include="Models\Object.cs" />
+    <Compile Include="Models\GameObject.cs" />
     <Compile Include="Models\ProjectItem.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="Models\ProjectItemBuilder.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Script.cs" />
     <Compile Include="Models\Sprite.cs" />
-    <Compile Include="ViewModels\ObjectViewModel.cs" />
+    <Compile Include="ViewModels\GameObjectViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\SpriteViewModel.cs" />
@@ -104,8 +104,8 @@
     <Compile Include="Views\NewProjectWindow.xaml.cs">
       <DependentUpon>NewProjectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ObjectWindow.xaml.cs">
-      <DependentUpon>ObjectWindow.xaml</DependentUpon>
+    <Compile Include="Views\GameObjectWindow.xaml.cs">
+      <DependentUpon>GameObjectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RoomWindow.xaml.cs">
       <DependentUpon>RoomWindow.xaml</DependentUpon>
@@ -148,7 +148,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ObjectWindow.xaml">
+    <Page Include="Views\GameObjectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

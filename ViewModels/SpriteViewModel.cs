@@ -29,7 +29,7 @@ namespace Hiker_Editor.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        public Sprite currentSprite
+        public Sprite CurrentSprite
         {
             private set { }
             get { return _sprite; }
@@ -44,7 +44,7 @@ namespace Hiker_Editor.ViewModels
                   {
                       OpenFileDialog openFileDialog = new OpenFileDialog();
                       openFileDialog.ShowDialog();
-                      currentSprite.ImagePath = openFileDialog.FileName;
+                      CurrentSprite.ImagePath = openFileDialog.FileName;
                   }));
             }
         }
