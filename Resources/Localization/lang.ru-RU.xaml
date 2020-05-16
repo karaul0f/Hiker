@@ -30,4 +30,16 @@
     <v:String x:Key="CreateStandAlone">Create Standalone</v:String>
     <v:String x:Key="Add">Добавить</v:String>
     <v:String x:Key="Run">Запустить</v:String>
+    <v:String x:Key="SpriteProperties">Настройка спрайта</v:String>
+    <v:String x:Key="ObjectProperties">Настройка объекта</v:String>
+    <v:String x:Key="Name">Название</v:String>
+    <v:String x:Key="Solid">Твердый</v:String>
+    <v:String x:Key="Visible">Видимый</v:String>
+    <v:String x:Key="LoadSprite">Загрузить спрайт</v:String>
+    <v:String x:Key="Events">События</v:String>
+    <v:String x:Key="Actions">Действия</v:String>
+    <v:String x:Key="AddEvent">Добавить событие</v:String>
+    <v:String x:Key="AddAction">Добавить действие</v:String>
+    <v:String x:Key="DeleteEvent">Удалить событие</v:String>
+    <v:String x:Key="DeleteAction">Удалить действие</v:String>
 </ResourceDictionary>

@@ -31,5 +31,16 @@
     <v:String x:Key="Rename">Rename</v:String>
     <v:String x:Key="Add">Add</v:String>
     <v:String x:Key="Run">Run</v:String>
-    
+    <v:String x:Key="SpriteProperties">Sprite Properties</v:String>
+    <v:String x:Key="ObjectProperties">Object Properties</v:String>
+    <v:String x:Key="Name">Name</v:String>
+    <v:String x:Key="Solid">Solid</v:String>
+    <v:String x:Key="Visible">Visible</v:String>
+    <v:String x:Key="LoadSprite">Load Sprite</v:String>
+    <v:String x:Key="Events">Events</v:String>
+    <v:String x:Key="Actions">Actions</v:String>
+    <v:String x:Key="AddEvent">Add Event</v:String>
+    <v:String x:Key="AddAction">Add Action</v:String>
+    <v:String x:Key="DeleteEvent">Delete Event</v:String>
+    <v:String x:Key="DeleteAction">Delete Action</v:String>
 </ResourceDictionary>
