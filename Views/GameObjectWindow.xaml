@@ -21,9 +21,9 @@
         <ComboBox ItemsSource="{Binding Sprites}" Margin="10,80,10,0" VerticalAlignment="Top" Height="22"/>
         <ListBox Grid.Column="1" Margin="10,31,10,38"/>
         <ListBox Grid.Column="2" Margin="10,31,10,38"/>
-        <Button Content="{DynamicResource AddEvent}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" Width="65" Height="20" VerticalAlignment="Bottom"/>
+        <Button Command="{Binding CreateEvent}" Content="{DynamicResource AddEvent}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" Width="65" Height="20" VerticalAlignment="Bottom"/>
         <Button Content="{DynamicResource DeleteEvent}" Grid.Column="1" Margin="81,0,0,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="92"/>
-        <Button Content="{DynamicResource AddAction}" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,10" Width="75" Height="20" VerticalAlignment="Bottom"/>
+        <Button Command="{Binding CreateAction}" Content="{DynamicResource AddAction}" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,10" Width="75" Height="20" VerticalAlignment="Bottom"/>
         <Button Content="{DynamicResource DeleteAction}" Grid.Column="2" Margin="90,0,0,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="98"/>
         <CheckBox Content="{DynamicResource Visible}" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Height="15" Width="55"/>
         <CheckBox Content="{DynamicResource Solid}" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Height="15" Width="46"/>

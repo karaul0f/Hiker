@@ -35,5 +35,12 @@
                 <TextBlock Text="Collision" FontSize="11" />
             </StackPanel>
         </Button>
+        <Button Margin="55,85,55,0" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <Image Source= "/Hiker-Editor;component/Resources/Images/delete.png" Height="16" Width="16" />
+                <TextBlock Text=" " FontSize="11" />
+                <TextBlock Text="Delete" FontSize="11" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>

@@ -14,9 +14,9 @@
                 <TextBlock Text="Cancel" FontSize="11" />
             </StackPanel>
         </Button>
-        <Button Margin="55,10,55,194">
+        <Button Margin="55,10,55,0" Height="20" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
-                <Image Source= "/Hiker-Editor;component/Resources/Images/script.png" />
+                <Image Source= "/Hiker-Editor;component/Resources/Images/script.png" Width="16" Height="16" />
                 <TextBlock Text=" " FontSize="11" />
                 <TextBlock Text="Script" FontSize="11" />
             </StackPanel>

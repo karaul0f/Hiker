@@ -27,7 +27,7 @@
     <v:String x:Key="Object">Объект</v:String>
     <v:String x:Key="Room">Комната</v:String>
     <v:String x:Key="Rename">Переименовать</v:String>
-    <v:String x:Key="CreateStandAlone">Create Standalone</v:String>
+    <v:String x:Key="CreateStandAlone">Собрать игру</v:String>
     <v:String x:Key="Add">Добавить</v:String>
     <v:String x:Key="Run">Запустить</v:String>
     <v:String x:Key="SpriteProperties">Настройка спрайта</v:String>
