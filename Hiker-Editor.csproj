@@ -102,6 +102,12 @@
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateActionWindow.xaml.cs">
+      <DependentUpon>CreateActionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateEventWindow.xaml.cs">
+      <DependentUpon>CreateEventWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewProjectWindow.xaml.cs">
       <DependentUpon>NewProjectWindow.xaml</DependentUpon>
     </Compile>
@@ -130,6 +136,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateActionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateEventWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,6 +261,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\HTML\index.html" />
+    <Resource Include="Resources\Images\collision.png" />
+    <Resource Include="Resources\Images\create.png" />
+    <Resource Include="Resources\Images\step.png" />
+    <Resource Include="Resources\Images\cancel.png" />
     <Resource Include="Resources\Images\rename.png" />
     <Resource Include="Resources\Images\debug.png" />
     <Resource Include="Resources\Images\exit.png" />

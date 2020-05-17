@@ -1,0 +1,25 @@
+﻿<Window x:Class="Hiker_Editor.Views.CreateActionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hiker_Editor.Views"
+        mc:Ignorable="d"
+        Title="Choose the Action to Add" Height="254.582" Width="231.674">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+        <Button Margin="55,0,55,9" Height="20" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <Image Source= "/Hiker-Editor;component/Resources/Images/cancel.png" />
+                <TextBlock Text=" " FontSize="11" />
+                <TextBlock Text="Cancel" FontSize="11" />
+            </StackPanel>
+        </Button>
+        <Button Margin="55,10,55,194">
+            <StackPanel Orientation="Horizontal">
+                <Image Source= "/Hiker-Editor;component/Resources/Images/script.png" />
+                <TextBlock Text=" " FontSize="11" />
+                <TextBlock Text="Script" FontSize="11" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
