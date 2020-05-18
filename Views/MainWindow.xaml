@@ -56,17 +56,17 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Add}">
-                <MenuItem Header="{DynamicResource Sprite}">
+                <MenuItem Command="{Binding AddSprite}" Header="{DynamicResource Sprite}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/sprite.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource Script}">
+                <MenuItem Command="{Binding AddScript}" Header="{DynamicResource Script}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/script.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource Object}">
+                <MenuItem Command="{Binding AddGameObject}" Header="{DynamicResource Object}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/object.png" />
                     </MenuItem.Icon>

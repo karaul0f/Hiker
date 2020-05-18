@@ -101,6 +101,7 @@
     <Compile Include="Models\Sprite.cs" />
     <Compile Include="ViewModels\GameObjectViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\ScriptViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\SpriteViewModel.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">

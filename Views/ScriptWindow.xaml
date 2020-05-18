@@ -23,7 +23,7 @@
                 </Button>
                 <Separator/>
                 <TextBlock VerticalAlignment="Center" Text="{DynamicResource Name}" />
-                <TextBox Width="80" />
+                <TextBox Text="{Binding CurrentScript.Name}" Width="80" />
             </ToolBar>
         </ToolBarTray>
         <avalonEdit:TextEditor Name="textEditor" FontFamily="Consolas" SyntaxHighlighting="C++"  ShowLineNumbers="True" FontSize="10pt" Grid.Row="1"/>

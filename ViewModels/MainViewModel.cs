@@ -19,6 +19,7 @@ namespace Hiker_Editor.ViewModels
     public enum Folders { Sprites = 0, Scripts = 1, Objects = 2, Rooms = 3 };
     public partial class MainWindowViewModel : INotifyPropertyChanged
     {
+        private RelayCommand _addSprite, _addScript, _addGameObject;
         private RelayCommand _openAbout;
         private RelayCommand _openSettings;
         private RelayCommand _exitProgram;
@@ -112,6 +113,39 @@ namespace Hiker_Editor.ViewModels
             }
         }
 
+        public RelayCommand AddSprite
+        {
+            get
+            {
+                return _addSprite ??
+                  (_addSprite = new RelayCommand(obj =>
+                  {
+                      Sprite sprite = new Sprite();
+                      StructureProject[(int)Folders.Sprites].Items.Add(sprite);
+                      SpriteWindow spriteWindow = new SpriteWindow(ref sprite);
+                      spriteWindow.Show();
+                  }));
+            }
+        }
+
+        public RelayCommand AddGameObject
+        {
+            get
+            {
+                return _addGameObject ??
+                  (_addGameObject = new RelayCommand(obj =>
+                  {
+                      GameObject gameObject = new GameObject();
+                      StructureProject[(int)Folders.Objects].Items.Add(gameObject);
+                      var sprites = new ObservableCollection<Sprite>();
+                      foreach (var item in StructureProject[(int)Folders.Sprites].Items)
+                          sprites.Add((Sprite)item);
+                      GameObjectWindow gameObjectWindow = new GameObjectWindow(ref gameObject, ref sprites);
+                      gameObjectWindow.Show();
+                  }));
+            }
+        }
+
         public RelayCommand OpenProperties
         {
             get
@@ -130,9 +164,26 @@ namespace Hiker_Editor.ViewModels
                       GameObjectWindow spriteWindow = new GameObjectWindow(ref go, ref sprites);
                       spriteWindow.Show();
                       */
-                      ScriptWindow scriptWindow = new ScriptWindow();
+                      /*
+                      Script script = new Script() { Name = "123" };
+                      ScriptWindow scriptWindow = new ScriptWindow(ref script);
                       scriptWindow.Show();
+                      */
+                  }));
+            }
+        }
 
+        public RelayCommand AddScript
+        {
+            get
+            {
+                return _addScript ??
+                  (_addScript = new RelayCommand(obj =>
+                  {
+                      Script script = new Script();
+                      StructureProject[(int)Folders.Scripts].Items.Add(script);
+                      ScriptWindow scriptWindow = new ScriptWindow(ref script);
+                      scriptWindow.Show();
                   }));
             }
         }

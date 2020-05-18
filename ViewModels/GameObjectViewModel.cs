@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -16,8 +17,8 @@ namespace Hiker_Editor.ViewModels
     {
         RelayCommand _createEvent, _createAction;
         GameObject _gameObject;
-        Sprite[] _sprites;
-        public GameObjectViewModel(ref GameObject gameObject, ref Sprite[] sprites)
+        ObservableCollection<Sprite> _sprites;
+        public GameObjectViewModel(ref GameObject gameObject, ref ObservableCollection<Sprite> sprites)
         {
             _gameObject = gameObject;
             _sprites = sprites;
@@ -36,7 +37,7 @@ namespace Hiker_Editor.ViewModels
             get { return _gameObject; }
         }
 
-        public Sprite[] Sprites
+        public ObservableCollection<Sprite> Sprites
         {
             private set { }
             get { return _sprites; }

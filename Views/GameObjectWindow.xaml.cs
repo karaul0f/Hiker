@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using System.Collections.ObjectModel;
+
 using Hiker_Editor.Models;
 using Hiker_Editor.ViewModels;
 
@@ -22,7 +24,7 @@ namespace Hiker_Editor.Views
     /// </summary>
     public partial class GameObjectWindow : Window
     {
-        public GameObjectWindow(ref GameObject gameObject, ref Sprite[] sprites)
+        public GameObjectWindow(ref GameObject gameObject, ref ObservableCollection<Sprite> sprites)
         {
             InitializeComponent();
             DataContext = new GameObjectViewModel(ref gameObject, ref sprites);
