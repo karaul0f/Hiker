@@ -16,7 +16,7 @@
             <ColumnDefinition Width="198*"/>
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{DynamicResource Name}" VerticalAlignment="Top" Height="16" />
-        <TextBox Height="23" Margin="10,31,10,0" TextWrapping="Wrap" Text="{Binding Path=CurrentGameObject.Name, Mode=TwoWay}" VerticalAlignment="Top"/>
+        <TextBox Height="23" Margin="10,31,10,0" TextWrapping="Wrap" Text="{Binding Path=CurrentGameObject.Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,59,0,0" TextWrapping="Wrap" Text="{DynamicResource Sprite}" VerticalAlignment="Top" Height="16" />
         <ComboBox ItemsSource="{Binding Sprites}" Margin="10,80,10,0" VerticalAlignment="Top" Height="22"/>
         <ListBox Grid.Column="1" Margin="10,31,10,38"/>

@@ -18,12 +18,36 @@
                     <Image Width="16" Height="16" Source="/Resources/Images/okay.png" />
                 </Button>
                 <Separator/>
-                <Button>
+                <Button ToolTip="Import">
+                    <Image Width="16" Height="16" Source="/Resources/Images/open.png" />
+                </Button>
+                <Button ToolTip="Save">
                     <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
                 </Button>
                 <Separator/>
+                <Button ToolTip="Undo">
+                    <Image Width="16" Height="16" Source="/Resources/Images/undo.png" />
+                </Button>
+                <Button ToolTip="Redo">
+                    <Image Width="16" Height="16" Source="/Resources/Images/redo.png" />
+                </Button>
+                <Separator/>
+                <Button ToolTip="Cut">
+                    <Image Width="16" Height="16" Source="/Resources/Images/cut.png" />
+                </Button>
+                <Button ToolTip="Copy">
+                    <Image Width="16" Height="16" Source="/Resources/Images/copy.png" />
+                </Button>
+                <Button ToolTip="Paste">
+                    <Image Width="16" Height="16" Source="/Resources/Images/paste.png" />
+                </Button>
+                <Separator/>
+                <Button ToolTip="Find">
+                    <Image Width="16" Height="16" Source="/Resources/Images/find.png" />
+                </Button>
+                <Separator/>
                 <TextBlock VerticalAlignment="Center" Text="{DynamicResource Name}" />
-                <TextBox Text="{Binding CurrentScript.Name}" Width="80" />
+                <TextBox Text="{Binding CurrentScript.Name, UpdateSourceTrigger=PropertyChanged}" Width="80" />
             </ToolBar>
         </ToolBarTray>
         <avalonEdit:TextEditor Name="textEditor" FontFamily="Consolas" SyntaxHighlighting="C++"  ShowLineNumbers="True" FontSize="10pt" Grid.Row="1"/>

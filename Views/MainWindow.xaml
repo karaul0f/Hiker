@@ -14,7 +14,7 @@
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="18"></RowDefinition>
-            <RowDefinition Height="24"></RowDefinition>
+            <RowDefinition Height="28"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
@@ -146,8 +146,8 @@
             <TextBlock TextWrapping="Wrap" Text="Hello, world!"/>
         </StatusBar>
 
-        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2">
-            <ToolBar>
+        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+            <ToolBar Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                 <Button ToolTip="{DynamicResource NewProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/file.png" />
                 </Button>
@@ -158,13 +158,13 @@
                     <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
                 </Button>
                 <Separator/>
-                <Button ToolTip="{DynamicResource NewSprite}">
+                <Button Command="{Binding AddSprite}" ToolTip="{DynamicResource NewSprite}">
                     <Image Width="16" Height="16" Source="/Resources/Images/sprite.png" />
                 </Button>
-                <Button ToolTip="{DynamicResource NewScript}">
+                <Button Command="{Binding AddScript}" ToolTip="{DynamicResource NewScript}">
                     <Image Width="16" Height="16" Source="/Resources/Images/script.png" />
                 </Button>
-                <Button ToolTip="{DynamicResource NewObject}">
+                <Button Command="{Binding AddGameObject}" ToolTip="{DynamicResource NewObject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
                 </Button>
                 <Button ToolTip="{DynamicResource NewRoom}">
@@ -174,7 +174,7 @@
                 <Button ToolTip="{DynamicResource RunGame}">
                     <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
                 </Button>
-                <Button ToolTip="{DynamicResource Settings}">
+                <Button Command="{Binding OpenSettings}" ToolTip="{DynamicResource Settings}">
                     <Image Width="16" Height="16" Source="/Resources/Images/setting_project.png" />
                 </Button>
             </ToolBar>

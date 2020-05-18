@@ -266,6 +266,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\HTML\index.html" />
+    <Resource Include="Resources\Images\find.png" />
+    <Resource Include="Resources\Images\copy.png" />
+    <Resource Include="Resources\Images\cut.png" />
+    <Resource Include="Resources\Images\paste.png" />
+    <Resource Include="Resources\Images\redo.png" />
+    <Resource Include="Resources\Images\undo.png" />
     <Resource Include="Resources\Images\okay.png" />
     <Resource Include="Resources\Images\collision.png" />
     <Resource Include="Resources\Images\create.png" />
