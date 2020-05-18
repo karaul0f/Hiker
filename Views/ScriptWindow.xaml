@@ -4,9 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
-        Title="Script Properties" Height="450" Width="800">
+        Title="Script Properties" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/script.png">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="383*"/>
+        </Grid.RowDefinitions>
+        <ToolBarTray Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+            <ToolBar Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <Button>
+                    <Image Width="16" Height="16" Source="/Resources/Images/okay.png" />
+                </Button>
+                <Separator/>
+                <Button>
+                    <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
+                </Button>
+                <Separator/>
+                <TextBlock VerticalAlignment="Center" Text="{DynamicResource Name}" />
+                <TextBox Width="80" />
+            </ToolBar>
+        </ToolBarTray>
+        <avalonEdit:TextEditor Name="textEditor" FontFamily="Consolas" SyntaxHighlighting="C++"  ShowLineNumbers="True" FontSize="10pt" Grid.Row="1"/>
     </Grid>
 </Window>

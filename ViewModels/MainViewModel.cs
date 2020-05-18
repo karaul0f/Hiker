@@ -124,10 +124,15 @@ namespace Hiker_Editor.ViewModels
                       SpriteWindow spriteWindow = new SpriteWindow(ref sprite);
                       spriteWindow.Show();
                       */
+                      /*
                       GameObject go = new GameObject() { Name = "123" };
                       Sprite[] sprites = null;
                       GameObjectWindow spriteWindow = new GameObjectWindow(ref go, ref sprites);
                       spriteWindow.Show();
+                      */
+                      ScriptWindow scriptWindow = new ScriptWindow();
+                      scriptWindow.Show();
+
                   }));
             }
         }
