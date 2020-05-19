@@ -136,7 +136,7 @@
                         </StackPanel.ContextMenu>
                         <Image Source="{Binding ImagePath}" Width="12" Height="12" />
                         <TextBlock Text=" "/>
-                        <TextBlock Text="{Binding Name}"/>
+                        <TextBox BorderThickness="0" IsEnabled="{Binding IsEditable, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Name}" SelectionBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
                     </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>

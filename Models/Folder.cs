@@ -14,5 +14,11 @@ namespace Hiker_Editor.Models
             _imagePath = "/Resources/Images/folder.png";
             Items = new ObservableCollection<ProjectItem>();
         }
+
+        public override bool IsEditable
+        {
+            get { return false; }
+            set {  }
+        }
     }
 }

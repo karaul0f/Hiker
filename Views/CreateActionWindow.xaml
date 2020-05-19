@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="Choose the Action to Add" Height="254.582" Width="231.674">
+        Title="Choose the Action to Add" Height="254.582" Width="231.674"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
         <Button Margin="55,0,55,9" Height="20" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal">

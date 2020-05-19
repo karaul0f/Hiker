@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         mc:Ignorable="d"
-        Title="{DynamicResource SpriteProperties}" Height="301.056" Width="491.021" Icon="/Hiker-Editor;component/Resources/Images/sprite.png">
+        Title ="{DynamicResource SpriteProperties}" Height="301.056" Width="491.021" Icon="/Hiker-Editor;component/Resources/Images/sprite.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>

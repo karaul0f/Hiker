@@ -40,7 +40,13 @@ namespace Hiker_Editor.Models
                 OnPropertyChanged();
             }
         }
-        
+
+        public virtual bool IsEditable
+        {
+            get { return true; }
+            set {}
+        }
+
         public string ImagePath
         {
             get { return _imagePath; }

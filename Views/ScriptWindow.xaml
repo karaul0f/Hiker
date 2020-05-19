@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Hiker_Editor.Views"
         xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
-        Title="Script Properties" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/script.png">
+        Title="{Binding CurrentScript.Name, StringFormat=Script Properties: {0}}" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/script.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="28"/>

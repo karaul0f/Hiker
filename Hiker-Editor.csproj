@@ -89,6 +89,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ProjectInfo.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\Folder.cs" />
