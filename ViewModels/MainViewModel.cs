@@ -139,7 +139,7 @@ namespace Hiker_Editor.ViewModels
                       StructureProject[(int)Folders.Objects].Items.Add(gameObject);
                       var sprites = new ObservableCollection<Sprite>();
                       foreach (var item in StructureProject[(int)Folders.Sprites].Items)
-                          sprites.Add((Sprite)item);
+                          sprites.Add(item as Sprite);
                       GameObjectWindow gameObjectWindow = new GameObjectWindow(ref gameObject, ref sprites);
                       gameObjectWindow.Show();
                   }));

@@ -31,5 +31,10 @@ namespace Hiker_Editor
 			_languages.Add(new CultureInfo("ru-RU"));
 
 		}
+
+		public static Window CurrentMainWindow
+		{
+			get { return Current.MainWindow; }
+		}
 	}
 }

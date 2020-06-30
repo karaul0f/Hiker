@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hiker_Editor.Views"
+        xmlns:views="clr-namespace:Hiker_Editor.Views"
+        xmlns:local="clr-namespace:Hiker_Editor"
         mc:Ignorable="d"
+        Owner="{x:Static local:App.CurrentMainWindow}"
         Title="About" Height="320" Width="480" Icon="/Hiker-Editor;component/Resources/Images/about.png"
         ResizeMode="NoResize">
     <Grid>
