@@ -13,7 +13,7 @@ using Hiker_Editor.Views;
 
 namespace Hiker_Editor.ViewModels
 {
-    class GameObjectViewModel
+    public class GameObjectViewModel
     {
         RelayCommand _createEvent, _createAction;
         GameObject _gameObject;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hiker_Editor.Models;
+using Hiker_Editor.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,10 @@ namespace Hiker_Editor.Views
     /// </summary>
     public partial class RoomWindow : Window
     {
-        public RoomWindow()
+        public RoomWindow(ref Room room)
         {
             InitializeComponent();
+            DataContext = new RoomViewModel(ref room);
         }
     }
 }

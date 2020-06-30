@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
+using Hiker_Editor.Models;
+using Hiker_Editor.Views;
+
 namespace Hiker_Editor.ViewModels
 {
-    class RoomViewModel : INotifyPropertyChanged
+    public class RoomViewModel : INotifyPropertyChanged
     {
+        Room _room;
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -18,5 +22,9 @@ namespace Hiker_Editor.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
+        public RoomViewModel(ref Room room)
+        {
+            _room = room;
+        }
     }
 }

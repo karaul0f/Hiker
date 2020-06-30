@@ -19,7 +19,7 @@ namespace Hiker_Editor.ViewModels
     public enum Folders { Sprites = 0, Scripts = 1, Objects = 2, Rooms = 3 };
     public partial class MainWindowViewModel : INotifyPropertyChanged
     {
-        private RelayCommand _addSprite, _addScript, _addGameObject;
+        private RelayCommand _addSprite, _addScript, _addGameObject, _addRoom;
         private RelayCommand _openAbout;
         private RelayCommand _openSettings;
         private RelayCommand _exitProgram;
@@ -183,6 +183,21 @@ namespace Hiker_Editor.ViewModels
                       Script script = new Script();
                       StructureProject[(int)Folders.Scripts].Items.Add(script);
                       ScriptWindow scriptWindow = new ScriptWindow(ref script);
+                      scriptWindow.Show();
+                  }));
+            }
+        }
+
+        public RelayCommand AddRoom
+        {
+            get
+            {
+                return _addRoom ??
+                  (_addRoom = new RelayCommand(obj =>
+                  {
+                      Room room = new Room();
+                      StructureProject[(int)Folders.Rooms].Items.Add(room);
+                      RoomWindow scriptWindow = new RoomWindow(ref room);
                       scriptWindow.Show();
                   }));
             }

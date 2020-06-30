@@ -71,7 +71,7 @@
                         <Image Source="/Resources/Images/object.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource Room}">
+                <MenuItem Command="{Binding AddRoom}" Header="{DynamicResource Room}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/room.png" />
                     </MenuItem.Icon>
@@ -167,7 +167,7 @@
                 <Button Command="{Binding AddGameObject}" ToolTip="{DynamicResource NewObject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
                 </Button>
-                <Button ToolTip="{DynamicResource NewRoom}">
+                <Button Command="{Binding AddRoom}" ToolTip="{DynamicResource NewRoom}">
                     <Image Width="16" Height="16" Source="/Resources/Images/room.png" />
                 </Button>
                 <Separator/>

@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 
 namespace Hiker_Editor.ViewModels
 {
-    class SettingViewModel : INotifyPropertyChanged
+    public class SettingViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
