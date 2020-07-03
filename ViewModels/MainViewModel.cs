@@ -31,10 +31,10 @@ namespace Hiker_Editor.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         
-        public bool _isAvailableCreate = true;
-        public bool _isAvailableRename = true;
-        public bool _isAvailableDelete = true;
-        public bool _isAvailableProperties = true;
+        private bool _isAvailableCreate = true;
+        private bool _isAvailableRename = true;
+        private bool _isAvailableDelete = true;
+        private bool _isAvailableProperties = true;
 
         public string MainTitle
         {
