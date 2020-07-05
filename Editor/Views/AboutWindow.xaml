@@ -9,7 +9,7 @@
         Owner="{x:Static local:App.CurrentMainWindow}"
         Title="About" Height="320" Width="480" Icon="/Hiker-Editor;component/Resources/Images/about.png"
         ResizeMode="NoResize">
-    <Grid>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
         <Grid.RowDefinitions >
             <RowDefinition Height="49*"/>
             <RowDefinition Height="96*"/>
