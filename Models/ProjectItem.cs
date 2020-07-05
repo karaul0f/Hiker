@@ -1,4 +1,13 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////////
+// ProjectItem.cs
+//
+// Автор: karaul0f
+// Дата создания: 01.03.20
+//
+// Условная единица игрового проекта, 
+// с которой работает игровой редактор.
+///////////////////////////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +21,7 @@ namespace Hiker_Editor.Models
 {
     public class ProjectItem : INotifyPropertyChanged
     {
-        protected string _name = "";
+        protected string _name = ""; 
         protected string _imagePath = "";
         protected string _resourcePath = "";
         public ObservableCollection<MenuItem> ItemsOperation { get; set; }
@@ -30,6 +39,7 @@ namespace Hiker_Editor.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
+        //Имя проекта
         public string Name
         {
             get { return _name; }

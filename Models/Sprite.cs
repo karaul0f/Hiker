@@ -1,4 +1,12 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////////
+// Sprite.cs
+//
+// Автор: karaul0f
+// Дата создания: 12.05.20
+//
+// Графическое представление объекта в игре.
+///////////////////////////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.RightsManagement;

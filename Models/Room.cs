@@ -1,4 +1,12 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////////
+// Room.cs
+//
+// Автор: karaul0f
+// Дата создания: 12.05.20
+//
+// Игровая сцена.
+///////////////////////////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,12 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////////
+// MainViewModel.cs
+//
+// Автор: karaul0f
+// Дата создания: 23.02.20
+//
+// Логика главного окна.
+///////////////////////////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
