@@ -1,2 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="GameSetup.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Gameplay\RoomConfig.h">
+      <Filter>Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="MainLoop.h" />
+    <ClInclude Include="Gameplay\ObjectConfig.h">
+      <Filter>Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\ScriptConfig.h">
+      <Filter>Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay\SpriteConfig.h">
+      <Filter>Gameplay</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Starter.cpp" />
+    <ClCompile Include="GameSetup.cpp" />
+    <ClCompile Include="MainLoop.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Gameplay">
+      <UniqueIdentifier>{429f83a5-879f-4fec-8d13-519cfbf844b9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
