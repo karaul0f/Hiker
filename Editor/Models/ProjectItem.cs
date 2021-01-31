@@ -1,18 +1,4 @@
-﻿///////////////////////////////////////////////////////////
-// ProjectItem.cs
-//
-// Автор: karaul0f
-// Дата создания: 01.03.20
-//
-// Условная единица игрового проекта, 
-// с которой работает игровой редактор.
-///////////////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;

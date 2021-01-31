@@ -52,6 +52,6 @@
                 <TextBox Text="{Binding CurrentScript.Name, UpdateSourceTrigger=PropertyChanged}" Width="80" />
             </ToolBar>
         </ToolBarTray>
-        <avalonEdit:TextEditor Name="textEditor" FontFamily="Consolas" SyntaxHighlighting="C++"  ShowLineNumbers="True" FontSize="10pt" Grid.Row="1"/>
+        <avalonEdit:TextEditor Name="textEditor" FontFamily="Consolas" SyntaxHighlighting="C++" ShowLineNumbers="True" FontSize="10pt" Grid.Row="1"/>
     </Grid>
 </Window>

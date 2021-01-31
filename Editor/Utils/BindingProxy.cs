@@ -1,19 +1,4 @@
-﻿///////////////////////////////////////////////////////////
-// BindingProxy.cs
-//
-// Автор: karaul0f
-// Дата создания: 12.05.20
-//
-// Класс, с помощью которого мы решили проблему
-// привязки команд в контекстном меню.
-///////////////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
+﻿using System.Windows;
 
 namespace Hiker_Editor.Utils
 {

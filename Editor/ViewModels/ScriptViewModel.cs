@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Hiker_Editor.Models;
+﻿using Hiker_Editor.Models;
 
 namespace Hiker_Editor.ViewModels
 {

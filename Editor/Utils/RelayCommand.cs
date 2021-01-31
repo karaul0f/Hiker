@@ -1,17 +1,4 @@
-﻿///////////////////////////////////////////////////////////
-// RelayCommand.cs
-//
-// Автор: karaul0f
-// Дата создания: 13.03.20
-//
-// Класс, с помощью которого мы описываем команды
-// для модели-представления.
-///////////////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Input;
 
 namespace Hiker_Editor

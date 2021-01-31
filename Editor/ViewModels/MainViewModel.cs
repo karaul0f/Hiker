@@ -1,20 +1,5 @@
-﻿///////////////////////////////////////////////////////////
-// MainViewModel.cs
-//
-// Автор: karaul0f
-// Дата создания: 23.02.20
-//
-// Логика главного окна.
-///////////////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Controls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.Win32;

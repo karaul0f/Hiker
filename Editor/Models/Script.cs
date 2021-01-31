@@ -1,18 +1,4 @@
-﻿///////////////////////////////////////////////////////////
-// Script.cs
-//
-// Автор: karaul0f
-// Дата создания: 12.05.20
-//
-// Класс для хранения/обработки игрового скрипта.
-///////////////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hiker_Editor.Models
+﻿namespace Hiker_Editor.Models
 {
     public class Script: ProjectItem
     {

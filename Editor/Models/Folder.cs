@@ -1,17 +1,4 @@
-﻿///////////////////////////////////////////////////////////
-// Folder.cs
-//
-// Автор: karaul0f
-// Дата создания: 12.05.20
-//
-// Папка для хранения ProjectItem'ов.
-///////////////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace Hiker_Editor.Models
 {
