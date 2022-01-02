@@ -146,9 +146,12 @@
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\Editor\GameProject\GameProject.cs" />
     <Compile Include="Models\Interfaces\IAction.cs" />
+    <Compile Include="Models\Interfaces\IComponent.cs" />
     <Compile Include="Models\Interfaces\IEditor.cs" />
+    <Compile Include="Models\Interfaces\IEntity.cs" />
+    <Compile Include="Models\Interfaces\ISystem.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
-    <Compile Include="Models\Editor\GameProject\Entity.cs" />
+    <Compile Include="Models\Editor\GameProject\BaseEntity.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
