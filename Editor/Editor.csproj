@@ -41,6 +41,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>hiker.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Catel.Core, Version=5.12.11.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Catel.Core.5.12.11\lib\net47\Catel.Core.dll</HintPath>
@@ -317,6 +320,7 @@
     <Resource Include="Resources\Images\hiker_logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="hiker.ico" />
     <Content Include="Resources\HTML\index.html" />
     <Resource Include="Resources\Images\find.png" />
     <Resource Include="Resources\Images\copy.png" />

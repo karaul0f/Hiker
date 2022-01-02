@@ -26,7 +26,7 @@
 
         <GridSplitter Grid.Column="1" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
 
-        <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2">
+        <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="White">
             <MenuItem Header="{DynamicResource File}">
                 <MenuItem Header="{DynamicResource NewProject}" Command="{Binding NewProject}" >
                     <MenuItem.Icon>
