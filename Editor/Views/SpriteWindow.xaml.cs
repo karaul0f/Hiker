@@ -21,10 +21,9 @@ namespace Hiker_Editor.Views
     /// </summary>
     public partial class SpriteWindow : Window
     {
-        public SpriteWindow(ref Sprite sprite)
+        public SpriteWindow()
         {
             InitializeComponent();
-            DataContext = new SpriteViewModel(ref sprite);
         }
     }
 }

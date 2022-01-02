@@ -22,10 +22,9 @@ namespace Hiker_Editor.Views
     /// </summary>
     public partial class ScriptWindow : Window
     {
-        public ScriptWindow(ref Script script)
+        public ScriptWindow()
         {
             InitializeComponent();
-            DataContext = new ScriptViewModel(ref script);
         }
     }
 }

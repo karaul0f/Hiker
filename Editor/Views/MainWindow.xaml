@@ -4,11 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        xmlns:views="clr-namespace:Hiker_Editor.Views"
+        xmlns:vm="clr-namespace:Hiker_Editor.ViewModels"
         xmlns:utils="clr-namespace:Hiker_Editor.Utils"
         xmlns:local="clr-namespace:Hiker_Editor"
         mc:Ignorable="d"
         Title="{Binding MainTitle}" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.Resources>
             <utils:BindingProxy x:Key="Proxy" Data="{Binding}" />
@@ -20,8 +23,8 @@
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="100" Width="0.3*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition MinWidth="200" Width="0.3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <GridSplitter Grid.Column="1" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
@@ -90,7 +93,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Settings}" Command="{Binding OpenSettings}" />
+            <MenuItem Header="{DynamicResource Settings}" Command="{Binding OpenSettingsCommand}" />
             <MenuItem Header="{DynamicResource Help}">
                 <MenuItem Header="{DynamicResource Documentation}" >
                     <MenuItem.Icon>
@@ -106,50 +109,36 @@
             </MenuItem>
         </Menu>
 
-        <TreeView Grid.Row="2" ItemsSource="{Binding StructureProject}">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="{DynamicResource Create}" Command="{Binding Source={StaticResource Proxy}, Path=Data.AddObject}" IsEnabled="{Binding IsAvailableCreate}">
-                                    <MenuItem.Icon>
-                                        <Image Source="/Resources/Images/add.png" />
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                                <MenuItem Header="{DynamicResource Rename}" IsEnabled="{Binding IsAvailableRename}">
-                                    <MenuItem.Icon>
-                                        <Image Source="/Resources/Images/rename.png" />
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                                <MenuItem Header="{DynamicResource Delete}" IsEnabled="{Binding IsAvailableDelete}">
-                                    <MenuItem.Icon>
-                                        <Image Source="/Resources/Images/delete.png" />
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                                <Separator />
-                                <MenuItem Header="{DynamicResource Properties}" Command="{Binding Source={StaticResource Proxy}, Path=Data.OpenProperties}" IsEnabled="{Binding IsAvailableProperties}">
-                                    <MenuItem.Icon>
-                                        <Image Source="/Resources/Images/properties.png" />
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                            </ContextMenu>
-                        </StackPanel.ContextMenu>
-                        <Image Source="{Binding ImagePath}" Width="12" Height="12" />
-                        <TextBlock Text=" "/>
-                        <TextBlock Text="{Binding Name}"/>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
-        <StatusBar Grid.Row="3" Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+        <Canvas x:Name="Scene" Grid.Column="0" Grid.Row="2" Margin="3,0,0,0" Background="#2E698C" />
+
+        <Grid Grid.Column="1" Grid.Row="2" Margin="3,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Game" Margin="5 0 0 0"/>
+
+            <TabControl Grid.Row="1">
+                <TabItem Header="Entities">
+                    <ListBox ItemsSource="{Binding Entities}"/>
+                </TabItem>
+                <TabItem Header="Components">
+                    <ListBox />
+                </TabItem>
+                <TabItem Header="Systems">
+                    <ListBox />
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
             <Image Width="16" Height="16" Source="/Resources/Images/view.png" />
             <TextBlock TextWrapping="Wrap" Text="Hello, world!"/>
         </StatusBar>
 
-        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
             <ToolBar Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-                <Button ToolTip="{DynamicResource NewProject}">
+                <Button Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/file.png" />
                 </Button>
                 <Button ToolTip="{DynamicResource OpenProject}">
@@ -159,7 +148,7 @@
                     <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
                 </Button>
                 <Separator/>
-                <Button Command="{Binding AddSprite}" ToolTip="{DynamicResource NewSprite}">
+                <Button Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewSprite}">
                     <Image Width="16" Height="16" Source="/Resources/Images/sprite.png" />
                 </Button>
                 <Button Command="{Binding AddScript}" ToolTip="{DynamicResource NewScript}">
@@ -168,18 +157,15 @@
                 <Button Command="{Binding AddGameObject}" ToolTip="{DynamicResource NewObject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
                 </Button>
-                <Button Command="{Binding AddRoom}" ToolTip="{DynamicResource NewRoom}">
-                    <Image Width="16" Height="16" Source="/Resources/Images/room.png" />
-                </Button>
                 <Separator/>
                 <Button ToolTip="{DynamicResource RunGame}">
                     <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
                 </Button>
-                <Button Command="{Binding OpenSettings}" ToolTip="{DynamicResource Settings}">
+                <Button Command="{Binding OpenSettingsCommand}" ToolTip="{DynamicResource Settings}">
                     <Image Width="16" Height="16" Source="/Resources/Images/setting_project.png" />
                 </Button>
             </ToolBar>
         </ToolBarTray>
-        <WebBrowser x:Name="webBrowser" Grid.Column="1" Grid.Row="2" Margin="3,0,0,0" />
+        
     </Grid>
 </Window>

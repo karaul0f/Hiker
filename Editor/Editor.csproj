@@ -143,22 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\ProjectInfo.cs" />
-    <Compile Include="Models\Settings.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
-    <Compile Include="Models\Folder.cs" />
-    <Compile Include="Models\GameObject.cs" />
-    <Compile Include="Models\ProjectItem.cs" />
+    <Compile Include="Models\Editor\GameProject\Entity.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
-    <Compile Include="Models\ProjectItemBuilder.cs" />
-    <Compile Include="Models\Room.cs" />
-    <Compile Include="Models\Script.cs" />
-    <Compile Include="Models\Sprite.cs" />
-    <Compile Include="ViewModels\GameObjectViewModel.cs" />
-    <Compile Include="ViewModels\RoomViewModel.cs" />
-    <Compile Include="ViewModels\ScriptViewModel.cs" />
-    <Compile Include="ViewModels\SettingViewModel.cs" />
-    <Compile Include="ViewModels\SpriteViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -173,9 +161,6 @@
     </Compile>
     <Compile Include="Views\GameObjectWindow.xaml.cs">
       <DependentUpon>GameObjectWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RoomWindow.xaml.cs">
-      <DependentUpon>RoomWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ScriptWindow.xaml.cs">
       <DependentUpon>ScriptWindow.xaml</DependentUpon>
@@ -224,10 +209,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GameObjectWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RoomWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -321,7 +302,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="hiker.ico" />
-    <Content Include="Resources\HTML\index.html" />
     <Resource Include="Resources\Images\find.png" />
     <Resource Include="Resources\Images\copy.png" />
     <Resource Include="Resources\Images\cut.png" />
@@ -345,7 +325,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Folder Include="Models\Editor\SceneEditor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

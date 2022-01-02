@@ -24,10 +24,10 @@ namespace Hiker_Editor.Views
     /// </summary>
     public partial class GameObjectWindow : Window
     {
-        public GameObjectWindow(ref GameObject gameObject, ref ObservableCollection<Sprite> sprites)
+        public GameObjectWindow()
         {
             InitializeComponent();
-            DataContext = new GameObjectViewModel(ref gameObject, ref sprites);
+            
         }
     }
 }
