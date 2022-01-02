@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.Win32;
 using HikerEditor.Models;
+using HikerEditor.Models.Interfaces;
 using HikerEditor.Views;
 
 namespace HikerEditor.ViewModels
@@ -25,11 +26,11 @@ namespace HikerEditor.ViewModels
         /// <summary>
         /// Список всех сущностей
         /// </summary>
-        public ObservableCollection<Entity> Entities { get; set; }
+        public ObservableCollection<IEntity> Entities { get; set; }
 
         public MainWindowViewModel()
         {
-            Entities = new ObservableCollection<Entity>();
+            Entities = new ObservableCollection<IEntity>();
 
             OpenSettingsCommand = new RelayCommand(o =>
             {
@@ -37,7 +38,7 @@ namespace HikerEditor.ViewModels
                 settingWindow.Show();
             });
 
-            CreateEntityCommand = new RelayCommand(o => Entities.Add(new Entity() { Name = "Entity" }));
+            CreateEntityCommand = new RelayCommand(o => Entities.Add(new BaseEntity() { Name = "Entity" }));
         }
     }
 }
