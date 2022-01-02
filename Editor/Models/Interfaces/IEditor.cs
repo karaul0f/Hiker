@@ -3,13 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HikerEditor.Models.Editor;
 
 namespace HikerEditor.Models.Interfaces
 {
     /// <summary>
     /// Интерфейс взаимодействия с редактором
     /// </summary>
-    interface IEditor
+    public interface IEditor
     {
+        /// <summary>
+        /// Текущий редактируемый игровой проект
+        /// </summary>
+        GameProject GameProject { get; }
+
+        /// <summary>
+        /// Выполнить действие
+        /// </summary>
+        /// <param name="action"></param>
+        void Do(IAction action);
+
+        /// <summary>
+        /// Отменить предыдущее действие
+        /// </summary>
+        void Undo();
+
+        /// <summary>
+        /// Вернуть отмененное действие
+        /// </summary>
+        void Redo();
+
     }
 }

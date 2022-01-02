@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{95109480-4783-44E7-988D-4684A1650B73}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Hiker_Editor</RootNamespace>
+    <RootNamespace>HikerEditor</RootNamespace>
     <AssemblyName>Hiker-Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -145,6 +145,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\Editor\GameProject\GameProject.cs" />
+    <Compile Include="Models\Interfaces\IAction.cs" />
     <Compile Include="Models\Interfaces\IEditor.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\Editor\GameProject\Entity.cs" />
@@ -328,6 +329,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Editor\Actions\" />
     <Folder Include="Models\Editor\SceneEditor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
