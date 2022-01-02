@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Globalization;
 
-namespace Hiker_Editor
+namespace HikerEditor
 {
     /// <summary>
     /// Interaction logic for App.xaml

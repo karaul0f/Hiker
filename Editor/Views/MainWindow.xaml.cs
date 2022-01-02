@@ -15,10 +15,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using Hiker_Editor.ViewModels;
+using HikerEditor.ViewModels;
 
 
-namespace Hiker_Editor.Views
+namespace HikerEditor.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

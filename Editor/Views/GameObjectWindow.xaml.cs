@@ -14,10 +14,10 @@ using System.Windows.Shapes;
 
 using System.Collections.ObjectModel;
 
-using Hiker_Editor.Models;
-using Hiker_Editor.ViewModels;
+using HikerEditor.Models;
+using HikerEditor.ViewModels;
 
-namespace Hiker_Editor.Views
+namespace HikerEditor.Views
 {
     /// <summary>
     /// Логика взаимодействия для ObjectWindow.xaml

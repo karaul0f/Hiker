@@ -42,7 +42,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>hiker.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Images\hiker.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Catel.Core, Version=5.12.11.0, Culture=neutral, processorArchitecture=MSIL">
@@ -143,6 +143,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Editor\Editor.cs" />
+    <Compile Include="Models\Editor\GameProject\GameProject.cs" />
+    <Compile Include="Models\Interfaces\IEditor.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\Editor\GameProject\Entity.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
@@ -301,7 +304,7 @@
     <Resource Include="Resources\Images\hiker_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="hiker.ico" />
+    <Resource Include="Resources\Images\hiker.ico" />
     <Resource Include="Resources\Images\find.png" />
     <Resource Include="Resources\Images\copy.png" />
     <Resource Include="Resources\Images\cut.png" />

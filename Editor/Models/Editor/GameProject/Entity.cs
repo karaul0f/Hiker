@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 
-namespace Hiker_Editor.Models
+namespace HikerEditor.Models
 {
     /// <summary>
     /// Класс сущности в игровом проекте

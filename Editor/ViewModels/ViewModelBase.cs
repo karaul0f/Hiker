@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hiker_Editor.ViewModels
+namespace HikerEditor.ViewModels
 {
     /// <summary>
     /// Базовая ViewModel с реализацией INotifyPropertyChanged

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Hiker_Editor.Utils
+namespace HikerEditor.Utils
 {
     public class BindingProxy : Freezable
     {

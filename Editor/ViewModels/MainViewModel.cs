@@ -5,11 +5,10 @@ using System.Windows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.Win32;
+using HikerEditor.Models;
+using HikerEditor.Views;
 
-using Hiker_Editor.Models;
-using Hiker_Editor.Views;
-
-namespace Hiker_Editor.ViewModels
+namespace HikerEditor.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {

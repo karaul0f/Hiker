@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Hiker_Editor.Views
+namespace HikerEditor.Views
 {
     /// <summary>
     /// Логика взаимодействия для AboutWindow.xaml

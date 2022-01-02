@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Hiker_Editor
+namespace HikerEditor
 {
     public class RelayCommand : ICommand
     {
