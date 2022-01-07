@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HikerEditor.Models.Editor;
+using HikerEditor.Models.Interfaces;
 
 namespace HikerEditor.Views.Controls
 {
@@ -23,6 +25,20 @@ namespace HikerEditor.Views.Controls
         public SceneEditor()
         {
             InitializeComponent();
+            Editor.EditorInstance.SceneEditor.OnEntityAdded += SceneEditorOnOnEntityAdded;
+        }
+
+        private void SceneEditorOnOnEntityAdded(VisualEntity visualEntity)
+        {
+            var image = new Image();
+            image.Stretch = Stretch.Fill;
+            image.Source = visualEntity.Image;
+            Scene.Children.Add(image);
+        }
+
+        ~SceneEditor()
+        {
+            Editor.EditorInstance.SceneEditor.OnEntityAdded -= SceneEditorOnOnEntityAdded;
         }
     }
 }

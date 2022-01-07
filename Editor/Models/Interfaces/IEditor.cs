@@ -33,5 +33,10 @@ namespace HikerEditor.Models.Interfaces
         /// </summary>
         void Redo();
 
+        /// <summary>
+        /// Выполнили действие (отмена действия тоже является выполнением действия)
+        /// </summary>
+        event Action<IAction> OnActionExecuted;
+
     }
 }

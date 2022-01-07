@@ -3,19 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HikerEditor.Models.Editor.Actions;
+using HikerEditor.Models.Interfaces;
 
 namespace HikerEditor.Models.Editor
 {
     /// <summary>
     /// Логика редактора сцены
     /// </summary>
-    class SceneEditor
+    public class SceneEditor
     {
         private List<VisualEntity> _visualEntities;
 
-        public SceneEditor()
+        public SceneEditor(IEditor editor)
         {
             _visualEntities = new List<VisualEntity>();
+            editor.OnActionExecuted += EditorOnOnActionExecuted;
+            
+        }
+
+        private void EditorOnOnActionExecuted(IAction action)
+        {
+            if (action is NewEntityAction)
+            {
+                VisualEntity ve = new VisualEntity();
+                _visualEntities.Add(ve);
+                OnEntityAdded?.Invoke(ve);
+            }
+                
         }
 
         #region Properties

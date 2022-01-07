@@ -17,6 +17,7 @@ namespace HikerEditor.Models.Editor
         private Editor()
         {
             GameProject = new GameProject();
+            SceneEditor = new SceneEditor(this);
         }
 
         #region Properties
@@ -25,6 +26,11 @@ namespace HikerEditor.Models.Editor
         /// Изменяемые ресурсы внутри редактора (игровой проект)
         /// </summary>
         public GameProject GameProject { get; set; }
+
+        /// <summary>
+        /// Логика визуального редактора сцены
+        /// </summary>
+        public SceneEditor SceneEditor { get; set; }
 
         /// <summary>
         /// Получение экземпляра редактора (синглтон)
@@ -52,6 +58,7 @@ namespace HikerEditor.Models.Editor
         {
 			// TODO Реализовать функционал отменяемых событий
             action.Do(this);
+            OnActionExecuted?.Invoke(action);
         }
 
         /// <summary>
@@ -72,5 +79,9 @@ namespace HikerEditor.Models.Editor
 
         #endregion
 
+        /// <summary>
+        /// Выполнили действие (отмена действия тоже является выполнением действия)
+        /// </summary>
+        public event Action<IAction> OnActionExecuted;
     }
 }

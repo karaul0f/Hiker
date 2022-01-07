@@ -146,6 +146,7 @@
     <Compile Include="Models\Editor\Actions\NewEntityAction.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\Editor\GameProject\GameProject.cs" />
+    <Compile Include="Models\Editor\SceneEditor\Position.cs" />
     <Compile Include="Models\Editor\SceneEditor\SceneEditor.cs" />
     <Compile Include="Models\Editor\SceneEditor\VisualEntity.cs" />
     <Compile Include="Models\Interfaces\IAction.cs" />
