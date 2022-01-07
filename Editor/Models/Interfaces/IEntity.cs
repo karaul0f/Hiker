@@ -11,5 +11,14 @@ namespace HikerEditor.Models.Interfaces
     /// </summary>
     public interface IEntity
     {
+        /// <summary>
+        /// GUID сущности
+        /// </summary>
+        Guid Id { get; }
+
+        /// <summary>
+        /// Имя сущности
+        /// </summary>
+        string Name { get; }
     }
 }

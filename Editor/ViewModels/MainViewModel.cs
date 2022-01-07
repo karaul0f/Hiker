@@ -25,6 +25,11 @@ namespace HikerEditor.ViewModels
         public RelayCommand CreateEntityCommand { get; set; }
 
         /// <summary>
+        /// Команда открытия окна для создания проекта
+        /// </summary>
+        public RelayCommand NewProjectWindowCommand { get; set; }
+
+        /// <summary>
         /// Команда открытия сущности
         /// </summary>
         public RelayCommand OpenSettingsCommand { get; set; }
@@ -38,6 +43,12 @@ namespace HikerEditor.ViewModels
         {
             Entities = new ObservableCollection<IEntity>();
 
+            NewProjectWindowCommand = new RelayCommand(o =>
+            {
+                NewProjectWindow newProjectWindow = new NewProjectWindow();
+                newProjectWindow.Show();
+            });
+
             OpenSettingsCommand = new RelayCommand(o =>
             {
                 SettingsWindow settingWindow = new SettingsWindow();
@@ -45,6 +56,7 @@ namespace HikerEditor.ViewModels
             });
 
             CreateEntityCommand = new RelayCommand(o => Entities.Add(new BaseEntity() { Name = "Entity" }));
+
         }
     }
 }

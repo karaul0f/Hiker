@@ -20,7 +20,7 @@
     <v:String x:Key="Delete">Delete</v:String>
     <v:String x:Key="NewSprite">New Sprite</v:String>
     <v:String x:Key="NewScript">New Script</v:String>
-    <v:String x:Key="NewObject">New Object</v:String>
+    <v:String x:Key="NewEntity">New Entity</v:String>
     <v:String x:Key="NewRoom">New Room</v:String>
     <v:String x:Key="Sprite">Sprite</v:String>
     <v:String x:Key="Script">Script</v:String>

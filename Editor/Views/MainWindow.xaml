@@ -123,7 +123,13 @@
 
             <TabControl Grid.Row="1">
                 <TabItem Header="Entities">
-                    <ListBox ItemsSource="{Binding Entities}"/>
+                    <ListBox ItemsSource="{Binding Entities}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </TabItem>
                 <TabItem Header="Systems">
                     <ListBox />
@@ -141,7 +147,7 @@
 
             <TabControl Grid.Row="1">
                 <TabItem Header="Components">
-                    <ListBox ItemsSource="{Binding Entities}"/>
+                    <ListBox/>
                 </TabItem>
             </TabControl>
         </Grid>
@@ -153,7 +159,7 @@
 
         <ToolBarTray Grid.Row="1" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
             <ToolBar Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-                <Button Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewProject}">
+                <Button Command="{Binding NewProjectWindowCommand}" ToolTip="{DynamicResource NewProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/file.png" />
                 </Button>
                 <Button ToolTip="{DynamicResource OpenProject}">
@@ -169,7 +175,7 @@
                 <Button Command="{Binding AddScript}" ToolTip="{DynamicResource NewScript}">
                     <Image Width="16" Height="16" Source="/Resources/Images/script.png" />
                 </Button>
-                <Button Command="{Binding AddGameObject}" ToolTip="{DynamicResource NewObject}">
+                <Button Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewEntity}">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
                 </Button>
                 <Separator/>

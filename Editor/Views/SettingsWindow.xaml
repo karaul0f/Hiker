@@ -9,40 +9,30 @@
         Owner="{x:Static local:App.CurrentMainWindow}"
         Title="Settings" Height="380" Width="600" Icon="/Hiker-Editor;component/Resources/Images/setting.png" ShowInTaskbar="False">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="59*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox>
-            <ListBoxItem x:Name="Main" Background="White" Content="Main" Foreground="Black" IsSelected="True" VerticalAlignment="Top"/>
-            <ListBoxItem x:Name="Project" Content="Project"/>
-            <ListBoxItem Content="Code Editor"/>
-            <ListBoxItem Content="Other"/>
-        </ListBox>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="10, 5">
+            <DockPanel Margin="0, 2" LastChildFill="True">
+                <TextBlock Text="Language: " />
+                <ComboBox VerticalAlignment="Top">
+                    <TextBlock>English</TextBlock>
+                    <TextBlock>Русский</TextBlock>
+                </ComboBox>
+            </DockPanel>
+            <DockPanel Margin="0, 2">
+                <TextBlock Text="Path to MsBuild: " />
+                <TextBox Text="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\"/>
+            </DockPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button Width="100" Height="24" Margin="5, 5">Apply</Button>
+            <Button Width="100" Height="24" Margin="5, 5">Cancel</Button>
+        </StackPanel>
         
-        <ListBox Grid.Column="1">
-            <StackPanel Margin="2" Orientation="Horizontal">
-                <TextBlock Text="Language: " />
-                <ComboBox Width="361" VerticalAlignment="Top">
-                    <TextBlock>English</TextBlock>
-                    <TextBlock>Русский</TextBlock>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Margin="2" Orientation="Horizontal">
-                <TextBlock Text="Language: " />
-                <ComboBox Width="361" VerticalAlignment="Top">
-                    <TextBlock>English</TextBlock>
-                    <TextBlock>Русский</TextBlock>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Margin="2" Orientation="Horizontal">
-                <TextBlock Text="Language: " />
-                <ComboBox Width="361" VerticalAlignment="Top">
-                    <TextBlock>English</TextBlock>
-                    <TextBlock>Темная тема</TextBlock>
-                </ComboBox>
-            </StackPanel>
-        </ListBox>
 
     </Grid>
 </Window>

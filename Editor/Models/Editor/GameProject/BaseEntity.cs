@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
@@ -16,9 +17,15 @@ namespace HikerEditor.Models
         /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// GUID сущности
+        /// </summary>
+        public Guid Id { get; }
+
         public BaseEntity()
         {
             Name = "Null";
+            Id = new Guid();
         }
 
     }
