@@ -147,7 +147,14 @@
 
             <TabControl Grid.Row="1">
                 <TabItem Header="Components">
-                    <ListBox/>
+                    <StackPanel>
+                        <Expander Header="Transform">
+                            <TextBlock>Transofrm</TextBlock>
+                        </Expander>
+                        <Expander Header="Rendable">
+                            <TextBlock>Rendable</TextBlock>
+                        </Expander>
+                    </StackPanel>
                 </TabItem>
             </TabControl>
         </Grid>

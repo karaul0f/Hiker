@@ -14,19 +14,21 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="10, 5">
-            <DockPanel Margin="0, 2" LastChildFill="True">
-                <TextBlock Text="Language: " />
-                <ComboBox VerticalAlignment="Top">
-                    <TextBlock>English</TextBlock>
-                    <TextBlock>Русский</TextBlock>
-                </ComboBox>
-            </DockPanel>
-            <DockPanel Margin="0, 2">
-                <TextBlock Text="Path to MsBuild: " />
-                <TextBox Text="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\"/>
-            </DockPanel>
-        </StackPanel>
+        <GroupBox Header="Main" Margin="5, 5">
+            <StackPanel Grid.Column="0" Margin="10, 5">
+                <DockPanel Margin="0, 2" LastChildFill="True">
+                    <TextBlock Text="Language: " />
+                    <ComboBox VerticalAlignment="Top">
+                        <TextBlock>English</TextBlock>
+                        <TextBlock>Русский</TextBlock>
+                    </ComboBox>
+                </DockPanel>
+                <DockPanel Margin="0, 2">
+                    <TextBlock Text="Path to MsBuild: " />
+                    <TextBox Text="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\"/>
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button Width="100" Height="24" Margin="5, 5">Apply</Button>
