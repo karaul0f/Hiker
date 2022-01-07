@@ -6,7 +6,7 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:vm="clr-namespace:HikerEditor.ViewModels"
         xmlns:utils="clr-namespace:HikerEditor.Utils"
-        xmlns:local="clr-namespace:Hiker_Editor"
+        xmlns:local="clr-namespace:HikerEditor"
         mc:Ignorable="d"
         Title="{Binding MainTitle}" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
     <Window.DataContext>
@@ -25,9 +25,11 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition MinWidth="200" Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition MinWidth="200" Width="0.3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <GridSplitter Grid.Column="1" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
+        <GridSplitter Grid.Column="2" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
 
         <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="White">
             <MenuItem Header="{DynamicResource File}">
@@ -111,6 +113,7 @@
 
         <Canvas x:Name="Scene" Grid.Column="0" Grid.Row="2" Margin="3,0,0,0" Background="#2E698C" />
 
+        <!-- Game Grid -->
         <Grid Grid.Column="1" Grid.Row="2" Margin="3,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="18"></RowDefinition>
@@ -122,11 +125,23 @@
                 <TabItem Header="Entities">
                     <ListBox ItemsSource="{Binding Entities}"/>
                 </TabItem>
-                <TabItem Header="Components">
-                    <ListBox />
-                </TabItem>
                 <TabItem Header="Systems">
                     <ListBox />
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <!-- Inspector Grid -->
+        <Grid Grid.Column="2" Grid.Row="2" Margin="3,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Inspector" Margin="5 0 0 0"/>
+
+            <TabControl Grid.Row="1">
+                <TabItem Header="Components">
+                    <ListBox ItemsSource="{Binding Entities}"/>
                 </TabItem>
             </TabControl>
         </Grid>
