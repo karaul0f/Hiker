@@ -12,6 +12,13 @@ namespace HikerEditor.Models.Editor
     /// </summary>
     public class GameProject
     {
+        public GameProject()
+        {
+            Entities = new List<IEntity>();
+            Systems = new List<ISystem>();
+            Components = new List<IComponent>();
+        }
+
         /// <summary>
         /// Название проекта
         /// </summary>

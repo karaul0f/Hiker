@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using HikerEditor.Models.Interfaces;
 
-namespace HikerEditor.Models
+namespace HikerEditor.Models.Editor
 {
     /// <summary>
     /// Базовый класс сущности в игровом проекте

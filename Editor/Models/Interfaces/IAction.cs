@@ -14,7 +14,7 @@ namespace HikerEditor.Models.Interfaces
         /// <summary>
         /// Выполнить действие
         /// </summary>
-        void Do();
+        void Do(IEditor editor);
 
         /// <summary>
         /// Отменить действие

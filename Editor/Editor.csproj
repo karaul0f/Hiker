@@ -143,8 +143,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Editor\Actions\NewEntityAction.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\Editor\GameProject\GameProject.cs" />
+    <Compile Include="Models\Editor\SceneEditor\SceneEditor.cs" />
+    <Compile Include="Models\Editor\SceneEditor\VisualEntity.cs" />
     <Compile Include="Models\Interfaces\IAction.cs" />
     <Compile Include="Models\Interfaces\IComponent.cs" />
     <Compile Include="Models\Interfaces\IEditor.cs" />
@@ -157,28 +160,13 @@
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CreateActionWindow.xaml.cs">
-      <DependentUpon>CreateActionWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CreateEventWindow.xaml.cs">
-      <DependentUpon>CreateEventWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\NewProjectWindow.xaml.cs">
       <DependentUpon>NewProjectWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\GameObjectWindow.xaml.cs">
-      <DependentUpon>GameObjectWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ScriptWindow.xaml.cs">
-      <DependentUpon>ScriptWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="Views\SpriteWindow.xaml.cs">
-      <DependentUpon>SpriteWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="Resources\Localization\lang.ru-RU.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,14 +176,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AboutWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CreateActionWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CreateEventWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,19 +195,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GameObjectWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ScriptWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\SettingsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SpriteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -332,8 +300,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Editor\Actions\" />
-    <Folder Include="Models\Editor\SceneEditor\" />
+    <Folder Include="ViewModels\Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

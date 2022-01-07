@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Windows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.Win32;
 using HikerEditor.Models;
 using HikerEditor.Models.Editor;
+using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
 using HikerEditor.Views;
 
@@ -39,9 +41,14 @@ namespace HikerEditor.ViewModels
         /// </summary>
         public ObservableCollection<IEntity> Entities { get; set; }
 
+        /// <summary>
+        /// Модель логики редактора прокинутая во вью-модель
+        /// </summary>
+        public IEditor Editor { get => HikerEditor.Models.Editor.Editor.EditorInstance; private set {} }
+
         public MainWindowViewModel()
         {
-            Entities = new ObservableCollection<IEntity>();
+            Entities = new ObservableCollection<IEntity>(Editor.GameProject.Entities);
 
             NewProjectWindowCommand = new RelayCommand(o =>
             {
@@ -57,6 +64,18 @@ namespace HikerEditor.ViewModels
 
             CreateEntityCommand = new RelayCommand(o => Entities.Add(new BaseEntity() { Name = "Entity" }));
 
+            Entities.CollectionChanged += EntitiesOnCollectionChanged;
+        }
+
+        private void EntitiesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if(e.Action == NotifyCollectionChangedAction.Add)
+                Editor.Do(new NewEntityAction() { NewEntityName = "Entity" });
+        }
+
+        ~MainWindowViewModel()
+        {
+            Entities.CollectionChanged -= EntitiesOnCollectionChanged;
         }
     }
 }

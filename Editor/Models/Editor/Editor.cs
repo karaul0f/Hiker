@@ -12,9 +12,11 @@ namespace HikerEditor.Models.Editor
     /// </summary>
     public class Editor : IEditor
     {
-        public Editor()
-        {
+        private static Editor _instance;
 
+        private Editor()
+        {
+            GameProject = new GameProject();
         }
 
         #region Properties
@@ -23,6 +25,20 @@ namespace HikerEditor.Models.Editor
         /// Изменяемые ресурсы внутри редактора (игровой проект)
         /// </summary>
         public GameProject GameProject { get; set; }
+
+        /// <summary>
+        /// Получение экземпляра редактора (синглтон)
+        /// </summary>
+        public static Editor EditorInstance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new Editor();
+
+                return _instance;
+            }
+        }
 
         #endregion
 
@@ -34,8 +50,8 @@ namespace HikerEditor.Models.Editor
         /// <param name="action"></param>
         public void Do(IAction action)
         {
-            // TODO Реализовать функционал отменяемых событий
-            action.Do();
+			// TODO Реализовать функционал отменяемых событий
+            action.Do(this);
         }
 
         /// <summary>
