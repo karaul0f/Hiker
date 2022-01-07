@@ -7,6 +7,7 @@
         xmlns:vm="clr-namespace:HikerEditor.ViewModels"
         xmlns:utils="clr-namespace:HikerEditor.Utils"
         xmlns:controls="clr-namespace:HikerEditor.Views.Controls"
+        xmlns:converters="clr-namespace:HikerEditor.Views.Converters"
         xmlns:local="clr-namespace:HikerEditor"
         mc:Ignorable="d"
         Title="{Binding MainTitle}" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
@@ -15,6 +16,7 @@
     </Window.DataContext>
     <Grid>
         <Grid.Resources>
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
             <utils:BindingProxy x:Key="Proxy" Data="{Binding}" />
         </Grid.Resources>
         <Grid.RowDefinitions>
@@ -124,7 +126,7 @@
 
             <TabControl Grid.Row="1">
                 <TabItem Header="Entities">
-                    <ListBox ItemsSource="{Binding Entities}">
+                    <ListBox x:Name="EntitiesList" ItemsSource="{Binding Entities}" SelectionChanged="EntitiesList_OnSelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}" />
@@ -146,11 +148,17 @@
             </Grid.RowDefinitions>
             <TextBlock Text="Inspector" Margin="5 0 0 0"/>
 
-            <TabControl Grid.Row="1">
+            <TabControl Grid.Row="1" Visibility="{Binding SelectedEntity, Converter={StaticResource NullToVisibilityConverter}}">
                 <TabItem Header="Components">
                     <StackPanel>
+                        <Expander Header="Info">
+                            <StackPanel>
+                                <TextBlock><Run>Name: </Run> <Run Text="{Binding SelectedEntity.Name}"/></TextBlock>
+                                <TextBlock><Run>Id: </Run> <Run Text="{Binding SelectedEntity.Id, Mode=OneWay}"/></TextBlock>
+                            </StackPanel>
+                        </Expander>
                         <Expander Header="Transform">
-                            <TextBlock>Transofrm</TextBlock>
+                            <TextBlock>Transform</TextBlock>
                         </Expander>
                         <Expander Header="Rendable">
                             <TextBlock>Rendable</TextBlock>

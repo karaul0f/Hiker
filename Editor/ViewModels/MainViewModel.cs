@@ -16,6 +16,8 @@ namespace HikerEditor.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
+        private IEntity _selectedEntity
+;
         /// <summary>
         /// Заголовок окна
         /// </summary>
@@ -45,6 +47,22 @@ namespace HikerEditor.ViewModels
         /// Модель логики редактора прокинутая во вью-модель
         /// </summary>
         public IEditor Editor { get => HikerEditor.Models.Editor.Editor.EditorInstance; private set {} }
+
+        /// <summary>
+        /// Выбранная сущность в редакторе
+        /// </summary>
+        public IEntity SelectedEntity
+        {
+            get
+            {
+                return _selectedEntity;
+            }
+            set
+            {
+                _selectedEntity = value; 
+                OnPropertyChanged();
+            }
+        }
 
         public MainWindowViewModel()
         {

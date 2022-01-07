@@ -31,8 +31,8 @@ namespace HikerEditor.Models.Editor
 
         public BaseEntity()
         {
-            Name = "Null";
-            Id = new Guid();
+            Name = "BaseEntity";
+            Id = Guid.NewGuid();
             Components = new List<IComponent>();
         }
 

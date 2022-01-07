@@ -154,9 +154,11 @@
     <Compile Include="Models\Interfaces\IEditor.cs" />
     <Compile Include="Models\Interfaces\IEntity.cs" />
     <Compile Include="Models\Interfaces\ISystem.cs" />
+    <Compile Include="Models\Settings\Settings.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\Editor\GameProject\BaseEntity.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
@@ -164,6 +166,7 @@
     <Compile Include="Views\Controls\SceneEditor.xaml.cs">
       <DependentUpon>SceneEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Views\NewProjectWindow.xaml.cs">
       <DependentUpon>NewProjectWindow.xaml</DependentUpon>
     </Compile>
@@ -308,8 +311,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Builder\" />
     <Folder Include="ViewModels\Commands\" />
-    <Folder Include="Views\Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

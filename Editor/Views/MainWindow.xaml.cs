@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HikerEditor.Models.Interfaces;
 using HikerEditor.ViewModels;
 
 
@@ -27,6 +28,14 @@ namespace HikerEditor.Views
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void EntitiesList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (EntitiesList.SelectedItems.Count > 0)
+            {
+                (DataContext as MainWindowViewModel).SelectedEntity = (IEntity) EntitiesList.SelectedItems[0];
+            }
         }
     }
 }
