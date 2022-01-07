@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using HikerEditor.Models.Interfaces;
+using IComponent = HikerEditor.Models.Interfaces.IComponent;
 
 namespace HikerEditor.Models.Editor
 {
@@ -18,6 +20,11 @@ namespace HikerEditor.Models.Editor
         public string Name { get; set; }
 
         /// <summary>
+        /// Компоненты, привязанные к сущности
+        /// </summary>
+        public IEnumerable<IComponent> Components { get; set; }
+
+        /// <summary>
         /// GUID сущности
         /// </summary>
         public Guid Id { get; }
@@ -26,6 +33,7 @@ namespace HikerEditor.Models.Editor
         {
             Name = "Null";
             Id = new Guid();
+            Components = new List<IComponent>();
         }
 
     }

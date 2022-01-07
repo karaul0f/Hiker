@@ -6,6 +6,7 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:vm="clr-namespace:HikerEditor.ViewModels"
         xmlns:utils="clr-namespace:HikerEditor.Utils"
+        xmlns:controls="clr-namespace:HikerEditor.Views.Controls"
         xmlns:local="clr-namespace:HikerEditor"
         mc:Ignorable="d"
         Title="{Binding MainTitle}" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
@@ -111,7 +112,7 @@
             </MenuItem>
         </Menu>
 
-        <Canvas x:Name="Scene" Grid.Column="0" Grid.Row="2" Margin="3,0,0,0" Background="#2E698C" />
+        <controls:SceneEditor Grid.Column="0" Grid.Row="2" Margin="3,0,0,0" />
 
         <!-- Game Grid -->
         <Grid Grid.Column="1" Grid.Row="2" Margin="3,0,0,0">
