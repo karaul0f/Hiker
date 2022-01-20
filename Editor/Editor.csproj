@@ -77,7 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Editor\Actions\NewEntityAction.cs" />
+    <Compile Include="Models\Editor\Actions\ChangeEntityPosition.cs" />
+    <Compile Include="Models\Editor\Actions\NewEntity.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\Editor\GameProject\GameProject.cs" />
     <Compile Include="Models\Editor\SceneEditor\Position.cs" />
@@ -97,9 +98,10 @@
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\SceneEditor.xaml.cs">
+    <Compile Include="Views\Controls\SceneEditor\SceneEditor.xaml.cs">
       <DependentUpon>SceneEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\SceneEditor\TexturedBox3d.cs" />
     <Compile Include="Views\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Views\NewProjectWindow.xaml.cs">
       <DependentUpon>NewProjectWindow.xaml</DependentUpon>
@@ -120,7 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Controls\SceneEditor.xaml">
+    <Page Include="Views\Controls\SceneEditor\SceneEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

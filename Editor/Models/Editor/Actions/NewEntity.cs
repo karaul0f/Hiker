@@ -7,7 +7,10 @@ using HikerEditor.Models.Interfaces;
 
 namespace HikerEditor.Models.Editor.Actions
 {
-    public class NewEntityAction: IAction
+    /// <summary>
+    /// Действие создания новой сущности
+    /// </summary>
+    public class NewEntity: IAction
     {
         /// <summary>
         /// Имя новой сущности

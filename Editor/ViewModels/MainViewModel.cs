@@ -88,7 +88,7 @@ namespace HikerEditor.ViewModels
         private void EntitiesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if(e.Action == NotifyCollectionChangedAction.Add)
-                Editor.Do(new NewEntityAction() { NewEntityName = "Entity" });
+                Editor.Do(new NewEntity() { NewEntityName = "Entity" });
         }
 
         ~MainWindowViewModel()

@@ -152,7 +152,10 @@
                     <StackPanel>
                         <Expander Header="Info">
                             <StackPanel>
-                                <TextBlock><Run>Name: </Run> <Run Text="{Binding SelectedEntity.Name}"/></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="0, 0, 5, 0"><Run>Name: </Run></TextBlock>
+                                    <TextBox Width="100" Text="{Binding SelectedEntity.Name}"></TextBox>
+                                </StackPanel>
                                 <TextBlock><Run>Id: </Run> <Run Text="{Binding SelectedEntity.Id, Mode=OneWay}"/></TextBlock>
                             </StackPanel>
                         </Expander>

@@ -24,11 +24,15 @@ namespace HikerEditor.Models.Editor
 
         private void EditorOnOnActionExecuted(IAction action)
         {
-            if (action is NewEntityAction)
+            if (action is NewEntity)
             {
                 VisualEntity ve = new VisualEntity();
                 _visualEntities.Add(ve);
                 OnEntityAdded?.Invoke(ve);
+            }
+            else if (action is ChangeEntityPosition)
+            {
+
             }
                 
         }
@@ -47,6 +51,11 @@ namespace HikerEditor.Models.Editor
         /// Событие добавления новой визуальной сущности в редактор сцены
         /// </summary>
         public event Action<VisualEntity> OnEntityAdded;
+
+        /// <summary>
+        /// Событие изменения параметров существующей визуальной сущности
+        /// </summary>
+        public event Action<VisualEntity> OnEntityChanged;
 
         #endregion
     }
