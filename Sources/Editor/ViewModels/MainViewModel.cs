@@ -16,12 +16,26 @@ namespace HikerEditor.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        private IEntity _selectedEntity
-;
+        private IEntity _selectedEntity;
         /// <summary>
         /// Заголовок окна
         /// </summary>
         public string MainTitle { get { return "Hiker: <new game>"; } }
+
+        /// <summary>
+        /// Команда создания проекта
+        /// </summary>
+        public RelayCommand CreateProjectCommand { get; set; }
+
+        /// <summary>
+        /// Команда открытия проекта
+        /// </summary>
+        public RelayCommand OpenProjectCommand { get; set; }
+
+        /// <summary>
+        /// Команда сохранения проекта
+        /// </summary>
+        public RelayCommand SaveProjectCommand { get; set; }
 
         /// <summary>
         /// Команда создания сущности
