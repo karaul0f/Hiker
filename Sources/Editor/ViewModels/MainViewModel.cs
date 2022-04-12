@@ -24,7 +24,7 @@ namespace HikerEditor.ViewModels
         /// <summary>
         /// Заголовок окна
         /// </summary>
-        public string MainTitle { get { return "Hiker: <new game>"; } }
+        public string MainTitle => "Hiker: " + Editor.GameProject.Name;
 
         /// <summary>
         /// Команда создания проекта
@@ -81,10 +81,7 @@ namespace HikerEditor.ViewModels
         /// </summary>
         public IEntity SelectedEntity
         {
-            get
-            {
-                return _selectedEntity;
-            }
+            get => _selectedEntity;
             set
             {
                 _selectedEntity = value; 
@@ -109,7 +106,8 @@ namespace HikerEditor.ViewModels
         private void EntitiesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if(e.Action == NotifyCollectionChangedAction.Add)
-                Editor.Do(new NewEntity() { NewEntityName = "Entity" });
+                Editor.Do(new NewEntity());
+
         }
 
         ~MainWindowViewModel()

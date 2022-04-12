@@ -19,7 +19,7 @@ namespace HikerEditor.Models.Editor.Actions
 
         public void Do(IEditor editor)
         {
-            editor.GameProject.Entities.Append(new BaseEntity() { Name = NewEntityName } );
+            editor.GameProject.Entities.Append(new BaseEntity());
         }
 
         public void Undo()

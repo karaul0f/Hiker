@@ -17,6 +17,7 @@ namespace HikerEditor.Models.Editor
             Entities = new List<IEntity>();
             Systems = new List<ISystem>();
             Components = new List<IComponent>();
+            Name = "<Untitled Project>";
         }
 
         /// <summary>
