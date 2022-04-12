@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>HikerEditor</RootNamespace>
     <AssemblyName>Hiker-Editor</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -81,6 +81,7 @@
     <Compile Include="Models\Editor\Actions\ChangeEntityPosition.cs" />
     <Compile Include="Models\Editor\Actions\NewEntity.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
+    <Compile Include="Models\Editor\GameProject\BaseSystem.cs" />
     <Compile Include="Models\Editor\GameProject\GameProject.cs" />
     <Compile Include="Models\Editor\SceneEditor\Position.cs" />
     <Compile Include="Models\Editor\SceneEditor\SceneEditor.cs" />
@@ -94,6 +95,13 @@
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\Editor\GameProject\BaseEntity.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
+    <Compile Include="ViewModels\Commands\ECS\CreateEntityCommand.cs" />
+    <Compile Include="ViewModels\Commands\ECS\CreateSystemCommand.cs" />
+    <Compile Include="ViewModels\Commands\File\CreateProjectCommand.cs" />
+    <Compile Include="ViewModels\Commands\Windows\NewProjectWindowCommand.cs" />
+    <Compile Include="ViewModels\Commands\File\OpenProjectCommand.cs" />
+    <Compile Include="ViewModels\Commands\File\SaveProjectCommand.cs" />
+    <Compile Include="ViewModels\Commands\Windows\SettingsWindowCommand.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
@@ -248,7 +256,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Builder\" />
-    <Folder Include="ViewModels\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\component.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

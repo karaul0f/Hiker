@@ -6,7 +6,6 @@
         xmlns:views="clr-namespace:HikerEditor.Views"
         xmlns:local="clr-namespace:HikerEditor"
         mc:Ignorable="d"
-        Owner="{x:Static local:App.CurrentMainWindow}"
         Title="Settings" Height="380" Width="600" Icon="/Hiker-Editor;component/Resources/Images/setting.png" ShowInTaskbar="False">
     <Grid>
         <Grid.RowDefinitions>
@@ -18,7 +17,7 @@
             <StackPanel Grid.Column="0" Margin="10, 5">
                 <DockPanel Margin="0, 2" LastChildFill="True">
                     <TextBlock Text="Language: " />
-                    <ComboBox VerticalAlignment="Top">
+                    <ComboBox VerticalAlignment="Top" SelectedIndex="0">
                         <TextBlock>English</TextBlock>
                         <TextBlock>Русский</TextBlock>
                     </ComboBox>

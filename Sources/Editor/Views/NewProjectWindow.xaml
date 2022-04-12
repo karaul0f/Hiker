@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:HikerEditor.Views"
         xmlns:local="clr-namespace:HikerEditor"
-        Owner="{x:Static local:App.CurrentMainWindow}"
         mc:Ignorable="d"
         Title="NewProjectWindow" Height="450" Width="800">
     <Grid>

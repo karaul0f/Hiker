@@ -4,12 +4,16 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows;
 using System.ComponentModel;
+using System.Media;
 using System.Runtime.CompilerServices;
 using Microsoft.Win32;
 using HikerEditor.Models;
 using HikerEditor.Models.Editor;
 using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
+using HikerEditor.ViewModels.Commands;
+using HikerEditor.ViewModels.Commands.ECS;
+using HikerEditor.ViewModels.Commands.Windows;
 using HikerEditor.Views;
 
 namespace HikerEditor.ViewModels
@@ -40,22 +44,32 @@ namespace HikerEditor.ViewModels
         /// <summary>
         /// Команда создания сущности
         /// </summary>
-        public RelayCommand CreateEntityCommand { get; set; }
+        public CreateEntityCommand CreateEntityCommand { get; set; }
+
+        /// <summary>
+        /// Команда создания системы
+        /// </summary>
+        public CreateSystemCommand CreateSystemCommand { get; set; }
 
         /// <summary>
         /// Команда открытия окна для создания проекта
         /// </summary>
-        public RelayCommand NewProjectWindowCommand { get; set; }
+        public NewProjectWindowCommand NewProjectWindowCommand { get; set; }
 
         /// <summary>
-        /// Команда открытия сущности
+        /// Команда открытия настроек программы
         /// </summary>
-        public RelayCommand OpenSettingsCommand { get; set; }
+        public SettingsWindowCommand SettingsWindowCommand { get; set; }
 
         /// <summary>
-        /// Список всех сущностей
+        /// Список всех сущностей в проекте
         /// </summary>
         public ObservableCollection<IEntity> Entities { get; set; }
+
+        /// <summary>
+        /// Список всех систем в проекте
+        /// </summary>
+        public ObservableCollection<ISystem> Systems { get; set; }
 
         /// <summary>
         /// Модель логики редактора прокинутая во вью-модель
@@ -81,20 +95,13 @@ namespace HikerEditor.ViewModels
         public MainWindowViewModel()
         {
             Entities = new ObservableCollection<IEntity>(Editor.GameProject.Entities);
+            Systems = new ObservableCollection<ISystem>(Editor.GameProject.Systems);
 
-            NewProjectWindowCommand = new RelayCommand(o =>
-            {
-                NewProjectWindow newProjectWindow = new NewProjectWindow();
-                newProjectWindow.Show();
-            });
+            NewProjectWindowCommand = new NewProjectWindowCommand();
+            SettingsWindowCommand = new SettingsWindowCommand();
 
-            OpenSettingsCommand = new RelayCommand(o =>
-            {
-                SettingsWindow settingWindow = new SettingsWindow();
-                settingWindow.Show();
-            });
-
-            CreateEntityCommand = new RelayCommand(o => Entities.Add(new BaseEntity() { Name = "Entity" }));
+            CreateEntityCommand = new CreateEntityCommand(Entities);
+            CreateSystemCommand = new CreateSystemCommand(Systems);
 
             Entities.CollectionChanged += EntitiesOnCollectionChanged;
         }

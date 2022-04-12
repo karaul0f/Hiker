@@ -18,8 +18,8 @@
     <v:String x:Key="Create">Create</v:String>
     <v:String x:Key="Edit">Edit</v:String>
     <v:String x:Key="Delete">Delete</v:String>
-    <v:String x:Key="NewSprite">New Sprite</v:String>
-    <v:String x:Key="NewScript">New Script</v:String>
+    <v:String x:Key="NewSystem">New System</v:String>
+    <v:String x:Key="NewComponent">New Component</v:String>
     <v:String x:Key="NewEntity">New Entity</v:String>
     <v:String x:Key="NewRoom">New Room</v:String>
     <v:String x:Key="Sprite">Sprite</v:String>

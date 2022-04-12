@@ -97,7 +97,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Settings}" Command="{Binding OpenSettingsCommand}" />
+            <MenuItem Header="{DynamicResource Settings}" Command="{Binding SettingsWindowCommand}" />
             <MenuItem Header="{DynamicResource Help}">
                 <MenuItem Header="{DynamicResource Documentation}" >
                     <MenuItem.Icon>
@@ -187,20 +187,20 @@
                     <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
                 </Button>
                 <Separator/>
-                <Button Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewSprite}">
-                    <Image Width="16" Height="16" Source="/Resources/Images/sprite.png" />
-                </Button>
-                <Button Command="{Binding AddScript}" ToolTip="{DynamicResource NewScript}">
-                    <Image Width="16" Height="16" Source="/Resources/Images/script.png" />
-                </Button>
                 <Button Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewEntity}">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
+                </Button>
+                <Button Command="{Binding AddScript}" ToolTip="{DynamicResource NewComponent}">
+                    <Image Width="16" Height="16" Source="/Resources/Images/component.png" />
+                </Button>
+                <Button Command="{Binding CreateSystemCommand}" ToolTip="{DynamicResource NewSystem}">
+                    <Image Width="16" Height="16" Source="/Resources/Images/sprite.png" />
                 </Button>
                 <Separator/>
                 <Button ToolTip="{DynamicResource RunGame}">
                     <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
                 </Button>
-                <Button Command="{Binding OpenSettingsCommand}" ToolTip="{DynamicResource Settings}">
+                <Button Command="{Binding SettingsWindowCommand}" ToolTip="{DynamicResource Settings}">
                     <Image Width="16" Height="16" Source="/Resources/Images/setting_project.png" />
                 </Button>
             </ToolBar>
