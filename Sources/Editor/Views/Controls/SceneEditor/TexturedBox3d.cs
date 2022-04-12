@@ -33,6 +33,8 @@ namespace HikerEditor.Views.Controls
 		/// </summary>
 		public Size Size { get; set; }
 
+        private GeometryModel3D _model;
+
 		private TranslateTransform3D _translateTransform;
 
 		private RotateTransform3D _rotationTransform;
@@ -64,16 +66,15 @@ namespace HikerEditor.Views.Controls
 
 			// Натягиваем текстуру
 			ImageBrush brush = new ImageBrush(image);
-			Material material = new DiffuseMaterial(brush);
-			GeometryModel3D geometryModel = new GeometryModel3D(mesh, material);
-            visualEntitiesStore.Children.Add(geometryModel);
+            Material material = new DiffuseMaterial(brush);
+            _model = new GeometryModel3D(mesh, material);
+            visualEntitiesStore.Children.Add(_model);
 			_translateTransform = new TranslateTransform3D(x, y, z);
 			_rotationTransform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(axisX, axisY, axisZ), angle), 0.5, 0.5, 0.5);
-
-			Transform3DGroup tgroup = new Transform3DGroup();
+            Transform3DGroup tgroup = new Transform3DGroup();
 			tgroup.Children.Add(_translateTransform);
 			tgroup.Children.Add(_rotationTransform);
-			geometryModel.Transform = tgroup;
+            _model.Transform = tgroup;
 		}
 
         /// <summary>
@@ -92,5 +93,14 @@ namespace HikerEditor.Views.Controls
 
 			_rotationTransform.Rotation = new AxisAngleRotation3D(axis, angle);
 		}
-    }
+
+        /// <summary>
+        /// Прозрачность визуальной сущности
+        /// </summary>
+        public double Opacity
+        {
+            get => ((DiffuseMaterial)_model.Material).Brush.Opacity;
+            set => ((DiffuseMaterial)_model.Material).Brush.Opacity = value;
+        }
+	}
 }

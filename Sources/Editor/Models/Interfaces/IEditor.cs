@@ -18,6 +18,11 @@ namespace HikerEditor.Models.Interfaces
         GameProject GameProject { get; }
 
         /// <summary>
+        /// Текущая игровая сцена для редактирования
+        /// </summary>
+        SceneEditor SceneEditor { get; }
+
+        /// <summary>
         /// Выполнить действие
         /// </summary>
         /// <param name="action"></param>

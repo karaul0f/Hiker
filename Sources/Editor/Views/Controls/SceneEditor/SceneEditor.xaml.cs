@@ -23,20 +23,34 @@ namespace HikerEditor.Views.Controls
 	/// </summary>
 	public partial class SceneEditor : UserControl
     {
+        private Dictionary<VisualEntity, TexturedBox3D> _visualEntities;
+        private VisualEntity _selectedEntity;
+
         public SceneEditor()
         {
             InitializeComponent();
+            _visualEntities = new Dictionary<VisualEntity, TexturedBox3D>();
             Editor.EditorInstance.SceneEditor.OnEntityAdded += SceneEditorOnOnEntityAdded;
+            Editor.EditorInstance.SceneEditor.OnSelectionChanged += SceneEditorOnOnSelectionChanged;
+            _selectedEntity = Editor.EditorInstance.SceneEditor.SelectedEntity;
+        }
+
+        private void SceneEditorOnOnSelectionChanged(VisualEntity visualEntity)
+        {
+            _visualEntities[_selectedEntity].Opacity = 1.0f;
+            _visualEntities[Editor.EditorInstance.SceneEditor.SelectedEntity].Opacity = 0.5f;
+
         }
 
         private void SceneEditorOnOnEntityAdded(VisualEntity visualEntity)
         {
-            TexturedBox3D model = new TexturedBox3D(VisualEntities, visualEntity.WorldPosition.X, -visualEntity.WorldPosition.Y, 0, visualEntity.Image, new System.Windows.Size(1, 1));
+            _visualEntities[visualEntity] = new TexturedBox3D(VisualEntities, visualEntity.WorldPosition.X, -visualEntity.WorldPosition.Y, 0, visualEntity.Image, new System.Windows.Size(1, 1));
         }
 
         ~SceneEditor()
         {
             Editor.EditorInstance.SceneEditor.OnEntityAdded -= SceneEditorOnOnEntityAdded;
+            Editor.EditorInstance.SceneEditor.OnSelectionChanged -= SceneEditorOnOnSelectionChanged;
         }
     }
 }

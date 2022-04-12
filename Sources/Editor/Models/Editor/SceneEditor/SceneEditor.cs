@@ -15,6 +15,8 @@ namespace HikerEditor.Models.Editor
     {
         private List<VisualEntity> _visualEntities;
 
+        private VisualEntity _selectedEntity;
+
         public SceneEditor(IEditor editor)
         {
             _visualEntities = new List<VisualEntity>();
@@ -47,6 +49,19 @@ namespace HikerEditor.Models.Editor
             get => _visualEntities;
         }
 
+        public VisualEntity SelectedEntity
+        {
+            get
+            {
+                return _selectedEntity;
+            }
+            set
+            {
+                _selectedEntity = value;
+                OnSelectionChanged?.Invoke(value);
+            }
+        }
+
         /// <summary>
         /// Событие добавления новой визуальной сущности в редактор сцены
         /// </summary>
@@ -56,6 +71,11 @@ namespace HikerEditor.Models.Editor
         /// Событие изменения параметров существующей визуальной сущности
         /// </summary>
         public event Action<VisualEntity> OnEntityChanged;
+
+        /// <summary>
+        /// Событие переключения на другую сущность редактора
+        /// </summary>
+        public event Action<VisualEntity> OnSelectionChanged;
 
         #endregion
     }

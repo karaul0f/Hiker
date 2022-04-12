@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace HikerEditor.ViewModels.Commands
 {
+    /// <summary>
+    /// Команда создания нового проекта
+    /// </summary>
     public class CreateProjectCommand
     {
 
