@@ -21,14 +21,14 @@ namespace HikerEditor.Models.Editor
         {
             _visualEntities = new List<VisualEntity>();
             editor.OnActionExecuted += EditorOnOnActionExecuted;
-            
         }
 
         private void EditorOnOnActionExecuted(IAction action)
         {
             if (action is NewEntity)
             {
-                VisualEntity ve = new VisualEntity();
+                var newEntityAction = action as NewEntity;
+                VisualEntity ve = new VisualEntity(newEntityAction.Entity);
                 _visualEntities.Add(ve);
                 OnEntityAdded?.Invoke(ve);
             }

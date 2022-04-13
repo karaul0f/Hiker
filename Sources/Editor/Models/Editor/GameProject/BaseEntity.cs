@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
+using System.Linq;
 using HikerEditor.Models.Interfaces;
 using IComponent = HikerEditor.Models.Interfaces.IComponent;
 
@@ -22,7 +23,7 @@ namespace HikerEditor.Models.Editor
         /// <summary>
         /// Компоненты, привязанные к сущности
         /// </summary>
-        public IEnumerable<IComponent> Components { get; set; }
+        public IList<IComponent> Components { get; set; }
 
         /// <summary>
         /// GUID сущности
@@ -34,6 +35,7 @@ namespace HikerEditor.Models.Editor
             Name = "BaseEntity";
             Id = Guid.NewGuid();
             Components = new List<IComponent>();
+            Components.Add(new VisualComponent() { PathToImage = "/Resources/Images/sprite.png", WorldPosition = new Position() { X = 0, Y = 0 } });
         }
 
     }

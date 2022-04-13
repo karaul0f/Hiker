@@ -84,7 +84,7 @@ namespace HikerEditor.ViewModels
             get => _selectedEntity;
             set
             {
-                _selectedEntity = value; 
+                _selectedEntity = value;
                 OnPropertyChanged();
             }
         }

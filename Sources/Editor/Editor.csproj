@@ -83,6 +83,7 @@
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\Editor\GameProject\BaseSystem.cs" />
     <Compile Include="Models\Editor\GameProject\GameProject.cs" />
+    <Compile Include="Models\Editor\GameProject\VisualComponent.cs" />
     <Compile Include="Models\Editor\SceneEditor\Position.cs" />
     <Compile Include="Models\Editor\SceneEditor\SceneEditor.cs" />
     <Compile Include="Models\Editor\SceneEditor\VisualEntity.cs" />
@@ -107,6 +108,9 @@
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\SceneEditor\Gizmo2D.xaml.cs">
+      <DependentUpon>Gizmo2D.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\SceneEditor\SceneEditor.xaml.cs">
       <DependentUpon>SceneEditor.xaml</DependentUpon>
     </Compile>
@@ -128,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\SceneEditor\Gizmo2D.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

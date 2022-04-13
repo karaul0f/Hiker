@@ -17,9 +17,12 @@ namespace HikerEditor.Models.Editor.Actions
         /// </summary>
         public string NewEntityName { get; set; }
 
+        public IEntity Entity { get; set; }
+
         public void Do(IEditor editor)
         {
-            editor.GameProject.Entities.Append(new BaseEntity());
+            Entity = new BaseEntity();
+            editor.GameProject.Entities.Append(Entity);
         }
 
         public void Undo()

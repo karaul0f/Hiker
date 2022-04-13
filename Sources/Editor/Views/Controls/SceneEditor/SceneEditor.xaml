@@ -21,5 +21,6 @@
                 </ModelVisual3D.Content>
             </ModelVisual3D>
         </Viewport3D>
+        <local:Gizmo2D Visibility="Hidden" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>

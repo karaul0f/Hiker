@@ -24,6 +24,6 @@ namespace HikerEditor.Models.Interfaces
         /// <summary>
         /// Компоненты, привязанные к сущности
         /// </summary>
-        IEnumerable<IComponent> Components { get; }
+        IList<IComponent> Components { get; }
     }
 }

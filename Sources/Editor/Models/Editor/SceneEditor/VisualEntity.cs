@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using HikerEditor.Models.Interfaces;
 
 namespace HikerEditor.Models.Editor
 {
@@ -12,13 +13,21 @@ namespace HikerEditor.Models.Editor
     /// </summary>
     public class VisualEntity
     {
-        public VisualEntity()
+        public VisualEntity(IEntity entity)
         {
-            Image = new BitmapImage();
-            Image.BeginInit();
-            Image.UriSource = new Uri("/Resources/Images/sprite.png", UriKind.Relative);
-            Image.EndInit();
-            WorldPosition = new Position() { X = 0, Y = 0 };
+            foreach (var component in entity.Components)
+            {
+                if (component is VisualComponent visualComponent)
+                {
+                    Image = new BitmapImage();
+                    Image.BeginInit();
+                    Image.UriSource = new Uri(visualComponent.PathToImage, UriKind.Relative);
+                    Image.EndInit();
+                    WorldPosition = visualComponent.WorldPosition;
+                }
+            }
+
+            Entity = entity;
         }
 
         /// <summary>
@@ -30,5 +39,10 @@ namespace HikerEditor.Models.Editor
         /// Координата сущности в пространстве
         /// </summary>
         public Position WorldPosition { get; set; }
+
+        /// <summary>
+        /// Реальная сущность, на который ссылается графическая
+        /// </summary>
+        public IEntity Entity { get; set; }
     }
 }
