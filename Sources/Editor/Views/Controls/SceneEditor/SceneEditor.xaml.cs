@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HikerEditor.Models.Editor;
 using HikerEditor.Models.Interfaces;
+using HikerEditor.Utils;
 
 namespace HikerEditor.Views.Controls
 {
@@ -28,10 +29,8 @@ namespace HikerEditor.Views.Controls
     {
         public static readonly DependencyProperty EntitiesProperty;
 
-        private Dictionary<IEntity, TexturedBox3D> _visualEntities;
+        private Dictionary<IEntity, GeometryModel3D> _visualEntities;
         private IEntity _selectedEntity;
-
-        private ObservableCollection<IEntity> _entities;
 
         static SceneEditor()
         {
@@ -48,12 +47,15 @@ namespace HikerEditor.Views.Controls
 
         public SceneEditor()
         {
-
             InitializeComponent();
-            _visualEntities = new Dictionary<IEntity, TexturedBox3D>();
-            Editor.EditorInstance.SceneEditor.OnEntityAdded += SceneEditorOnOnEntityAdded;
-            Editor.EditorInstance.SceneEditor.OnSelectionChanged += SceneEditorOnOnSelectionChanged;
+            _visualEntities = new Dictionary<IEntity, GeometryModel3D>();
+            Editor.EditorInstance.SceneEditor.OnSelectionChanged += OnExternalSelectionChanged;
             _selectedEntity = Editor.EditorInstance.SceneEditor.SelectedEntity;
+        }
+
+        private void OnExternalSelectionChanged(IEntity entity)
+        {
+            throw new NotImplementedException();
         }
 
         public ObservableCollection<IEntity> Entities
@@ -87,32 +89,48 @@ namespace HikerEditor.Views.Controls
         public void Add(IEntity entity)
         {
             VisualComponent vc = (VisualComponent) entity.Components[0];
-            _visualEntities[entity] = new TexturedBox3D(VisualEntities, vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.PathToImage, new System.Windows.Size(1, 1));
+            GeometryModel3D texturedBox = TexturedBox3DBuilder.Create(vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.PathToImage, new System.Windows.Size(1, 1));
+            VisualEntities.Children.Add(texturedBox);
+            _visualEntities[entity] = texturedBox;
         }
 
         public void Delete(IEntity entity)
         {
-            
             _visualEntities.Remove(entity);
         }
 
-
-        private void SceneEditorOnOnSelectionChanged(IEntity visualEntity)
+        private void Grid_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //_visualEntities[_selectedEntity].Opacity = 1.0f;
-            //_visualEntities[Editor.EditorInstance.SceneEditor.SelectedEntity].Opacity = 0.5f;
+            Point mousePosition = e.GetPosition(SceneViewport);
+            Point3D testPoint3D = new Point3D(mousePosition.X, mousePosition.Y, 0);
+            Vector3D testDirection = new Vector3D(mousePosition.X, mousePosition.Y, 10);
+            PointHitTestParameters pointparams = new PointHitTestParameters(mousePosition);
 
+            VisualTreeHelper.HitTest(SceneViewport, null, HTResult, pointparams);
         }
 
-        private void SceneEditorOnOnEntityAdded(IEntity visualEntity)
+        public HitTestResultBehavior HTResult(System.Windows.Media.HitTestResult rawresult)
         {
-            //Add(visualEntity);
+            RayHitTestResult rayResult = rawresult as RayHitTestResult;
+
+            if (rayResult != null)
+            {
+                RayMeshGeometry3DHitTestResult rayMeshResult = rayResult as RayMeshGeometry3DHitTestResult;
+
+                if (rayMeshResult != null)
+                {
+                    GeometryModel3D hit = rayMeshResult.ModelHit as GeometryModel3D;
+                    _selectedEntity = _visualEntities.First(obj => obj.Value == hit).Key;
+                    return HitTestResultBehavior.Continue;
+                }
+            }
+
+            return HitTestResultBehavior.Stop;
         }
 
         ~SceneEditor()
         {
-            Editor.EditorInstance.SceneEditor.OnEntityAdded -= SceneEditorOnOnEntityAdded;
-            Editor.EditorInstance.SceneEditor.OnSelectionChanged -= SceneEditorOnOnSelectionChanged;
+            Editor.EditorInstance.SceneEditor.OnSelectionChanged -= OnExternalSelectionChanged;
         }
 
     }

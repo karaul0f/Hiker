@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:HikerEditor.Views.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#2E698C">
-        <Viewport3D x:Name="Viewport" ClipToBounds="True">
+    <Grid Background="#2E698C" MouseLeftButtonDown="Grid_OnMouseLeftButtonDown">
+        <Viewport3D x:Name="SceneViewport" ClipToBounds="True">
             <Viewport3D.Camera>
                 <PerspectiveCamera FarPlaneDistance="1000" NearPlaneDistance="0.1" Position="0, 0, 100" LookDirection="0, 0, -1" UpDirection="0, 1, 0"/>
             </Viewport3D.Camera>
@@ -21,6 +21,6 @@
                 </ModelVisual3D.Content>
             </ModelVisual3D>
         </Viewport3D>
-        <local:Gizmo2D Visibility="Hidden" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <local:Gizmo2D x:Name="SceneGizmo" Visibility="Hidden" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>
