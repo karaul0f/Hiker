@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,28 +26,87 @@ namespace HikerEditor.Views.Controls
 	/// </summary>
 	public partial class SceneEditor : UserControl
     {
-        private Dictionary<VisualEntity, TexturedBox3D> _visualEntities;
-        private VisualEntity _selectedEntity;
+        public static readonly DependencyProperty EntitiesProperty;
+
+        private Dictionary<IEntity, TexturedBox3D> _visualEntities;
+        private IEntity _selectedEntity;
+
+        private ObservableCollection<IEntity> _entities;
+
+        static SceneEditor()
+        {
+            EntitiesProperty = DependencyProperty.Register(
+                "Entities",
+                typeof(ObservableCollection<IEntity>),
+                typeof(SceneEditor),
+                new FrameworkPropertyMetadata(
+                    null,
+                    FrameworkPropertyMetadataOptions.AffectsMeasure |
+                    FrameworkPropertyMetadataOptions.AffectsRender,
+                    OnItemSourceChanged));
+        }
 
         public SceneEditor()
         {
+
             InitializeComponent();
-            _visualEntities = new Dictionary<VisualEntity, TexturedBox3D>();
+            _visualEntities = new Dictionary<IEntity, TexturedBox3D>();
             Editor.EditorInstance.SceneEditor.OnEntityAdded += SceneEditorOnOnEntityAdded;
             Editor.EditorInstance.SceneEditor.OnSelectionChanged += SceneEditorOnOnSelectionChanged;
             _selectedEntity = Editor.EditorInstance.SceneEditor.SelectedEntity;
         }
 
-        private void SceneEditorOnOnSelectionChanged(VisualEntity visualEntity)
+        public ObservableCollection<IEntity> Entities
         {
-            _visualEntities[_selectedEntity].Opacity = 1.0f;
-            _visualEntities[Editor.EditorInstance.SceneEditor.SelectedEntity].Opacity = 0.5f;
+            get => (ObservableCollection<IEntity>) GetValue(EntitiesProperty);
+            set => SetValue(EntitiesProperty, value);
+        }
+
+        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.OldItems != null)
+            {
+                foreach (var item in e.OldItems)
+                    Delete((IEntity)item);
+            }
+
+            if (e.NewItems != null)
+            {
+                foreach (var item in e.NewItems)
+                    Add((IEntity)item);
+            }
+        }
+
+        private static void OnItemSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            SceneEditor control = (SceneEditor) d;
+            var entitiesCollection = (ObservableCollection<IEntity>) e.NewValue;
+            entitiesCollection.CollectionChanged += control.OnCollectionChanged;
+        }
+
+        public void Add(IEntity entity)
+        {
+            VisualComponent vc = (VisualComponent) entity.Components[0];
+            _visualEntities[entity] = new TexturedBox3D(VisualEntities, vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.PathToImage, new System.Windows.Size(1, 1));
+        }
+
+        public void Delete(IEntity entity)
+        {
+            
+            _visualEntities.Remove(entity);
+        }
+
+
+        private void SceneEditorOnOnSelectionChanged(IEntity visualEntity)
+        {
+            //_visualEntities[_selectedEntity].Opacity = 1.0f;
+            //_visualEntities[Editor.EditorInstance.SceneEditor.SelectedEntity].Opacity = 0.5f;
 
         }
 
-        private void SceneEditorOnOnEntityAdded(VisualEntity visualEntity)
+        private void SceneEditorOnOnEntityAdded(IEntity visualEntity)
         {
-            _visualEntities[visualEntity] = new TexturedBox3D(VisualEntities, visualEntity.WorldPosition.X, -visualEntity.WorldPosition.Y, 0, visualEntity.Image, new System.Windows.Size(1, 1));
+            //Add(visualEntity);
         }
 
         ~SceneEditor()
@@ -52,5 +114,6 @@ namespace HikerEditor.Views.Controls
             Editor.EditorInstance.SceneEditor.OnEntityAdded -= SceneEditorOnOnEntityAdded;
             Editor.EditorInstance.SceneEditor.OnSelectionChanged -= SceneEditorOnOnSelectionChanged;
         }
+
     }
 }

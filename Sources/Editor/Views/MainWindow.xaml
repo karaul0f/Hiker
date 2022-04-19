@@ -113,7 +113,7 @@
             </MenuItem>
         </Menu>
 
-        <controls:SceneEditor Grid.Column="0" Grid.Row="2" Margin="3,0,0,0" />
+        <controls:SceneEditor Entities="{Binding Entities}" Grid.Column="0" Grid.Row="2" Margin="3,0,0,0" />
 
         <!-- Game Grid -->
         <Grid Grid.Column="1" Grid.Row="2" Margin="3,0,0,0">
@@ -159,11 +159,8 @@
                                 <TextBlock><Run>Id: </Run> <Run Text="{Binding SelectedEntity.Id, Mode=OneWay}"/></TextBlock>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="Transform">
+                        <Expander Header="Visual Component">
                             <TextBlock>Transform</TextBlock>
-                        </Expander>
-                        <Expander Header="Rendable">
-                            <TextBlock>Rendable</TextBlock>
                         </Expander>
                     </StackPanel>
                 </TabItem>

@@ -13,13 +13,13 @@ namespace HikerEditor.Models.Editor
     /// </summary>
     public class SceneEditor
     {
-        private List<VisualEntity> _visualEntities;
+        private List<IEntity> _visualEntities;
 
-        private VisualEntity _selectedEntity;
+        private IEntity _selectedEntity;
 
         public SceneEditor(IEditor editor)
         {
-            _visualEntities = new List<VisualEntity>();
+            _visualEntities = new List<IEntity>();
             editor.OnActionExecuted += EditorOnOnActionExecuted;
         }
 
@@ -28,9 +28,8 @@ namespace HikerEditor.Models.Editor
             if (action is NewEntity)
             {
                 var newEntityAction = action as NewEntity;
-                VisualEntity ve = new VisualEntity(newEntityAction.Entity);
-                _visualEntities.Add(ve);
-                OnEntityAdded?.Invoke(ve);
+                _visualEntities.Add(newEntityAction.Entity);
+                OnEntityAdded?.Invoke(newEntityAction.Entity);
             }
             else if (action is ChangeEntityPosition)
             {
@@ -44,12 +43,12 @@ namespace HikerEditor.Models.Editor
         /// <summary>
         /// Отображаемые сущности в редакторе сцены
         /// </summary>
-        public IEnumerable<VisualEntity> VisualEntities
+        public IEnumerable<IEntity> VisualEntities
         {
             get => _visualEntities;
         }
 
-        public VisualEntity SelectedEntity
+        public IEntity SelectedEntity
         {
             get
             {
@@ -65,17 +64,17 @@ namespace HikerEditor.Models.Editor
         /// <summary>
         /// Событие добавления новой визуальной сущности в редактор сцены
         /// </summary>
-        public event Action<VisualEntity> OnEntityAdded;
+        public event Action<IEntity> OnEntityAdded;
 
         /// <summary>
         /// Событие изменения параметров существующей визуальной сущности
         /// </summary>
-        public event Action<VisualEntity> OnEntityChanged;
+        public event Action<IEntity> OnEntityChanged;
 
         /// <summary>
         /// Событие переключения на другую сущность редактора
         /// </summary>
-        public event Action<VisualEntity> OnSelectionChanged;
+        public event Action<IEntity> OnSelectionChanged;
 
         #endregion
     }

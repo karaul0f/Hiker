@@ -12,7 +12,9 @@ using System.Windows.Media.Media3D;
 namespace HikerEditor.Views.Controls
 {
 	public class TexturedBox3D
-	{
+    {
+        public GeometryModel3D Model => _model;
+
 		/// <summary>
 		/// Позиция визуальной сущности
 		/// </summary>
@@ -39,7 +41,7 @@ namespace HikerEditor.Views.Controls
 
 		private RotateTransform3D _rotationTransform;
 
-		public TexturedBox3D(Model3DGroup visualEntitiesStore, double x, double y, double z, BitmapImage image, Size size, float axisX = 0, double angle = 0, float axisY = 0, float axisZ = 1)
+		public TexturedBox3D(Model3DGroup visualEntitiesStore, double x, double y, double z, String pathToImage, Size size, float axisX = 0, double angle = 0, float axisY = 0, float axisZ = 1)
 		{
 			this.Size = size;
 			this.Position = new Vector3D(x, y, z);
@@ -65,6 +67,7 @@ namespace HikerEditor.Views.Controls
 			mesh.TextureCoordinates.Add(new Point(0, 0));
 
 			// Натягиваем текстуру
+            BitmapImage image = CreateBitmapFromImage(pathToImage);
 			ImageBrush brush = new ImageBrush(image);
             Material material = new DiffuseMaterial(brush);
             _model = new GeometryModel3D(mesh, material);
@@ -93,6 +96,16 @@ namespace HikerEditor.Views.Controls
 
 			_rotationTransform.Rotation = new AxisAngleRotation3D(axis, angle);
 		}
+
+        private BitmapImage CreateBitmapFromImage(String pathToImage)
+        {
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(pathToImage, UriKind.Relative);
+            image.EndInit();
+
+            return image;
+        }
 
         /// <summary>
         /// Прозрачность визуальной сущности
