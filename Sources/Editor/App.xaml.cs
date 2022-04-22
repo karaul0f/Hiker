@@ -16,13 +16,7 @@ namespace HikerEditor
     {
 		private static List<CultureInfo> _languages = new List<CultureInfo>();
 
-		public static List<CultureInfo> Languages
-		{
-			get
-			{
-				return _languages;
-			}
-		}
+        public static List<CultureInfo> Languages => _languages;
 
 		public App()
 		{
@@ -32,9 +26,6 @@ namespace HikerEditor
 
 		}
 
-		public static Window CurrentMainWindow
-		{
-			get { return Current.MainWindow; }
-		}
-	}
+		public static Window CurrentMainWindow => Current.MainWindow;
+    }
 }

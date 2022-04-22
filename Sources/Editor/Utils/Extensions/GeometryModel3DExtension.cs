@@ -14,6 +14,16 @@ namespace HikerEditor.Utils.Extensions
             model.Transform = translateTransform;
         }
 
+        public static void Move(this GeometryModel3D model, double x, double y, double z)
+        {
+            TranslateTransform3D translateTransform = new TranslateTransform3D();
+            translateTransform.OffsetX = x;
+            translateTransform.OffsetY = y;
+            translateTransform.OffsetZ = z;
+
+            model.Transform = translateTransform;
+        }
+
         public static void Rotate(this GeometryModel3D model, Vector3D axis, double angle, double centerX = 0.5, double centerY = 0.5, double centerZ = 0.5)
         {
             RotateTransform3D rotationTransform = new RotateTransform3D();

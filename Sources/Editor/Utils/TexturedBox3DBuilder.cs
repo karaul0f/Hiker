@@ -41,7 +41,7 @@ namespace HikerEditor.Utils
             Material material = new DiffuseMaterial(brush);
 
             GeometryModel3D model = new GeometryModel3D(mesh, material);
-            model.Move(new Vector3D(x, y, z));
+            model.Move(x, y, z);
             model.Rotate(new Vector3D(axisX, axisY, axisZ), angle);
             return new GeometryModel3D(mesh, material);
         }

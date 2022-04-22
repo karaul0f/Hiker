@@ -51,7 +51,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="{DynamicResource CreateStandAlone}" >
+                <MenuItem Header="{DynamicResource CreateStandAlone}" Command="{Binding BuildAppCommand}" >
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/program.png" />
                     </MenuItem.Icon>
@@ -86,7 +86,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Run}">
-                <MenuItem Header="{DynamicResource RunGame}" >
+                <MenuItem Header="{DynamicResource RunGame}" Command="{Binding PlayAppCommand}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/play.png" />
                     </MenuItem.Icon>
@@ -194,7 +194,7 @@
                     <Image Width="16" Height="16" Source="/Resources/Images/sprite.png" />
                 </Button>
                 <Separator/>
-                <Button ToolTip="{DynamicResource RunGame}">
+                <Button ToolTip="{DynamicResource RunGame}" Command="{Binding PlayAppCommand}">
                     <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
                 </Button>
                 <Button Command="{Binding SettingsWindowCommand}" ToolTip="{DynamicResource Settings}">

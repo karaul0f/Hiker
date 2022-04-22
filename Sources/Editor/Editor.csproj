@@ -78,24 +78,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Builder\MSVCBuilder.cs" />
     <Compile Include="Models\Editor\Actions\ChangeEntityPosition.cs" />
     <Compile Include="Models\Editor\Actions\NewEntity.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
-    <Compile Include="Models\Editor\GameProject\BaseSystem.cs" />
-    <Compile Include="Models\Editor\GameProject\GameProject.cs" />
-    <Compile Include="Models\Editor\GameProject\VisualComponent.cs" />
-    <Compile Include="Models\Editor\SceneEditor\Position.cs" />
+    <Compile Include="Models\GameProject\BaseSystem.cs" />
+    <Compile Include="Models\GameProject\Project.cs" />
+    <Compile Include="Models\GameProject\VisualComponent.cs" />
     <Compile Include="Models\Editor\SceneEditor\SceneEditor.cs" />
     <Compile Include="Models\Interfaces\IAction.cs" />
+    <Compile Include="Models\Interfaces\IAppBuilder.cs" />
     <Compile Include="Models\Interfaces\IComponent.cs" />
     <Compile Include="Models\Interfaces\IEditor.cs" />
     <Compile Include="Models\Interfaces\IEntity.cs" />
     <Compile Include="Models\Interfaces\ISystem.cs" />
-    <Compile Include="Models\Settings\Settings.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
-    <Compile Include="Models\Editor\GameProject\BaseEntity.cs" />
+    <Compile Include="Models\GameProject\BaseEntity.cs" />
     <Compile Include="Utils\Extensions\GeometryModel3DExtension.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
+    <Compile Include="ViewModels\Commands\App\BuildAppCommand.cs" />
+    <Compile Include="ViewModels\Commands\App\PlayAppCommand.cs" />
     <Compile Include="ViewModels\Commands\ECS\CreateEntityCommand.cs" />
     <Compile Include="ViewModels\Commands\ECS\CreateSystemCommand.cs" />
     <Compile Include="ViewModels\Commands\File\CreateProjectCommand.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="ViewModels\Commands\File\OpenProjectCommand.cs" />
     <Compile Include="ViewModels\Commands\File\SaveProjectCommand.cs" />
     <Compile Include="ViewModels\Commands\Windows\SettingsWindowCommand.cs" />
+    <Compile Include="ViewModels\Controls\SceneEditorViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
@@ -262,10 +265,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Builder\" />
-    <Folder Include="Models\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\component.png" />
   </ItemGroup>

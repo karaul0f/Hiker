@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HikerEditor.Models.Interfaces;
+using HikerEditor.Models.GameProject;
 
 namespace HikerEditor.Models.Editor.Actions
 {

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HikerEditor.Models.Interfaces;
 
-namespace HikerEditor.Models.Editor
+namespace HikerEditor.Models.GameProject
 {
     /// <summary>
     /// Исходные файлы игры, объединенные логической сущностью - проектом
     /// </summary>
-    public class GameProject
+    public class Project
     {
-        public GameProject()
+        public Project()
         {
             Entities = new List<IEntity>();
             Systems = new List<ISystem>();

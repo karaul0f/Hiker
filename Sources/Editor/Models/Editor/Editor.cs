@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HikerEditor.Models.Interfaces;
+using HikerEditor.Models.GameProject;
 
 namespace HikerEditor.Models.Editor
 {
@@ -16,7 +13,7 @@ namespace HikerEditor.Models.Editor
 
         private Editor()
         {
-            GameProject = new GameProject();
+            GameProject = new Project();
             SceneEditor = new SceneEditor(this);
         }
 
@@ -25,7 +22,7 @@ namespace HikerEditor.Models.Editor
         /// <summary>
         /// Изменяемые ресурсы внутри редактора (игровой проект)
         /// </summary>
-        public GameProject GameProject { get; set; }
+        public Project GameProject { get; set; }
 
         /// <summary>
         /// Логика визуального редактора сцены
