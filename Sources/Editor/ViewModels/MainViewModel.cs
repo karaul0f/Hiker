@@ -106,6 +106,12 @@ namespace HikerEditor.ViewModels
             CreateSystemCommand = new CreateSystemCommand(Systems);
 
             Entities.CollectionChanged += EntitiesOnCollectionChanged;
+            Editor.SceneEditor.OnSelectionChanged += SceneEditorOnSelectionChanged;
+        }
+
+        private void SceneEditorOnSelectionChanged(IEntity newEntity)
+        {
+            SelectedEntity = newEntity;
         }
 
         private void EntitiesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

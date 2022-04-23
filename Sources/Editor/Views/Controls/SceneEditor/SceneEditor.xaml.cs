@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,33 +27,21 @@ namespace HikerEditor.Views.Controls
 
         private Dictionary<IEntity, GeometryModel3D> _visualEntities;
 
+
+        private Point _clickMousePosition;
         public bool IsMouseDown { get; set; } = false;
 
-        public static readonly DependencyProperty EntitiesProperty;
-
-        static SceneEditor()
-        {
-            EntitiesProperty = DependencyProperty.Register(
-                "Entities",
-                typeof(ObservableCollection<IEntity>),
-                typeof(SceneEditor),
-                new FrameworkPropertyMetadata(
-                    null,
-                    FrameworkPropertyMetadataOptions.AffectsMeasure |
-                    FrameworkPropertyMetadataOptions.AffectsRender,
-                    OnItemSourceChanged));
-        }
+        public static readonly DependencyProperty EntitiesProperty = DependencyProperty.Register(
+            "Entities",
+            typeof(ObservableCollection<IEntity>),
+            typeof(SceneEditor),
+            new FrameworkPropertyMetadata(null, OnItemSourceChanged));
 
         public SceneEditor()
         {
             InitializeComponent();
             _visualEntities = new Dictionary<IEntity, GeometryModel3D>();
-            //Editor.EditorInstance.SceneEditor.OnSelectionChanged += OnSelectionChanged;
-
-            _sceneEditorViewModel = DataContext as SceneEditorViewModel;
-            Debug.Assert(_sceneEditorViewModel != null, nameof(_sceneEditorViewModel) + " != null");
-
-            //_sceneEditorViewModel.PropertyChanged += OnPropertyChanged;
+            _sceneEditorViewModel = new SceneEditorViewModel();
         }
 
 
@@ -105,8 +94,8 @@ namespace HikerEditor.Views.Controls
         {
             IsMouseDown = true;
 
-            Point mousePosition = e.GetPosition(SceneViewport);
-            PointHitTestParameters pointParams = new PointHitTestParameters(mousePosition);
+            _clickMousePosition = e.GetPosition(SceneViewport);
+            PointHitTestParameters pointParams = new PointHitTestParameters(_clickMousePosition);
 
             VisualTreeHelper.HitTest(SceneViewport, null, HTResult, pointParams);
         }
@@ -149,8 +138,10 @@ namespace HikerEditor.Views.Controls
             if (_sceneEditorViewModel.SelectedEntity != null && IsMouseDown)
             {
                 Point mousePosition = Mouse.GetPosition(SceneViewport);
-                
-                _visualEntities[_sceneEditorViewModel.SelectedEntity].Move(mousePosition.X * 0.01f, -mousePosition.Y * 0.01f, 0);
+                var diff = _clickMousePosition - mousePosition;
+
+                VisualComponent vc = (VisualComponent)_sceneEditorViewModel.SelectedEntity.Components[0];
+                _visualEntities[_sceneEditorViewModel.SelectedEntity].Move(vc.WorldPosition.X - diff.X, -vc.WorldPosition.Y + diff.Y, 0);
             }
         }
     }

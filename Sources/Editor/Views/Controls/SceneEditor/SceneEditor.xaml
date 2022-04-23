@@ -7,9 +7,6 @@
              xmlns:vm="clr-namespace:HikerEditor.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <vm:SceneEditorViewModel/>
-    </UserControl.DataContext>
     <Grid Background="#2E698C" MouseLeftButtonDown="Grid_OnMouseLeftButtonDown" MouseLeftButtonUp="Grid_OnMouseLeftButtonUp" MouseMove="Grid_OnMouseMove">
         <Viewport3D x:Name="SceneViewport" ClipToBounds="True">
             <Viewport3D.Camera>

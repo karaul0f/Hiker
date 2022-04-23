@@ -53,8 +53,11 @@ namespace HikerEditor.Models.Editor
             }
             set
             {
-                _selectedEntity = value;
-                OnSelectionChanged?.Invoke(value);
+                if (value != _selectedEntity)
+                {
+                    _selectedEntity = value;
+                    OnSelectionChanged?.Invoke(value);
+                }
             }
         }
 

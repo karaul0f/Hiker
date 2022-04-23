@@ -18,19 +18,32 @@ namespace HikerEditor.ViewModels
     /// </summary>
     public class SceneEditorViewModel: ViewModelBase
     {
-        private IEntity _selectedEntity;
-
         /// <summary>
         /// Выбранная сущность в редакторе
         /// </summary>
         public IEntity SelectedEntity
         {
-            get => _selectedEntity;
+            get => Editor.SceneEditor.SelectedEntity;
             set
             {
-                _selectedEntity = value;
+                Editor.SceneEditor.SelectedEntity = value;
                 OnPropertyChanged();
             }
+        }
+
+        public SceneEditorViewModel()
+        {
+           Editor.SceneEditor.OnSelectionChanged += SceneEditorOnSelectionChanged;
+        }
+
+        private void SceneEditorOnSelectionChanged(IEntity newEntity)
+        {
+            SelectedEntity = newEntity;
+        }
+
+        ~SceneEditorViewModel()
+        {
+            Editor.SceneEditor.OnSelectionChanged -= SceneEditorOnSelectionChanged;
         }
     }
 }
