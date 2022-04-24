@@ -11,16 +11,19 @@ namespace HikerEditor.Views
     /// </summary> 
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel _vm;
+
         public MainWindow()
         {
             InitializeComponent();
+            _vm = DataContext as MainWindowViewModel;
         }
 
         private void EntitiesList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (EntitiesList.SelectedItems.Count > 0)
             {
-                (DataContext as MainWindowViewModel).SelectedEntity = (IEntity) EntitiesList.SelectedItems[0];
+                _vm.SelectedEntity = (IEntity) EntitiesList.SelectedItems[0];
             }
         }
     }

@@ -265,7 +265,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\system.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\component.png" />
   </ItemGroup>

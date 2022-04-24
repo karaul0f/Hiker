@@ -6,7 +6,8 @@
         xmlns:views="clr-namespace:HikerEditor.Views"
         xmlns:local="clr-namespace:HikerEditor"
         mc:Ignorable="d"
-        Title="NewProjectWindow" Height="450" Width="800">
+        Owner="{x:Static local:App.CurrentMainWindow}"
+        Title="{DynamicResource NewProject}" Height="300" Width="600">
     <Grid>
         
     </Grid>

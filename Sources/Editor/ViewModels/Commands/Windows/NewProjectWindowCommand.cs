@@ -17,7 +17,6 @@ namespace HikerEditor.ViewModels.Commands
 
         public NewProjectWindowCommand()
         {
-            _newProjectWindow = new NewProjectWindow();
         }
 
         public event EventHandler CanExecuteChanged

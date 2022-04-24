@@ -7,6 +7,7 @@
         xmlns:views="clr-namespace:HikerEditor.Views"
         xmlns:local="clr-namespace:HikerEditor"
         mc:Ignorable="d"
+        Owner="{x:Static local:App.CurrentMainWindow}"
         Title="Settings" Height="380" Width="600" Icon="/Hiker-Editor;component/Resources/Images/setting.png" ShowInTaskbar="False">
     <Window.DataContext>
         <vm:SettingsViewModel/>

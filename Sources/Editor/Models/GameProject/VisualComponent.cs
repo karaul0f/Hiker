@@ -14,6 +14,7 @@ namespace HikerEditor.Models.GameProject
     /// </summary>
     public class VisualComponent: IComponent
     {
+        public string Name => "Visual Component";
         /// <summary>
         /// Позиция на сцене
         /// </summary>

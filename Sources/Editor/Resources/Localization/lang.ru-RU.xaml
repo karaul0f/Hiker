@@ -21,14 +21,15 @@
     <v:String x:Key="NewSprite">Создать спрайт</v:String>
     <v:String x:Key="NewScript">Создать скрипт</v:String>
     <v:String x:Key="NewObject">Создать объект</v:String>
-    <v:String x:Key="NewRoom">Создать комнату</v:String>
+    <v:String x:Key="NewScene">Создать сцену</v:String>
     <v:String x:Key="Sprite">Спрайт</v:String>
+    <v:String x:Key="Component">Компонент</v:String>
     <v:String x:Key="Script">Скрипт</v:String>
     <v:String x:Key="Object">Объект</v:String>
-    <v:String x:Key="Room">Комната</v:String>
+    <v:String x:Key="Scene">Сцена</v:String>
     <v:String x:Key="Rename">Переименовать</v:String>
     <v:String x:Key="CreateStandAlone">Собрать игру</v:String>
-    <v:String x:Key="Add">Добавить</v:String>
+    <v:String x:Key="Project">Проект</v:String>
     <v:String x:Key="Run">Запустить</v:String>
     <v:String x:Key="SpriteProperties">Настройка спрайта</v:String>
     <v:String x:Key="ObjectProperties">Настройка объекта</v:String>
@@ -42,4 +43,6 @@
     <v:String x:Key="AddAction">Добавить действие</v:String>
     <v:String x:Key="DeleteEvent">Удалить событие</v:String>
     <v:String x:Key="DeleteAction">Удалить действие</v:String>
+    <v:String x:Key="AddComponent">Добавить компонент</v:String>
+    <v:String x:Key="Resources">Ресурсы</v:String>
 </ResourceDictionary>

@@ -73,7 +73,7 @@ namespace HikerEditor.Views.Controls
             entitiesCollection.CollectionChanged += control.OnCollectionChanged;
         }
 
-        public void Add(IEntity entity)
+        private void Add(IEntity entity)
         {
             VisualComponent vc = (VisualComponent)entity.Components[0];
             GeometryModel3D texturedBox = TexturedBox3DBuilder.Create(vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.PathToImage, new System.Windows.Size(1, 1));
@@ -81,13 +81,9 @@ namespace HikerEditor.Views.Controls
             _visualEntities[entity] = texturedBox;
         }
 
-        public void Delete(IEntity entity)
+        private void Delete(IEntity entity)
         {
             _visualEntities.Remove(entity);
-        }
-        private void OnSelectionChanged(IEntity entity)
-        {
-            _sceneEditorViewModel.SelectedEntity = entity;
         }
 
         private void Grid_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -105,7 +101,7 @@ namespace HikerEditor.Views.Controls
             IsMouseDown = false;
         }
 
-        public HitTestResultBehavior HTResult(System.Windows.Media.HitTestResult rawResult)
+        private HitTestResultBehavior HTResult(System.Windows.Media.HitTestResult rawResult)
         {
             RayHitTestResult rayResult = rawResult as RayHitTestResult;
 
@@ -126,11 +122,6 @@ namespace HikerEditor.Views.Controls
 
             _sceneEditorViewModel.SelectedEntity = null;
             return HitTestResultBehavior.Stop;
-        }
-
-        ~SceneEditor()
-        {
-            Editor.EditorInstance.SceneEditor.OnSelectionChanged -= OnSelectionChanged;
         }
 
         private void Grid_OnMouseMove(object sender, MouseEventArgs e)
