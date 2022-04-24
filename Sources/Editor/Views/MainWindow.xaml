@@ -13,16 +13,19 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <Grid>
         <Grid.Resources>
             <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
             <utils:BindingProxy x:Key="Proxy" Data="{Binding}" />
         </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition Height="18"></RowDefinition>
-            <RowDefinition Height="28"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -33,7 +36,7 @@
         <GridSplitter Grid.Column="1" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
         <GridSplitter Grid.Column="2" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
 
-        <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="White">
+        <Menu Height="24" VerticalAlignment="Top" Grid.ColumnSpan="2" >
             <MenuItem Header="{DynamicResource File}">
                 <MenuItem Header="{DynamicResource NewProject}" Command="{Binding NewProjectWindowCommand}" >
                     <MenuItem.Icon>
@@ -109,7 +112,13 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Settings}" Command="{Binding SettingsWindowCommand}" />
+            <MenuItem Header="{DynamicResource Tools}">
+                <MenuItem Header="{DynamicResource Options}" Command="{Binding SettingsWindowCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/setting.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
             <MenuItem Header="{DynamicResource Help}">
                 <MenuItem Header="{DynamicResource Documentation}" >
                     <MenuItem.Icon>
@@ -189,37 +198,39 @@
             </TabControl>
         </Grid>
 
-        <StatusBar Grid.Row="3" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="3">
             <Image Width="16" Height="16" Source="/Resources/Images/view.png" />
             <TextBlock TextWrapping="Wrap" Text="Hello, world!"/>
         </StatusBar>
 
-        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
-            <ToolBar Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-                <Button Command="{Binding NewProjectWindowCommand}" ToolTip="{DynamicResource NewProject}">
+        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="3">
+            <ToolBar>
+                <Button Width="32" Command="{Binding NewProjectWindowCommand}" ToolTip="{DynamicResource NewProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/file.png" />
                 </Button>
-                <Button ToolTip="{DynamicResource OpenProject}">
+                <Button Width="32" ToolTip="{DynamicResource OpenProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/open.png" />
                 </Button>
-                <Button ToolTip="{DynamicResource SaveProject}">
+                <Button Width="32" ToolTip="{DynamicResource SaveProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
                 </Button>
-                <Separator/>
-                <Button Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewEntity}">
+            </ToolBar>
+            <ToolBar Height="32">
+                <Button Width="32" Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewEntity}">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
                 </Button>
-                <Button Command="{Binding AddScript}" ToolTip="{DynamicResource NewComponent}">
+                <Button Width="32" Command="{Binding AddScript}" ToolTip="{DynamicResource NewComponent}">
                     <Image Width="16" Height="16" Source="/Resources/Images/component.png" />
                 </Button>
-                <Button Command="{Binding CreateSystemCommand}" ToolTip="{DynamicResource NewSystem}">
+                <Button Width="32" Command="{Binding CreateSystemCommand}" ToolTip="{DynamicResource NewSystem}">
                     <Image Width="16" Height="16" Source="/Resources/Images/system.png" />
                 </Button>
-                <Separator/>
-                <Button ToolTip="{DynamicResource RunGame}" Command="{Binding PlayAppCommand}">
+            </ToolBar>
+            <ToolBar>
+                <Button Width="32" ToolTip="{DynamicResource RunGame}" Command="{Binding PlayAppCommand}">
                     <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
                 </Button>
-                <Button Command="{Binding SettingsWindowCommand}" ToolTip="{DynamicResource Settings}">
+                <Button Width="32" Command="{Binding SettingsWindowCommand}" ToolTip="{DynamicResource Settings}">
                     <Image Width="16" Height="16" Source="/Resources/Images/setting.png" />
                 </Button>
             </ToolBar>

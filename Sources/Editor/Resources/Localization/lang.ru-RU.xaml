@@ -9,7 +9,7 @@
     <v:String x:Key="RunGame">Запустить игру</v:String>
     <v:String x:Key="RunGameInDebug">Запуск с отладкой</v:String>
     <v:String x:Key="Exit">Выход</v:String>
-    <v:String x:Key="Settings">Настройки</v:String>
+    <v:String x:Key="Options">Настройки</v:String>
     <v:String x:Key="Preferences">Настройки</v:String>
     <v:String x:Key="Help">Справка</v:String>
     <v:String x:Key="Documentation">Документация</v:String>
@@ -33,6 +33,7 @@
     <v:String x:Key="Run">Запустить</v:String>
     <v:String x:Key="SpriteProperties">Настройка спрайта</v:String>
     <v:String x:Key="ObjectProperties">Настройка объекта</v:String>
+    <v:String x:Key="Tools">Инструменты</v:String>
     <v:String x:Key="Name">Название</v:String>
     <v:String x:Key="Solid">Твердый</v:String>
     <v:String x:Key="Visible">Видимый</v:String>
