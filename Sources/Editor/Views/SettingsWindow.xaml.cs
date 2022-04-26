@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AdonisUI.Controls;
 
 namespace HikerEditor.Views
 {
     /// <summary>
     /// Логика взаимодействия для SettingProjectWindow.xaml
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class SettingsWindow : AdonisWindow
     {
         public SettingsWindow()
         {
