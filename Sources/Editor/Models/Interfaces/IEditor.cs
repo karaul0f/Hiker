@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HikerEditor.Models.Editor;
+using HikerEditor.Models.GameProject;
 
 namespace HikerEditor.Models.Interfaces
 {
@@ -15,7 +12,7 @@ namespace HikerEditor.Models.Interfaces
         /// <summary>
         /// Текущий редактируемый игровой проект
         /// </summary>
-        GameProject GameProject { get; }
+        Project GameProject { get; }
 
         /// <summary>
         /// Текущая игровая сцена для редактирования

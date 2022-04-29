@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HikerEditor.Models.Interfaces;
 
-namespace HikerEditor.Models.Editor
+namespace HikerEditor.Models.GameProject
 {
     /// <summary>
     /// Базовый класс системы в игровом проекте

@@ -11,5 +11,9 @@ namespace HikerEditor.Models.Interfaces
     /// </summary>
     public interface IComponent
     {
+        /// <summary>
+        /// Имя компонента
+        /// </summary>
+        string Name { get; }
     }
 }

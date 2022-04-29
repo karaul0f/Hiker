@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using HikerEditor.Models.Editor;
+using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
+using HikerEditor.Models.GameProject;
 
 namespace HikerEditor.ViewModels.Commands.ECS
 {
@@ -17,9 +13,10 @@ namespace HikerEditor.ViewModels.Commands.ECS
     public class CreateEntityCommand: ICommand
     {
         private ObservableCollection<IEntity> _entityStorage;
-
-        public CreateEntityCommand(ObservableCollection<IEntity> entityStorage)
+        private IEditor _editor;
+        public CreateEntityCommand(IEditor editor, ObservableCollection<IEntity> entityStorage)
         {
+            _editor = editor;
             _entityStorage = entityStorage;
         }
 
@@ -35,7 +32,9 @@ namespace HikerEditor.ViewModels.Commands.ECS
                 parameter.ToString() : 
                 "Entity" + _entityStorage.Count;
 
-            _entityStorage.Add(new BaseEntity() { Name = entityName });
+            var newEntityAction = new NewEntityAction(entityName);
+            _editor.Do(newEntityAction);
+            _entityStorage.Add(newEntityAction.Entity);
         }
 
         public bool CanExecute(object parameter)

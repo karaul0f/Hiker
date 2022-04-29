@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Windows;
-using System.ComponentModel;
-using System.Media;
-using System.Runtime.CompilerServices;
-using Microsoft.Win32;
-using HikerEditor.Models;
-using HikerEditor.Models.Editor;
 using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
 using HikerEditor.ViewModels.Commands;
 using HikerEditor.ViewModels.Commands.ECS;
 using HikerEditor.ViewModels.Commands.Windows;
-using HikerEditor.Views;
 
 namespace HikerEditor.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        private IEntity _selectedEntity;
         /// <summary>
         /// Заголовок окна
         /// </summary>
-        public string MainTitle => "Hiker: " + Editor.GameProject.Name;
+        public string MainTitle
+        {
+            get => "Hiker: " + Editor.GameProject.Name;
+            set
+            {
+                Editor.GameProject.Name = value;
+                OnPropertyChanged();
+            }
+        } 
 
         /// <summary>
         /// Команда создания проекта
@@ -62,6 +59,16 @@ namespace HikerEditor.ViewModels
         public SettingsWindowCommand SettingsWindowCommand { get; set; }
 
         /// <summary>
+        /// Команда построения игрового приложения
+        /// </summary>
+        public BuildAppCommand BuildAppCommand { get; set; }
+
+        /// <summary>
+        /// Команда запуска игрового приложения
+        /// </summary>
+        public PlayAppCommand PlayAppCommand { get; set; }
+
+        /// <summary>
         /// Список всех сущностей в проекте
         /// </summary>
         public ObservableCollection<IEntity> Entities { get; set; }
@@ -72,19 +79,14 @@ namespace HikerEditor.ViewModels
         public ObservableCollection<ISystem> Systems { get; set; }
 
         /// <summary>
-        /// Модель логики редактора прокинутая во вью-модель
-        /// </summary>
-        public IEditor Editor { get => HikerEditor.Models.Editor.Editor.EditorInstance; private set {} }
-
-        /// <summary>
         /// Выбранная сущность в редакторе
         /// </summary>
         public IEntity SelectedEntity
         {
-            get => _selectedEntity;
+            get => Editor.SceneEditor.SelectedEntity;
             set
             {
-                _selectedEntity = value; 
+                Editor.SceneEditor.SelectedEntity = value;
                 OnPropertyChanged();
             }
         }
@@ -97,22 +99,23 @@ namespace HikerEditor.ViewModels
             NewProjectWindowCommand = new NewProjectWindowCommand();
             SettingsWindowCommand = new SettingsWindowCommand();
 
-            CreateEntityCommand = new CreateEntityCommand(Entities);
+            BuildAppCommand = new BuildAppCommand(AppBuilder);
+            PlayAppCommand = new PlayAppCommand(AppBuilder);
+
+            CreateEntityCommand = new CreateEntityCommand(Editor, Entities);
             CreateSystemCommand = new CreateSystemCommand(Systems);
 
-            Entities.CollectionChanged += EntitiesOnCollectionChanged;
+            Editor.SceneEditor.OnSelectionChanged += SceneEditorOnSelectionChanged;
         }
 
-        private void EntitiesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void SceneEditorOnSelectionChanged(IEntity newEntity)
         {
-            if(e.Action == NotifyCollectionChangedAction.Add)
-                Editor.Do(new NewEntity());
-
+            SelectedEntity = newEntity;
         }
 
         ~MainWindowViewModel()
         {
-            Entities.CollectionChanged -= EntitiesOnCollectionChanged;
+            
         }
     }
 }

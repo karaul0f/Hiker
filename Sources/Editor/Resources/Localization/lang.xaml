@@ -9,7 +9,7 @@
     <v:String x:Key="Exit">Exit</v:String>
     <v:String x:Key="RunGame">Run Game</v:String>
     <v:String x:Key="RunGameInDebug">Run in Debug Mode</v:String>
-    <v:String x:Key="Settings">Settings</v:String>
+    <v:String x:Key="Options">Options</v:String>
     <v:String x:Key="Preferences">Preferences</v:String>
     <v:String x:Key="Help">Help</v:String>
     <v:String x:Key="Documentation">Documentation</v:String>
@@ -21,16 +21,18 @@
     <v:String x:Key="NewSystem">New System</v:String>
     <v:String x:Key="NewComponent">New Component</v:String>
     <v:String x:Key="NewEntity">New Entity</v:String>
-    <v:String x:Key="NewRoom">New Room</v:String>
+    <v:String x:Key="NewScene">New Scene</v:String>
     <v:String x:Key="Sprite">Sprite</v:String>
+    <v:String x:Key="Component">Component</v:String>
     <v:String x:Key="Script">Script</v:String>
     <v:String x:Key="Object">Object</v:String>
-    <v:String x:Key="Room">Room</v:String>
+    <v:String x:Key="Scene">Scene</v:String>
     <v:String x:Key="CreateStandAlone">Create Standalone</v:String>
     <v:String x:Key="Properties">Properties</v:String>
     <v:String x:Key="Rename">Rename</v:String>
-    <v:String x:Key="Add">Add</v:String>
+    <v:String x:Key="Project">Project</v:String>
     <v:String x:Key="Run">Run</v:String>
+    <v:String x:Key="Tools">Tools</v:String>
     <v:String x:Key="SpriteProperties">Sprite Properties</v:String>
     <v:String x:Key="ObjectProperties">Object Properties</v:String>
     <v:String x:Key="Name">Name</v:String>
@@ -43,4 +45,6 @@
     <v:String x:Key="AddAction">Add Action</v:String>
     <v:String x:Key="DeleteEvent">Delete Event</v:String>
     <v:String x:Key="DeleteAction">Delete Action</v:String>
+    <v:String x:Key="AddComponent">Add Component</v:String>
+    <v:String x:Key="Resources">Resources</v:String>
 </ResourceDictionary>

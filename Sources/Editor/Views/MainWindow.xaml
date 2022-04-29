@@ -1,28 +1,32 @@
-﻿<Window x:Name="HikerMainWindow" x:Class="HikerEditor.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:HikerEditor.ViewModels"
-        xmlns:utils="clr-namespace:HikerEditor.Utils"
-        xmlns:controls="clr-namespace:HikerEditor.Views.Controls"
-        xmlns:converters="clr-namespace:HikerEditor.Views.Converters"
-        xmlns:local="clr-namespace:HikerEditor"
-        mc:Ignorable="d"
-        Title="{Binding MainTitle}" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
+﻿<adonisControls:AdonisWindow x:Name="HikerMainWindow" x:Class="HikerEditor.Views.MainWindow"
+                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                             xmlns:vm="clr-namespace:HikerEditor.ViewModels"
+                             xmlns:utils="clr-namespace:HikerEditor.Utils"
+                             xmlns:controls="clr-namespace:HikerEditor.Views.Controls"
+                             xmlns:converters="clr-namespace:HikerEditor.Views.Converters"
+                             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                             xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                             mc:Ignorable="d"
+                             Title="{Binding MainTitle}" Height="450" Width="800" Icon="/Hiker-Editor;component/Resources/Images/hiker.png">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <Grid>
         <Grid.Resources>
             <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
             <utils:BindingProxy x:Key="Proxy" Data="{Binding}" />
         </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition Height="18"></RowDefinition>
-            <RowDefinition Height="28"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -33,9 +37,9 @@
         <GridSplitter Grid.Column="1" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
         <GridSplitter Grid.Column="2" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
 
-        <Menu Height="18" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="White">
+        <Menu Height="24" VerticalAlignment="Top" Grid.ColumnSpan="2" >
             <MenuItem Header="{DynamicResource File}">
-                <MenuItem Header="{DynamicResource NewProject}" Command="{Binding NewProject}" >
+                <MenuItem Header="{DynamicResource NewProject}" Command="{Binding NewProjectWindowCommand}" >
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/file.png" />
                     </MenuItem.Icon>
@@ -51,7 +55,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="{DynamicResource CreateStandAlone}" >
+                <MenuItem Header="{DynamicResource CreateStandAlone}" Command="{Binding BuildAppCommand}" >
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/program.png" />
                     </MenuItem.Icon>
@@ -63,30 +67,42 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Add}">
-                <MenuItem Command="{Binding AddSprite}" Header="{DynamicResource Sprite}">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/Images/sprite.png" />
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Command="{Binding AddScript}" Header="{DynamicResource Script}">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/Images/script.png" />
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Command="{Binding AddGameObject}" Header="{DynamicResource Object}">
+            <MenuItem Header="{DynamicResource Project}">
+                <MenuItem Command="{Binding CreateEntityCommand}" Header="{DynamicResource NewEntity}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/object.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="{Binding AddRoom}" Header="{DynamicResource Room}">
+                <MenuItem Command="{Binding CreateSystemCommand}" Header="{DynamicResource NewSystem}">
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Images/room.png" />
+                        <Image Source="/Resources/Images/system.png" />
                     </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Resources}">
+                    <MenuItem Header="{DynamicResource Sprite}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/sprite.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{DynamicResource Component}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/component.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Command="{Binding AddScript}" Header="{DynamicResource Script}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/script.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{DynamicResource Scene}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/room.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Run}">
-                <MenuItem Header="{DynamicResource RunGame}" >
+                <MenuItem Header="{DynamicResource RunGame}" Command="{Binding PlayAppCommand}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/play.png" />
                     </MenuItem.Icon>
@@ -97,7 +113,13 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Settings}" Command="{Binding SettingsWindowCommand}" />
+            <MenuItem Header="{DynamicResource Tools}">
+                <MenuItem Header="{DynamicResource Options}" Command="{Binding SettingsWindowCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Images/setting.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
             <MenuItem Header="{DynamicResource Help}">
                 <MenuItem Header="{DynamicResource Documentation}" >
                     <MenuItem.Icon>
@@ -113,7 +135,7 @@
             </MenuItem>
         </Menu>
 
-        <controls:SceneEditor Grid.Column="0" Grid.Row="2" Margin="3,0,0,0" />
+        <controls:SceneEditor Entities="{Binding Entities}" Grid.Column="0" Grid.Row="2" Margin="3,0,0,0" />
 
         <!-- Game Grid -->
         <Grid Grid.Column="1" Grid.Row="2" Margin="3,0,0,0">
@@ -125,7 +147,7 @@
 
             <TabControl Grid.Row="1">
                 <TabItem Header="Entities">
-                    <ListBox x:Name="EntitiesList" ItemsSource="{Binding Entities}" SelectionChanged="EntitiesList_OnSelectionChanged">
+                    <ListBox x:Name="EntitiesList" ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" SelectionChanged="EntitiesList_OnSelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}" />
@@ -150,61 +172,70 @@
             <TabControl Grid.Row="1" Visibility="{Binding SelectedEntity, Converter={StaticResource NullToVisibilityConverter}}">
                 <TabItem Header="Components">
                     <StackPanel>
-                        <Expander Header="Info">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="0, 0, 5, 0"><Run>Name: </Run></TextBlock>
-                                    <TextBox Width="100" Text="{Binding SelectedEntity.Name}"></TextBox>
-                                </StackPanel>
-                                <TextBlock><Run>Id: </Run> <Run Text="{Binding SelectedEntity.Id, Mode=OneWay}"/></TextBlock>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5, 5, 0, 0">
+                                <TextBlock Margin="0, 0, 5, 0"><Run>Name: </Run></TextBlock>
+                                <TextBox Width="100" Text="{Binding SelectedEntity.Name}"></TextBox>
                             </StackPanel>
-                        </Expander>
-                        <Expander Header="Transform">
-                            <TextBlock>Transform</TextBlock>
-                        </Expander>
-                        <Expander Header="Rendable">
-                            <TextBlock>Rendable</TextBlock>
-                        </Expander>
+                            <TextBlock Margin="5, 0"><Run>Id: </Run> <Run Text="{Binding SelectedEntity.Id, Mode=OneWay}"/></TextBlock>
+                        </StackPanel>
+                        <ItemsControl Margin="5, 5" ItemsSource="{Binding SelectedEntity.Components}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Expander Header="{Binding Path=Name}">
+                                        <StackPanel>
+                                            <TextBlock>PathToImage:</TextBlock>
+                                            <TextBlock>Position:</TextBlock>
+                                        </StackPanel>
+                                    </Expander>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Button Margin="5, 5">
+                            <TextBlock Text="{DynamicResource AddComponent}"/>
+                        </Button>
                     </StackPanel>
                 </TabItem>
             </TabControl>
         </Grid>
 
-        <StatusBar Grid.Row="3" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="3">
             <Image Width="16" Height="16" Source="/Resources/Images/view.png" />
             <TextBlock TextWrapping="Wrap" Text="Hello, world!"/>
         </StatusBar>
 
-        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="3" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
-            <ToolBar Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-                <Button Command="{Binding NewProjectWindowCommand}" ToolTip="{DynamicResource NewProject}">
+        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="3">
+            <ToolBar>
+                <Button Width="32" Command="{Binding NewProjectWindowCommand}" ToolTip="{DynamicResource NewProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/file.png" />
                 </Button>
-                <Button ToolTip="{DynamicResource OpenProject}">
+                <Button Width="32" ToolTip="{DynamicResource OpenProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/open.png" />
                 </Button>
-                <Button ToolTip="{DynamicResource SaveProject}">
+                <Button Width="32" ToolTip="{DynamicResource SaveProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
                 </Button>
-                <Separator/>
-                <Button Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewEntity}">
+            </ToolBar>
+            <ToolBar Height="32">
+                <Button Width="32" Command="{Binding CreateEntityCommand}" ToolTip="{DynamicResource NewEntity}">
                     <Image Width="16" Height="16" Source="/Resources/Images/object.png" />
                 </Button>
-                <Button Command="{Binding AddScript}" ToolTip="{DynamicResource NewComponent}">
+                <Button Width="32" Command="{Binding AddScript}" ToolTip="{DynamicResource NewComponent}">
                     <Image Width="16" Height="16" Source="/Resources/Images/component.png" />
                 </Button>
-                <Button Command="{Binding CreateSystemCommand}" ToolTip="{DynamicResource NewSystem}">
-                    <Image Width="16" Height="16" Source="/Resources/Images/sprite.png" />
+                <Button Width="32" Command="{Binding CreateSystemCommand}" ToolTip="{DynamicResource NewSystem}">
+                    <Image Width="16" Height="16" Source="/Resources/Images/system.png" />
                 </Button>
-                <Separator/>
-                <Button ToolTip="{DynamicResource RunGame}">
+            </ToolBar>
+            <ToolBar>
+                <Button Width="32" ToolTip="{DynamicResource RunGame}" Command="{Binding PlayAppCommand}">
                     <Image Width="16" Height="16" Source="/Resources/Images/play.png" />
                 </Button>
-                <Button Command="{Binding SettingsWindowCommand}" ToolTip="{DynamicResource Settings}">
-                    <Image Width="16" Height="16" Source="/Resources/Images/setting_project.png" />
+                <Button Width="32" Command="{Binding SettingsWindowCommand}" ToolTip="{DynamicResource Settings}">
+                    <Image Width="16" Height="16" Source="/Resources/Images/setting.png" />
                 </Button>
             </ToolBar>
         </ToolBarTray>
         
     </Grid>
-</Window>
+</adonisControls:AdonisWindow>

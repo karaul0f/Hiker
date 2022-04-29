@@ -132,3 +132,4 @@ $RECYCLE.BIN/
 
 _NCrunch*
 /.vs/Hiker-Editor/v15/Server/sqlite3
+*.DotSettings

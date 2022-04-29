@@ -1,25 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HikerEditor.Models.Interfaces;
+using HikerEditor.Models.GameProject;
 
 namespace HikerEditor.Models.Editor.Actions
 {
     /// <summary>
     /// Действие создания новой сущности
     /// </summary>
-    public class NewEntity: IAction
+    public class NewEntityAction: IAction
     {
         /// <summary>
         /// Имя новой сущности
         /// </summary>
-        public string NewEntityName { get; set; }
+        public string EntityName { get; }
+
+        public IEntity Entity { get; }
+
+        public NewEntityAction(string entityName)
+        {
+            Entity = new BaseEntity();
+            EntityName = entityName;
+        }
 
         public void Do(IEditor editor)
         {
-            editor.GameProject.Entities.Append(new BaseEntity());
+            Entity.Name = EntityName;
+            editor.GameProject.Entities.Add(Entity);
         }
 
         public void Undo()

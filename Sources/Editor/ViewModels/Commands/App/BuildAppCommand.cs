@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using HikerEditor.Models.Interfaces;
 using HikerEditor.Views;
 
 namespace HikerEditor.ViewModels.Commands
 {
     /// <summary>
-    /// Команда для открытия окна для создания нового проекта
+    /// Команда для создания приложения.
     /// </summary>
-    public class NewProjectWindowCommand: ICommand
+    public class BuildAppCommand: ICommand
     {
-        NewProjectWindow _newProjectWindow;
+        private IAppBuilder _appBuilder;
 
-        public NewProjectWindowCommand()
+        public BuildAppCommand(IAppBuilder builder)
         {
+            _appBuilder = builder;
         }
 
         public event EventHandler CanExecuteChanged
@@ -27,8 +29,7 @@ namespace HikerEditor.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            _newProjectWindow = new NewProjectWindow();
-            _newProjectWindow.Show();
+            _appBuilder.Build(null, null);
         }
 
         public bool CanExecute(object parameter)

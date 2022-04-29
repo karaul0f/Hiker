@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HikerEditor.Models.GameProject;
 
 namespace HikerEditor.Models.Interfaces
 {
@@ -19,11 +20,16 @@ namespace HikerEditor.Models.Interfaces
         /// <summary>
         /// Имя сущности
         /// </summary>
-        string Name { get; }
+        string Name { get; set; }
 
         /// <summary>
         /// Компоненты, привязанные к сущности
         /// </summary>
-        IEnumerable<IComponent> Components { get; }
+        IList<IComponent> Components { get; }
+
+        /// <summary>
+        /// Визуальный компонент сущности
+        /// </summary>
+        VisualComponent VisualComponent { get; }
     }
 }

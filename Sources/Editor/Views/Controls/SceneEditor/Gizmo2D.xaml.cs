@@ -10,17 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AdonisUI.Controls;
 
-namespace HikerEditor.Views
+namespace HikerEditor.Views.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для SettingProjectWindow.xaml
+    /// Interaction logic for Gizmo2D.xaml
     /// </summary>
-    public partial class SettingsWindow : AdonisWindow
+    public partial class Gizmo2D : UserControl
     {
-        public SettingsWindow()
+        public Gizmo2D()
         {
             InitializeComponent();
         }

@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="HikerEditor.Views.Controls.Gizmo2D"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HikerEditor.Views.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="128" d:DesignWidth="128">
+    <Grid Margin="64, -64, 0,0">
+        <Line
+            X1="0" Y1="0"
+            X2="0" Y2="64"
+            Stroke="Black"
+            StrokeThickness="4" />
+
+        <Line
+            X1="0" Y1="62"
+            X2="64" Y2="62"
+            Stroke="Black"
+            StrokeThickness="4" />
+    </Grid>
+</UserControl>

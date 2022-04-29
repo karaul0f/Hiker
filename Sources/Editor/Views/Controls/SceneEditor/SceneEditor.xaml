@@ -4,10 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HikerEditor.Views.Controls"
+             xmlns:vm="clr-namespace:HikerEditor.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#2E698C">
-        <Viewport3D x:Name="Viewport" ClipToBounds="True">
+    <Grid Background="#2E698C" MouseLeftButtonDown="Grid_OnMouseLeftButtonDown" MouseLeftButtonUp="Grid_OnMouseLeftButtonUp" MouseMove="Grid_OnMouseMove">
+        <Viewport3D x:Name="SceneViewport" ClipToBounds="True">
             <Viewport3D.Camera>
                 <PerspectiveCamera FarPlaneDistance="1000" NearPlaneDistance="0.1" Position="0, 0, 100" LookDirection="0, 0, -1" UpDirection="0, 1, 0"/>
             </Viewport3D.Camera>
@@ -20,6 +21,36 @@
                     </Model3DGroup>
                 </ModelVisual3D.Content>
             </ModelVisual3D>
+            <ModelVisual3D x:Name="ScenePlane">
+                <ModelVisual3D.Content>
+                    <GeometryModel3D>
+                        <!-- The geometry specifes the shape of the 3D plane. In this case, a flat sheet is created. -->
+                        <GeometryModel3D.Geometry>
+                            <MeshGeometry3D
+                                TriangleIndices="0,1,2 3,4,5 "
+                                Normals="0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 "
+                                TextureCoordinates="0,0 1,0 1,1 1,1 0,1 0,0 "
+                                Positions="-0.5,-0.5,0.5 0.5,-0.5,0.5 0.5,0.5,0.5 0.5,0.5,0.5 -0.5,0.5,0.5 -0.5,-0.5,0.5 " />
+                        </GeometryModel3D.Geometry>
+                        <GeometryModel3D.Material>
+                            <MaterialGroup>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <SolidColorBrush Color="#2E698C" Opacity="0.3"/>
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </MaterialGroup>
+                        </GeometryModel3D.Material>
+                        <GeometryModel3D.Transform>
+                            <Transform3DGroup>
+                                <TranslateTransform3D OffsetX="0" OffsetY="0" OffsetZ="-0.5" />
+                                <ScaleTransform3D ScaleX="1000" ScaleY="1000"/>
+                            </Transform3DGroup>
+                        </GeometryModel3D.Transform>
+                    </GeometryModel3D>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
         </Viewport3D>
+        <local:Gizmo2D x:Name="SceneGizmo" Visibility="Hidden" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>
