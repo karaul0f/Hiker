@@ -147,7 +147,7 @@
 
             <TabControl Grid.Row="1">
                 <TabItem Header="Entities">
-                    <ListBox x:Name="EntitiesList" ItemsSource="{Binding Entities}" SelectionChanged="EntitiesList_OnSelectionChanged">
+                    <ListBox x:Name="EntitiesList" ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" SelectionChanged="EntitiesList_OnSelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}" />

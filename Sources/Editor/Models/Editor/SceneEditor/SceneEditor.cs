@@ -10,40 +10,13 @@ namespace HikerEditor.Models.Editor
     /// </summary>
     public class SceneEditor
     {
-        private List<IEntity> _visualEntities;
 
         private IEntity _selectedEntity;
-
         public SceneEditor(IEditor editor)
         {
-            _visualEntities = new List<IEntity>();
-            editor.OnActionExecuted += EditorOnOnActionExecuted;
-        }
-
-        private void EditorOnOnActionExecuted(IAction action)
-        {
-            if (action is NewEntity)
-            {
-                var newEntityAction = action as NewEntity;
-                _visualEntities.Add(newEntityAction.Entity);
-                OnEntityAdded?.Invoke(newEntityAction.Entity);
-            }
-            else if (action is ChangeEntityPosition)
-            {
-
-            }
-                
         }
 
         #region Properties
-
-        /// <summary>
-        /// Отображаемые сущности в редакторе сцены
-        /// </summary>
-        public IEnumerable<IEntity> VisualEntities
-        {
-            get => _visualEntities;
-        }
 
         public IEntity SelectedEntity
         {

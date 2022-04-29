@@ -16,27 +16,22 @@ namespace HikerEditor.Models.GameProject
     /// </summary>
     public class BaseEntity: IEntity
     {
-        /// <summary>
-        /// Имя сущности
-        /// </summary>
         public string Name { get; set; }
 
-        /// <summary>
-        /// Компоненты, привязанные к сущности
-        /// </summary>
         public IList<IComponent> Components { get; set; }
 
-        /// <summary>
-        /// GUID сущности
-        /// </summary>
         public Guid Id { get; }
+
+        public VisualComponent VisualComponent { get; }
 
         public BaseEntity()
         {
             Name = "BaseEntity";
             Id = Guid.NewGuid();
             Components = new List<IComponent>();
-            Components.Add(new VisualComponent() { PathToImage = "/Resources/Images/sprite.png", WorldPosition = new Vector2() { X = 0, Y = 0 } });
+            VisualComponent = new VisualComponent()
+                { PathToImage = "/Resources/Images/sprite.png", WorldPosition = new Vector2() { X = 0, Y = 0 } };
+            Components.Add(VisualComponent);
         }
 
     }

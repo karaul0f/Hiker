@@ -52,6 +52,9 @@
     <Reference Include="AdonisUI.ClassicTheme, Version=1.17.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AdonisUI.ClassicTheme.1.17.1\lib\net45\AdonisUI.ClassicTheme.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -66,6 +69,9 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -85,8 +91,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Builder\MSVCBuilder.cs" />
-    <Compile Include="Models\Editor\Actions\ChangeEntityPosition.cs" />
-    <Compile Include="Models\Editor\Actions\NewEntity.cs" />
+    <Compile Include="Models\Editor\Actions\ChangeEntityPositionAction.cs" />
+    <Compile Include="Models\Editor\Actions\NewEntityAction.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\GameProject\BaseSystem.cs" />
     <Compile Include="Models\GameProject\Project.cs" />
@@ -277,6 +283,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\component.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\Commands\Scene\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

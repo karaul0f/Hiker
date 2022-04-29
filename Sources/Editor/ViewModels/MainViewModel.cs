@@ -102,10 +102,9 @@ namespace HikerEditor.ViewModels
             BuildAppCommand = new BuildAppCommand(AppBuilder);
             PlayAppCommand = new PlayAppCommand(AppBuilder);
 
-            CreateEntityCommand = new CreateEntityCommand(Entities);
+            CreateEntityCommand = new CreateEntityCommand(Editor, Entities);
             CreateSystemCommand = new CreateSystemCommand(Systems);
 
-            Entities.CollectionChanged += EntitiesOnCollectionChanged;
             Editor.SceneEditor.OnSelectionChanged += SceneEditorOnSelectionChanged;
         }
 
@@ -114,16 +113,9 @@ namespace HikerEditor.ViewModels
             SelectedEntity = newEntity;
         }
 
-        private void EntitiesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if(e.Action == NotifyCollectionChangedAction.Add)
-                Editor.Do(new NewEntity());
-
-        }
-
         ~MainWindowViewModel()
         {
-            Entities.CollectionChanged -= EntitiesOnCollectionChanged;
+            
         }
     }
 }

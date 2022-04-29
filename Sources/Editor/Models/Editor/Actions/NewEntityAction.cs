@@ -8,19 +8,25 @@ namespace HikerEditor.Models.Editor.Actions
     /// <summary>
     /// Действие создания новой сущности
     /// </summary>
-    public class NewEntity: IAction
+    public class NewEntityAction: IAction
     {
         /// <summary>
         /// Имя новой сущности
         /// </summary>
-        public string NewEntityName { get; set; }
+        public string EntityName { get; }
 
-        public IEntity Entity { get; set; }
+        public IEntity Entity { get; }
+
+        public NewEntityAction(string entityName)
+        {
+            Entity = new BaseEntity();
+            EntityName = entityName;
+        }
 
         public void Do(IEditor editor)
         {
-            Entity = new BaseEntity();
-            editor.GameProject.Entities.Append(Entity);
+            Entity.Name = EntityName;
+            editor.GameProject.Entities.Add(Entity);
         }
 
         public void Undo()

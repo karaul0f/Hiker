@@ -27,8 +27,8 @@ namespace HikerEditor.Views.Controls
 
         private Dictionary<IEntity, GeometryModel3D> _visualEntities;
 
+        private Point3D _mouseToWorldPoint;
 
-        private Point _clickMousePosition;
         public bool IsMouseDown { get; set; } = false;
 
         public static readonly DependencyProperty EntitiesProperty = DependencyProperty.Register(
@@ -83,6 +83,7 @@ namespace HikerEditor.Views.Controls
 
         private void Delete(IEntity entity)
         {
+            VisualEntities.Children.Remove(_visualEntities[entity]);
             _visualEntities.Remove(entity);
         }
 
@@ -90,18 +91,13 @@ namespace HikerEditor.Views.Controls
         {
             IsMouseDown = true;
 
-            _clickMousePosition = e.GetPosition(SceneViewport);
-            PointHitTestParameters pointParams = new PointHitTestParameters(_clickMousePosition);
+            var mousePosition = e.GetPosition(SceneViewport);
+            PointHitTestParameters pointParams = new PointHitTestParameters(mousePosition);
 
-            VisualTreeHelper.HitTest(SceneViewport, null, HTResult, pointParams);
+            VisualTreeHelper.HitTest(SceneViewport, null, OnMouseClickHandlerImpl, pointParams);
         }
 
-        private void Grid_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            IsMouseDown = false;
-        }
-
-        private HitTestResultBehavior HTResult(System.Windows.Media.HitTestResult rawResult)
+        private HitTestResultBehavior OnMouseClickHandlerImpl(HitTestResult rawResult)
         {
             RayHitTestResult rayResult = rawResult as RayHitTestResult;
 
@@ -112,7 +108,11 @@ namespace HikerEditor.Views.Controls
                 if (rayMeshResult != null)
                 {
                     GeometryModel3D hit = rayMeshResult.ModelHit as GeometryModel3D;
-                    _sceneEditorViewModel.SelectedEntity = _visualEntities.First(obj => obj.Value == hit).Key;
+
+                    if (ScenePlane.Content == hit)
+                        return HitTestResultBehavior.Continue;
+
+                    _sceneEditorViewModel.SelectedEntity = _visualEntities.FirstOrDefault(obj => obj.Value == hit).Key;
 
                     return HitTestResultBehavior.Stop;
                 }
@@ -124,16 +124,49 @@ namespace HikerEditor.Views.Controls
             return HitTestResultBehavior.Stop;
         }
 
+        private void Grid_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (_sceneEditorViewModel.SelectedEntity != null)
+            {
+                var selectedTransform = _visualEntities[_sceneEditorViewModel.SelectedEntity].Transform;
+                Vector2 newPosition = new Vector2(
+                    (float)selectedTransform.Value.OffsetX,
+                    (float)selectedTransform.Value.OffsetY);
+                _sceneEditorViewModel.MoveSelectedEntity(newPosition);
+            }
+
+            IsMouseDown = false;
+        }
+
         private void Grid_OnMouseMove(object sender, MouseEventArgs e)
         {
+            UpdateMouseToWorldPosition(e.GetPosition(SceneViewport));
+        }
+
+        private void UpdateMouseToWorldPosition(Point mousePosition)
+        {
+            PointHitTestParameters pointParams = new PointHitTestParameters(mousePosition);
+
+            VisualTreeHelper.HitTest(SceneViewport, null, UpdateMouseToWorldPositionImpl, pointParams);
+
             if (_sceneEditorViewModel.SelectedEntity != null && IsMouseDown)
             {
-                Point mousePosition = Mouse.GetPosition(SceneViewport);
-                var diff = _clickMousePosition - mousePosition;
-
-                VisualComponent vc = (VisualComponent)_sceneEditorViewModel.SelectedEntity.Components[0];
-                _visualEntities[_sceneEditorViewModel.SelectedEntity].Move(vc.WorldPosition.X - diff.X, -vc.WorldPosition.Y + diff.Y, 0);
+                _visualEntities[_sceneEditorViewModel.SelectedEntity].Move(_mouseToWorldPoint.X, _mouseToWorldPoint.Y, 0);
             }
+        }
+
+        private HitTestResultBehavior UpdateMouseToWorldPositionImpl(HitTestResult rawResult)
+        {
+            RayHitTestResult rayResult = rawResult as RayHitTestResult;
+            if (rayResult != null)
+            {
+                RayMeshGeometry3DHitTestResult rayMeshResult = rayResult as RayMeshGeometry3DHitTestResult;
+
+                if (rayMeshResult != null)
+                    _mouseToWorldPoint = rayMeshResult.PointHit;
+            }
+
+            return HitTestResultBehavior.Stop;
         }
     }
 }

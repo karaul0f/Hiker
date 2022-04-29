@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using HikerEditor.Models.GameProject;
 using HikerEditor.Models.Interfaces;
 
 namespace HikerEditor.Models.Editor.Actions
@@ -11,26 +12,33 @@ namespace HikerEditor.Models.Editor.Actions
     /// <summary>
     /// Действие изменения позиции сущности
     /// </summary>
-    public class ChangeEntityPosition: IAction
+    public class ChangeEntityPositionAction: IAction
     {
         /// <summary>
         /// Имя редактируемой сущности
         /// </summary>
-        public string EntityName { get; set; }
+        public string EntityName { get; }
 
         /// <summary>
         /// Координаты новой позиции
         /// </summary>
-        public Vector2 NewPosition { get; set; }
+        public Vector2 NewPosition { get; }
 
         /// <summary>
         /// Координаты старой позиции
         /// </summary>
-        public Vector2 OldPosition { get; set; }
+        public Vector2 OldPosition { get; }
 
+        public ChangeEntityPositionAction(IEntity entity, Vector2 newPosition)
+        {
+            EntityName = entity.Name;
+            NewPosition = newPosition;
+            OldPosition = entity.VisualComponent.WorldPosition;
+        }
         public void Do(IEditor editor)
         {
-            //editor.GameProject.Entities.First(e => e.Name == EntityName).Components.Where(c => c is Transform)
+            VisualComponent vc = editor.GameProject.Entities.First(e => e.Name == EntityName).VisualComponent;
+            vc.WorldPosition = NewPosition;
         }
 
         public void Undo()

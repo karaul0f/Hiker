@@ -24,16 +24,16 @@ namespace HikerEditor.Models.GameProject
         /// <summary>
         /// Все игровые сущности проекта
         /// </summary>
-        public IEnumerable<IEntity> Entities { get; private set; }
+        public IList<IEntity> Entities { get; private set; }
 
         /// <summary>
         /// Все доступные компоненты проекта
         /// </summary>
-        public IEnumerable<IComponent> Components { get; private set; }
+        public IList<IComponent> Components { get; private set; }
 
         /// <summary>
         /// Все системы проекта
         /// </summary>
-        public IEnumerable<ISystem> Systems { get; private set; }
+        public IList<ISystem> Systems { get; private set; }
     }
 }
