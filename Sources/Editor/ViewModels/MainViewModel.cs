@@ -79,6 +79,11 @@ namespace HikerEditor.ViewModels
         public ObservableCollection<ISystem> Systems { get; set; }
 
         /// <summary>
+        /// Список всех ресурсов (файлов) в проекте
+        /// </summary>
+        public ObservableCollection<IResource> Resources { get; set; }
+
+        /// <summary>
         /// Выбранная сущность в редакторе
         /// </summary>
         public IEntity SelectedEntity
@@ -95,6 +100,7 @@ namespace HikerEditor.ViewModels
         {
             Entities = new ObservableCollection<IEntity>(Editor.GameProject.Entities);
             Systems = new ObservableCollection<ISystem>(Editor.GameProject.Systems);
+            Resources = new ObservableCollection<IResource>(Editor.GameProject.Resources);
 
             NewProjectWindowCommand = new NewProjectWindowCommand();
             SettingsWindowCommand = new SettingsWindowCommand();

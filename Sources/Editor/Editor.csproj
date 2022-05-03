@@ -94,6 +94,7 @@
     <Compile Include="Models\Editor\Actions\ChangeEntityPositionAction.cs" />
     <Compile Include="Models\Editor\Actions\NewEntityAction.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
+    <Compile Include="Models\GameProject\BaseResource.cs" />
     <Compile Include="Models\GameProject\BaseSystem.cs" />
     <Compile Include="Models\GameProject\Project.cs" />
     <Compile Include="Models\GameProject\VisualComponent.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Models\Interfaces\IComponent.cs" />
     <Compile Include="Models\Interfaces\IEditor.cs" />
     <Compile Include="Models\Interfaces\IEntity.cs" />
+    <Compile Include="Models\Interfaces\IResource.cs" />
     <Compile Include="Models\Interfaces\ISystem.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\GameProject\BaseEntity.cs" />

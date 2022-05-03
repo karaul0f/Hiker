@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HikerEditor.Models.Interfaces;
 
 namespace HikerEditor.Models.GameProject
@@ -13,6 +14,7 @@ namespace HikerEditor.Models.GameProject
             Entities = new List<IEntity>();
             Systems = new List<ISystem>();
             Components = new List<IComponent>();
+            Resources = new List<IResource>();
             Name = "<Untitled Project>";
         }
 
@@ -35,5 +37,10 @@ namespace HikerEditor.Models.GameProject
         /// Все системы проекта
         /// </summary>
         public IList<ISystem> Systems { get; private set; }
+
+        /// <summary>
+        /// Ресурсы, которые может использовать проект
+        /// </summary>
+        public IList<IResource> Resources { get; private set; }
     }
 }

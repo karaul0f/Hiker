@@ -30,7 +30,7 @@ namespace HikerEditor.Models.GameProject
             Id = Guid.NewGuid();
             Components = new List<IComponent>();
             VisualComponent = new VisualComponent()
-                { PathToImage = "/Resources/Images/sprite.png", WorldPosition = new Vector2() { X = 0, Y = 0 } };
+                { Image = new BaseResource() { FilePath = "/Resources/Images/sprite.png" }, WorldPosition = new Vector2() { X = 0, Y = 0 } };
             Components.Add(VisualComponent);
         }
 

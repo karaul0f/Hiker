@@ -21,8 +21,8 @@ namespace HikerEditor.Models.GameProject
         public Vector2 WorldPosition { get; set; }
 
         /// <summary>
-        /// Путь до файла с картинкой, которую будет отображать сущность
+        /// Картинка, которую будет отображать сущность
         /// </summary>
-        public String PathToImage { get; set; }
+        public BaseResource Image { get; set; }
     }
 }

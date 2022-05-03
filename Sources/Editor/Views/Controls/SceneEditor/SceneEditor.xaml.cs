@@ -76,7 +76,7 @@ namespace HikerEditor.Views.Controls
         private void Add(IEntity entity)
         {
             VisualComponent vc = (VisualComponent)entity.Components[0];
-            GeometryModel3D texturedBox = TexturedBox3DBuilder.Create(vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.PathToImage, new System.Windows.Size(1, 1));
+            GeometryModel3D texturedBox = TexturedBox3DBuilder.Create(vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.Image.FilePath, new System.Windows.Size(1, 1));
             VisualEntities.Children.Add(texturedBox);
             _visualEntities[entity] = texturedBox;
         }
