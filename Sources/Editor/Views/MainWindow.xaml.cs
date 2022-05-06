@@ -19,13 +19,5 @@ namespace HikerEditor.Views
             InitializeComponent();
             _vm = DataContext as MainWindowViewModel;
         }
-
-        private void EntitiesList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (EntitiesList.SelectedItems.Count > 0)
-            {
-                _vm.SelectedEntity = (IEntity) EntitiesList.SelectedItems[0];
-            }
-        }
     }
 }

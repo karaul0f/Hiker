@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Numerics;
 using HikerEditor.Models.Interfaces;
@@ -24,14 +25,46 @@ namespace HikerEditor.Models.GameProject
 
         public VisualComponent VisualComponent { get; }
 
+        public event Action<IEntity> OnEntityChanged;
+
         public BaseEntity()
         {
+            
             Name = "BaseEntity";
             Id = Guid.NewGuid();
-            Components = new List<IComponent>();
-            VisualComponent = new VisualComponent()
-                { Image = new BaseResource() { FilePath = "/Resources/Images/sprite.png" }, WorldPosition = new Vector2() { X = 0, Y = 0 } };
+
+            var observableComponents = new ObservableCollection<IComponent>();
+            observableComponents.CollectionChanged += ComponentsOnCollectionChanged;
+
+            Components = observableComponents;
+
+            VisualComponent = new VisualComponent() 
+            { 
+                Image = (BaseResource)Editor.Editor.EditorInstance.GameProject.Resources[0], 
+                WorldPosition = new Vector2() { X = 0, Y = 0 }
+            };
+
             Components.Add(VisualComponent);
+        }
+
+        private void ComponentsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.OldItems != null)
+            {
+                foreach (IComponent item in e.OldItems)
+                    item.OnComponentChangedEvent -= OnComponentChangedHandler;
+            }
+
+            if (e.NewItems != null)
+            {
+                foreach (IComponent item in e.NewItems)
+                    item.OnComponentChangedEvent += OnComponentChangedHandler;
+            }
+        }
+
+        protected void OnComponentChangedHandler(IComponent component)
+        {
+            OnEntityChanged?.Invoke(this);
         }
 
     }

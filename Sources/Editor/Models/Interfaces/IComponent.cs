@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace HikerEditor.Models.Interfaces
 {
     /// <summary>
@@ -10,5 +11,10 @@ namespace HikerEditor.Models.Interfaces
         /// Имя компонента
         /// </summary>
         string Name { get; }
+
+        /// <summary>
+        /// Событие изменения параметров компонента
+        /// </summary>
+        event Action<IComponent> OnComponentChangedEvent;
     }
 }

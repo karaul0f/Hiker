@@ -138,7 +138,15 @@
 
         <!-- Resources Grid -->
         <GroupBox Header="Resources" Grid.Column="0" Grid.Row="2">
-            <ListBox ItemsSource="{Binding Resources}"/>
+            <ListBox ItemsSource="{Binding Resources}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </GroupBox>
         <!-- Scene Editor -->
         <controls:SceneEditor Entities="{Binding Entities}" Grid.Column="1" Grid.Row="2" Margin="0,0,0,0" />
@@ -147,7 +155,7 @@
         <GroupBox Header="Game" Grid.Column="2" Grid.Row="2" Margin="0,0">
             <TabControl>
                 <TabItem Header="Entities">
-                    <ListBox x:Name="EntitiesList" ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" SelectionChanged="EntitiesList_OnSelectionChanged">
+                    <ListBox x:Name="EntitiesList" ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}" />
@@ -163,8 +171,8 @@
 
         <!-- Inspector Grid -->
         <GroupBox Header="Inspector" Grid.Column="3" Grid.Row="2" Margin="0,0">
-            <TabControl Visibility="{Binding SelectedEntity, Converter={StaticResource NullToVisibilityConverter}}">
-                <TabItem Header="Components">
+            <TabControl>
+                <TabItem Header="Components" Visibility="{Binding SelectedEntity, Converter={StaticResource NullToVisibilityConverter}}">
                     <StackPanel>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
@@ -172,25 +180,51 @@
                                 <TextBox Width="100" Text="{Binding SelectedEntity.Name}"></TextBox>
                             </StackPanel>
                             <TextBlock Margin="0, 0, 5, 0"><Run>Id: </Run> <Run Text="{Binding SelectedEntity.Id, Mode=OneWay}"/></TextBlock>
+                            <Expander Header="Visual Component">
+                                <StackPanel>
+                                    <TextBlock>Image:</TextBlock>
+                                    <ComboBox ItemsSource="{Binding Resources}" SelectedValue="{Binding SelectedEntity.VisualComponent.Image}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Left" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <TextBlock>Position:</TextBlock>
+                                </StackPanel>
+                            </Expander>
                         </StackPanel>
-                        <ItemsControl Margin="5, 5" ItemsSource="{Binding SelectedEntity.Components}">
+                        
+                        <!--<ItemsControl Margin="5, 5" ItemsSource="{Binding SelectedEntity.Components}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Expander Header="{Binding Path=Name}">
                                         <StackPanel>
                                             <TextBlock>Image:</TextBlock>
-                                            <ComboBox ItemsSource="{Binding Resources}"></ComboBox>
+                                            <ComboBox ItemsSource="{Binding Source=Resources}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
                                             <TextBlock>Position:</TextBlock>
                                         </StackPanel>
                                     </Expander>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                        </ItemsControl>-->
+
                         <Button Margin="5, 5">
                             <TextBlock Text="{DynamicResource AddComponent}"/>
                         </Button>
                     </StackPanel>
                 </TabItem>
+                <TabItem Header="Resource"></TabItem>
             </TabControl>
         </GroupBox>
 

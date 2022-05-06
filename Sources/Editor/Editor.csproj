@@ -94,6 +94,7 @@
     <Compile Include="Models\Editor\Actions\ChangeEntityPositionAction.cs" />
     <Compile Include="Models\Editor\Actions\NewEntityAction.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
+    <Compile Include="Models\GameProject\BaseComponent.cs" />
     <Compile Include="Models\GameProject\BaseResource.cs" />
     <Compile Include="Models\GameProject\BaseSystem.cs" />
     <Compile Include="Models\GameProject\Project.cs" />

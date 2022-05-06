@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using HikerEditor.Models.GameProject;
 
 namespace HikerEditor.Models.Interfaces
@@ -28,5 +29,10 @@ namespace HikerEditor.Models.Interfaces
         /// Визуальный компонент сущности
         /// </summary>
         VisualComponent VisualComponent { get; }
+
+        /// <summary>
+        /// Событие изменения сущности
+        /// </summary>
+        event Action<IEntity> OnEntityChanged;
     }
 }

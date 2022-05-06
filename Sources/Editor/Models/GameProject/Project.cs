@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using HikerEditor.Models.Interfaces;
 
 namespace HikerEditor.Models.GameProject
@@ -16,6 +17,9 @@ namespace HikerEditor.Models.GameProject
             Components = new List<IComponent>();
             Resources = new List<IResource>();
             Name = "<Untitled Project>";
+
+            Resources.Add(new BaseResource() { Name = "DefaultResource0", FilePath = "/Resources/Images/step.png" } );
+            Resources.Add(new BaseResource() { Name = "DefaultResource1", FilePath = "/Resources/Images/sprite.png" });
         }
 
         /// <summary>

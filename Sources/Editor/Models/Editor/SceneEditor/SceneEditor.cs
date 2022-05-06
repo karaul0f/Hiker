@@ -34,17 +34,6 @@ namespace HikerEditor.Models.Editor
             }
         }
 
-        /// <summary>
-        /// Событие добавления новой визуальной сущности в редактор сцены
-        /// </summary>
-        public event Action<IEntity> OnEntityAdded;
-
-        /// <summary>
-        /// Событие изменения параметров существующей визуальной сущности
-        /// </summary>
-        public event Action<IEntity> OnEntityChanged;
-
-        /// <summary>
         /// Событие переключения на другую сущность редактора
         /// </summary>
         public event Action<IEntity> OnSelectionChanged;

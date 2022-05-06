@@ -55,15 +55,35 @@ namespace HikerEditor.Views.Controls
         {
             if (e.OldItems != null)
             {
-                foreach (var item in e.OldItems)
-                    Delete((IEntity)item);
+                foreach (IEntity item in e.OldItems)
+                {
+                    item.OnEntityChanged -= OnEntityChanged;
+                    Delete(item);
+                }
+                    
             }
-
+            
             if (e.NewItems != null)
             {
-                foreach (var item in e.NewItems)
-                    Add((IEntity)item);
+                foreach (IEntity item in e.NewItems)
+                {
+                    item.OnEntityChanged += OnEntityChanged;
+                    Add(item);
+                }
+                    
             }
+        }
+
+        public void OnEntityChanged(IEntity entity)
+        {
+            // Наиболее простой метод обновить визуальную сущность.
+            // Позже мб стоит заменить на что-то более оптимальное.
+            Delete(entity);
+            Add(entity);
+
+            // FIXME: Сбрасывается положение визуального компонента, если он еще не привязан к сцене.
+            _visualEntities[entity].Move(entity.VisualComponent.WorldPosition.X, 
+                entity.VisualComponent.WorldPosition.Y, 0);
         }
 
         private static void OnItemSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
