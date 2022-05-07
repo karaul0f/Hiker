@@ -34,7 +34,6 @@ namespace HikerEditor.ViewModels.Commands.ECS
 
             var newEntityAction = new NewEntityAction(entityName);
             _editor.Do(newEntityAction);
-            _entityStorage.Add(newEntityAction.Entity);
         }
 
         public bool CanExecute(object parameter)

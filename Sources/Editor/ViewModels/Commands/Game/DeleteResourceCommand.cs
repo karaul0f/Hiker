@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Input;
+using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
 
-namespace HikerEditor.ViewModels.Commands
+namespace HikerEditor.ViewModels.Commands.Game
 {
-    /// <summary>
-    /// Команда открытия проекта
-    /// </summary>
-    public class OpenProjectCommand: ICommand
+    public class DeleteResourceCommand : ICommand
     {
+        private ObservableCollection<IResource> _resourceStorage;
         private IEditor _editor;
-
-        public OpenProjectCommand(IEditor editor)
+        public DeleteResourceCommand(IEditor editor, ObservableCollection<IResource> resourceStorage)
         {
             _editor = editor;
+            _resourceStorage = resourceStorage;
         }
 
         public event EventHandler CanExecuteChanged
@@ -29,15 +28,12 @@ namespace HikerEditor.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
-            {
-                System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+            IResource resource = (IResource)parameter;
 
-                if (result == DialogResult.OK)
-                {
-                    _editor.GameProject.Load(dialog.SelectedPath);
-                    _editor.LastWorkedDirectory = dialog.SelectedPath;
-                }
+            if (resource != null)
+            {
+                var deleteResourceAction = new DeleteResourceAction(resource);
+                _editor.Do(deleteResourceAction);
             }
         }
 

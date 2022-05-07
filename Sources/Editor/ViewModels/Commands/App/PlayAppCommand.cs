@@ -14,10 +14,12 @@ namespace HikerEditor.ViewModels.Commands
     public class PlayAppCommand : ICommand
     {
         private IAppBuilder _appBuilder;
+        private IGame _game;
 
-        public PlayAppCommand(IAppBuilder builder)
+        public PlayAppCommand(IAppBuilder builder, IGame game)
         {
             _appBuilder = builder;
+            _game = game;
         }
 
         public event EventHandler CanExecuteChanged
@@ -29,6 +31,7 @@ namespace HikerEditor.ViewModels.Commands
         public void Execute(object parameter)
         {
             _appBuilder.Build(null, null);
+            _game.Play(null);
         }
 
         public bool CanExecute(object parameter)

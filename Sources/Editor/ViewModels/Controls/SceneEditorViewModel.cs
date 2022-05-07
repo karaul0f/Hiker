@@ -20,15 +20,20 @@ namespace HikerEditor.ViewModels
     /// </summary>
     public class SceneEditorViewModel: ViewModelBase
     {
+        private IEntity _selectedEntity;
+
         /// <summary>
         /// Выбранная сущность в редакторе
         /// </summary>
         public IEntity SelectedEntity
         {
-            get => Editor.SceneEditor.SelectedEntity;
+            get => _selectedEntity;
             set
             {
-                Editor.SceneEditor.SelectedEntity = value;
+                _selectedEntity = value;
+                // FIXME: Переосмыслить заглушку. Сейчас при выделении других объектов сбрасывается главное значение в редакторе.
+                if(_selectedEntity != null)
+                    Editor.SceneEditor.SelectedObject = (ISelectable)value;
                 OnPropertyChanged();
             }
         }
@@ -38,9 +43,12 @@ namespace HikerEditor.ViewModels
            Editor.SceneEditor.OnSelectionChanged += SceneEditorOnSelectionChanged;
         }
 
-        private void SceneEditorOnSelectionChanged(IEntity newEntity)
+        private void SceneEditorOnSelectionChanged(ISelectable newSelectedObject)
         {
-            SelectedEntity = newEntity;
+            if (newSelectedObject is IEntity)
+                SelectedEntity = newSelectedObject as IEntity;
+            else
+                SelectedEntity = null;
         }
 
         /// <summary>

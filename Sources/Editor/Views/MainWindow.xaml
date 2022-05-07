@@ -20,6 +20,7 @@
     <Grid>
         <Grid.Resources>
             <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+            <converters:Vector2ToTextConverter x:Key="Vector2ToTextConverter" />
             <utils:BindingProxy x:Key="Proxy" Data="{Binding}" />
         </Grid.Resources>
         <Grid.RowDefinitions>
@@ -45,12 +46,12 @@
                         <Image Source="/Resources/Images/file.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource OpenProject}">
+                <MenuItem Header="{DynamicResource OpenProject}" Command="{Binding OpenProjectCommand}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/open.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{DynamicResource SaveProject}" Command="{Binding ApplicationCommands.SaveAs}">
+                <MenuItem Header="{DynamicResource SaveProject}" Command="{Binding SaveProjectCommand}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/save.png" />
                     </MenuItem.Icon>
@@ -80,7 +81,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="{DynamicResource Resources}">
-                    <MenuItem Header="{DynamicResource Sprite}">
+                    <MenuItem Header="{DynamicResource Sprite}" Command="{Binding CreateResourceCommand}">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/sprite.png" />
                         </MenuItem.Icon>
@@ -138,7 +139,13 @@
 
         <!-- Resources Grid -->
         <GroupBox Header="Resources" Grid.Column="0" Grid.Row="2">
-            <ListBox ItemsSource="{Binding Resources}">
+            <ListBox ItemsSource="{Binding Resources}" SelectedValue="{Binding SelectedResource}" >
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Create Resource" Command="{Binding CreateResourceCommand}"/>
+                        <MenuItem Header="Delete Resource" Command="{Binding DeleteResourceCommand}" CommandParameter="{Binding SelectedResource}"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -156,6 +163,12 @@
             <TabControl>
                 <TabItem Header="Entities">
                     <ListBox x:Name="EntitiesList" ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Create Entity" Command="{Binding CreateEntityCommand}"/>
+                                <MenuItem Header="Delete Entity" Command="{Binding DeleteEntityCommand}" CommandParameter="{Binding SelectedEntity}"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}" />
@@ -170,34 +183,36 @@
         </GroupBox>
 
         <!-- Inspector Grid -->
-        <GroupBox Header="Inspector" Grid.Column="3" Grid.Row="2" Margin="0,0">
-            <TabControl>
-                <TabItem Header="Components" Visibility="{Binding SelectedEntity, Converter={StaticResource NullToVisibilityConverter}}">
-                    <StackPanel>
+        <GroupBox Header="Inspector" Grid.Column="3" Grid.Row="2">
+            <StackPanel>
+                <TabControl Visibility="{Binding SelectedEntity, Converter={StaticResource NullToVisibilityConverter}}">
+                    <TabItem Header="Components">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="0, 0, 5, 0"><Run>Name: </Run></TextBlock>
-                                <TextBox Width="100" Text="{Binding SelectedEntity.Name}"></TextBox>
-                            </StackPanel>
-                            <TextBlock Margin="0, 0, 5, 0"><Run>Id: </Run> <Run Text="{Binding SelectedEntity.Id, Mode=OneWay}"/></TextBlock>
-                            <Expander Header="Visual Component">
-                                <StackPanel>
-                                    <TextBlock>Image:</TextBlock>
-                                    <ComboBox ItemsSource="{Binding Resources}" SelectedValue="{Binding SelectedEntity.VisualComponent.Image}">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel>
-                                                    <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Left" />
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                    <TextBlock>Position:</TextBlock>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="0, 0, 5, 0"><Run>Name: </Run></TextBlock>
+                                    <TextBox Width="100" Text="{Binding SelectedEntity.Name}"></TextBox>
                                 </StackPanel>
-                            </Expander>
-                        </StackPanel>
-                        
-                        <!--<ItemsControl Margin="5, 5" ItemsSource="{Binding SelectedEntity.Components}">
+                                <TextBlock Margin="0, 0, 5, 0"><Run>Id: </Run> <Run Text="{Binding SelectedEntity.Id, Mode=OneWay}"/></TextBlock>
+                                <Expander Header="Visual Component">
+                                    <StackPanel>
+                                        <TextBlock>Image:</TextBlock>
+                                        <ComboBox ItemsSource="{Binding Resources}" SelectedValue="{Binding SelectedEntity.VisualComponent.Image}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Left" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBlock>Position:</TextBlock>
+                                        <TextBlock Text="{Binding SelectedEntity.VisualComponent.WorldPosition, Converter={StaticResource Vector2ToTextConverter}}"/>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+
+                            <!--<ItemsControl Margin="5, 5" ItemsSource="{Binding SelectedEntity.Components}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Expander Header="{Binding Path=Name}">
@@ -219,13 +234,29 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>-->
 
-                        <Button Margin="5, 5">
-                            <TextBlock Text="{DynamicResource AddComponent}"/>
-                        </Button>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Resource"></TabItem>
-            </TabControl>
+                            <Button Margin="5, 5">
+                                <TextBlock Text="{DynamicResource AddComponent}"/>
+                            </Button>
+                        </StackPanel>
+                    </TabItem>
+                   
+                </TabControl>
+                <TabControl Visibility="{Binding SelectedResource, Converter={StaticResource NullToVisibilityConverter}}">
+                    <TabItem Header="Resource">
+                        <StackPanel>
+                            <StackPanel Margin="0, 5" Orientation="Horizontal">
+                                <TextBlock Margin="0, 0, 5, 0"><Run>Name: </Run></TextBlock>
+                                <TextBox Width="200" Text="{Binding SelectedResource.Name}"></TextBox>
+                            </StackPanel>
+                            <StackPanel Margin="0, 5" Orientation="Horizontal">
+                                <TextBlock Margin="0, 0, 5, 0"><Run>Filepath: </Run></TextBlock>
+                                <TextBox Width="200" Text="{Binding SelectedResource.FilePath}"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+            
         </GroupBox>
 
         <StatusBar Grid.Row="3" Grid.ColumnSpan="4">
@@ -238,10 +269,10 @@
                 <Button Width="32" Command="{Binding NewProjectWindowCommand}" ToolTip="{DynamicResource NewProject}">
                     <Image Width="16" Height="16" Source="/Resources/Images/file.png" />
                 </Button>
-                <Button Width="32" ToolTip="{DynamicResource OpenProject}">
+                <Button Width="32" ToolTip="{DynamicResource OpenProject}" Command="{Binding OpenProjectCommand}">
                     <Image Width="16" Height="16" Source="/Resources/Images/open.png" />
                 </Button>
-                <Button Width="32" ToolTip="{DynamicResource SaveProject}">
+                <Button Width="32" ToolTip="{DynamicResource SaveProject}" Command="{Binding SaveProjectCommand}">
                     <Image Width="16" Height="16" Source="/Resources/Images/save.png" />
                 </Button>
             </ToolBar>

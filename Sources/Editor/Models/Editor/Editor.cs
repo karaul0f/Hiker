@@ -25,6 +25,11 @@ namespace HikerEditor.Models.Editor
         public Project GameProject { get; set; }
 
         /// <summary>
+        /// Последняя директория, с которой работал редактор.
+        /// </summary>
+        public String LastWorkedDirectory { get; set; }
+
+        /// <summary>
         /// Логика визуального редактора сцены
         /// </summary>
         public SceneEditor SceneEditor { get; set; }

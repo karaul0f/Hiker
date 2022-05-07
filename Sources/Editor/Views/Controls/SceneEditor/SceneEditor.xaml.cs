@@ -80,10 +80,6 @@ namespace HikerEditor.Views.Controls
             // Позже мб стоит заменить на что-то более оптимальное.
             Delete(entity);
             Add(entity);
-
-            // FIXME: Сбрасывается положение визуального компонента, если он еще не привязан к сцене.
-            _visualEntities[entity].Move(entity.VisualComponent.WorldPosition.X, 
-                entity.VisualComponent.WorldPosition.Y, 0);
         }
 
         private static void OnItemSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -96,9 +92,13 @@ namespace HikerEditor.Views.Controls
         private void Add(IEntity entity)
         {
             VisualComponent vc = (VisualComponent)entity.Components[0];
-            GeometryModel3D texturedBox = TexturedBox3DBuilder.Create(vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.Image.FilePath, new System.Windows.Size(1, 1));
+            GeometryModel3D texturedBox = TexturedBox3DBuilder.Create(vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.Image.FilePath, new System.Windows.Size(vc.Size.X, vc.Size.Y));
             VisualEntities.Children.Add(texturedBox);
             _visualEntities[entity] = texturedBox;
+
+            // FIXME: Сбрасывается положение визуального компонента, если он еще не привязан к сцене.
+            _visualEntities[entity].Move(entity.VisualComponent.WorldPosition.X,
+                entity.VisualComponent.WorldPosition.Y, 0);
         }
 
         private void Delete(IEntity entity)

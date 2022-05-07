@@ -1,24 +1,27 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
 using HikerEditor.ViewModels.Commands;
 using HikerEditor.ViewModels.Commands.ECS;
+using HikerEditor.ViewModels.Commands.Game;
 using HikerEditor.ViewModels.Commands.Windows;
 
 namespace HikerEditor.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
+        private String _projectName;
         /// <summary>
         /// Заголовок окна
         /// </summary>
         public string MainTitle
         {
-            get => "Hiker: " + Editor.GameProject.Name;
+            get => "Hiker: " + _projectName;
             set
             {
-                Editor.GameProject.Name = value;
+                _projectName = value;
                 OnPropertyChanged();
             }
         } 
@@ -26,17 +29,17 @@ namespace HikerEditor.ViewModels
         /// <summary>
         /// Команда создания проекта
         /// </summary>
-        public RelayCommand CreateProjectCommand { get; set; }
+        public NewProjectWindowViewModel NewProjectWindowViewModel { get; set; }
 
         /// <summary>
         /// Команда открытия проекта
         /// </summary>
-        public RelayCommand OpenProjectCommand { get; set; }
+        public OpenProjectCommand OpenProjectCommand { get; set; }
 
         /// <summary>
         /// Команда сохранения проекта
         /// </summary>
-        public RelayCommand SaveProjectCommand { get; set; }
+        public SaveProjectCommand SaveProjectCommand { get; set; }
 
         /// <summary>
         /// Команда создания сущности
@@ -44,9 +47,24 @@ namespace HikerEditor.ViewModels
         public CreateEntityCommand CreateEntityCommand { get; set; }
 
         /// <summary>
+        /// Команда удаления сущности
+        /// </summary>
+        public DeleteEntityCommand DeleteEntityCommand { get; set; }
+
+        /// <summary>
         /// Команда создания системы
         /// </summary>
         public CreateSystemCommand CreateSystemCommand { get; set; }
+
+        /// <summary>
+        /// Команда создания ресурса
+        /// </summary>
+        public CreateResourceCommand CreateResourceCommand { get; set; }
+
+        /// <summary>
+        /// Команда удаления ресурса
+        /// </summary>
+        public DeleteResourceCommand DeleteResourceCommand { get; set; }
 
         /// <summary>
         /// Команда открытия окна для создания проекта
@@ -84,44 +102,77 @@ namespace HikerEditor.ViewModels
         public ObservableCollection<IResource> Resources { get; set; }
 
         /// <summary>
-        /// Выбранная сущность в редакторе
+        /// Выбранный объект в редакторе
         /// </summary>
-        public IEntity SelectedEntity
+        public ISelectable SelectedObject
         {
-            get => Editor.SceneEditor.SelectedEntity;
+            get => Editor.SceneEditor.SelectedObject;
             set
             {
-                Editor.SceneEditor.SelectedEntity = value;
+                Editor.SceneEditor.SelectedObject = value as ISelectable;
+
+                // FIXME: для простоты было выделены отдельные св-ва
+                // подумать над тем, чтобы объеденить в одно св-во.
+                OnPropertyChanged(SelectedEntity?.ToString());
+                OnPropertyChanged(SelectedResource?.ToString());
+                OnPropertyChanged(SelectedSystem?.ToString());
+
                 OnPropertyChanged();
             }
         }
 
+        public IEntity SelectedEntity
+        {
+            get => Editor.SceneEditor.SelectedObject as IEntity;
+            set => SelectedObject = value as ISelectable;
+        } 
+
+        public IResource SelectedResource
+        {
+            get => Editor.SceneEditor.SelectedObject as IResource;
+            set => SelectedObject = value as ISelectable;
+        }
+
+        public ISystem SelectedSystem => Editor.SceneEditor.SelectedObject as ISystem;
+
         public MainWindowViewModel()
         {
-            Entities = new ObservableCollection<IEntity>(Editor.GameProject.Entities);
-            Systems = new ObservableCollection<ISystem>(Editor.GameProject.Systems);
-            Resources = new ObservableCollection<IResource>(Editor.GameProject.Resources);
+            Entities = Editor.GameProject.Entities as ObservableCollection<IEntity>;
+            Systems = Editor.GameProject.Systems as ObservableCollection<ISystem>;
+            Resources = Editor.GameProject.Resources as ObservableCollection<IResource>;
 
-            NewProjectWindowCommand = new NewProjectWindowCommand();
+            NewProjectWindowCommand = new NewProjectWindowCommand(this);
             SettingsWindowCommand = new SettingsWindowCommand();
 
+            NewProjectWindowViewModel = new NewProjectWindowViewModel();
+            OpenProjectCommand = new OpenProjectCommand(Editor);
+            SaveProjectCommand = new SaveProjectCommand(Editor);
+
             BuildAppCommand = new BuildAppCommand(AppBuilder);
-            PlayAppCommand = new PlayAppCommand(AppBuilder);
+            PlayAppCommand = new PlayAppCommand(AppBuilder, Game);
 
             CreateEntityCommand = new CreateEntityCommand(Editor, Entities);
             CreateSystemCommand = new CreateSystemCommand(Systems);
+            CreateResourceCommand = new CreateResourceCommand(Editor, Resources);
+
+            DeleteEntityCommand = new DeleteEntityCommand(Editor, Entities);
+            DeleteResourceCommand = new DeleteResourceCommand(Editor, Resources);
+
+            MainTitle = Editor.GameProject.Name;
 
             Editor.SceneEditor.OnSelectionChanged += SceneEditorOnSelectionChanged;
+            Editor.GameProject.OnProjectNameChanged += GameProjectOnProjectNameChanged;
         }
 
-        private void SceneEditorOnSelectionChanged(IEntity newEntity)
+        private void GameProjectOnProjectNameChanged(string newName)
         {
-            SelectedEntity = newEntity;
+            MainTitle = newName;
         }
 
-        ~MainWindowViewModel()
+        private void SceneEditorOnSelectionChanged(ISelectable selectedObject)
         {
-            
+            SelectedObject = selectedObject;
         }
+
     }
 }

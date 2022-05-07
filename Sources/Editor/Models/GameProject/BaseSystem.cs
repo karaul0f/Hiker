@@ -10,7 +10,7 @@ namespace HikerEditor.Models.GameProject
     /// <summary>
     /// Базовый класс системы в игровом проекте
     /// </summary>
-    public class BaseSystem : ISystem
+    public class BaseSystem : ISystem, ISelectable
     {
         /// <summary>
         /// Название системы

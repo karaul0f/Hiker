@@ -11,24 +11,24 @@ namespace HikerEditor.Models.Editor
     public class SceneEditor
     {
 
-        private IEntity _selectedEntity;
+        private ISelectable _selectedObject;
         public SceneEditor(IEditor editor)
         {
         }
 
         #region Properties
 
-        public IEntity SelectedEntity
+        public ISelectable SelectedObject
         {
             get
             {
-                return _selectedEntity;
+                return _selectedObject;
             }
             set
             {
-                if (value != _selectedEntity)
+                if (value != _selectedObject)
                 {
-                    _selectedEntity = value;
+                    _selectedObject = value;
                     OnSelectionChanged?.Invoke(value);
                 }
             }
@@ -36,7 +36,7 @@ namespace HikerEditor.Models.Editor
 
         /// Событие переключения на другую сущность редактора
         /// </summary>
-        public event Action<IEntity> OnSelectionChanged;
+        public event Action<ISelectable> OnSelectionChanged;
 
         #endregion
     }

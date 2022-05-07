@@ -20,6 +20,11 @@ namespace HikerEditor.Models.Interfaces
         SceneEditor SceneEditor { get; }
 
         /// <summary>
+        /// Последняя директория, с которой работал редактор
+        /// </summary>
+        String LastWorkedDirectory { get; set; }
+
+        /// <summary>
         /// Выполнить действие
         /// </summary>
         /// <param name="action"></param>

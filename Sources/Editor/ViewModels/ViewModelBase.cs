@@ -32,5 +32,10 @@ namespace HikerEditor.ViewModels
         /// Модель логики билдера прокинутая во вью-модель
         /// </summary>
         protected IAppBuilder AppBuilder => HikerEditor.Models.MSVCBuilder.AppBuilderInstance;
+
+        /// <summary>
+        /// Модель взаимодействия со скомпилированной игрой
+        /// </summary>
+        protected IGame Game => HikerEditor.Models.Game.Game.GameInstance;
     }
 }

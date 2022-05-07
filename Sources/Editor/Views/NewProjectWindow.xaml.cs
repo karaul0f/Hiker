@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +21,10 @@ namespace HikerEditor.Views
     /// </summary>
     public partial class NewProjectWindow : AdonisWindow
     {
-        public NewProjectWindow()
+        public NewProjectWindow(object dataContext)
         {
             InitializeComponent();
+            DataContext = dataContext;
         }
     }
 }

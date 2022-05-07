@@ -92,7 +92,10 @@
     </ApplicationDefinition>
     <Compile Include="Models\Builder\MSVCBuilder.cs" />
     <Compile Include="Models\Editor\Actions\ChangeEntityPositionAction.cs" />
+    <Compile Include="Models\Editor\Actions\DeleteEntityAction.cs" />
+    <Compile Include="Models\Editor\Actions\DeleteResourceAction.cs" />
     <Compile Include="Models\Editor\Actions\NewEntityAction.cs" />
+    <Compile Include="Models\Editor\Actions\NewResourceAction.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\GameProject\BaseComponent.cs" />
     <Compile Include="Models\GameProject\BaseResource.cs" />
@@ -100,12 +103,15 @@
     <Compile Include="Models\GameProject\Project.cs" />
     <Compile Include="Models\GameProject\VisualComponent.cs" />
     <Compile Include="Models\Editor\SceneEditor\SceneEditor.cs" />
+    <Compile Include="Models\Game\Game.cs" />
     <Compile Include="Models\Interfaces\IAction.cs" />
     <Compile Include="Models\Interfaces\IAppBuilder.cs" />
     <Compile Include="Models\Interfaces\IComponent.cs" />
     <Compile Include="Models\Interfaces\IEditor.cs" />
     <Compile Include="Models\Interfaces\IEntity.cs" />
+    <Compile Include="Models\Interfaces\IGame.cs" />
     <Compile Include="Models\Interfaces\IResource.cs" />
+    <Compile Include="Models\Interfaces\ISelectable.cs" />
     <Compile Include="Models\Interfaces\ISystem.cs" />
     <Compile Include="Utils\BindingProxy.cs" />
     <Compile Include="Models\GameProject\BaseEntity.cs" />
@@ -115,12 +121,16 @@
     <Compile Include="ViewModels\Commands\App\PlayAppCommand.cs" />
     <Compile Include="ViewModels\Commands\ECS\CreateEntityCommand.cs" />
     <Compile Include="ViewModels\Commands\ECS\CreateSystemCommand.cs" />
+    <Compile Include="ViewModels\Commands\ECS\DeleteEntityCommand.cs" />
     <Compile Include="ViewModels\Commands\File\CreateProjectCommand.cs" />
+    <Compile Include="ViewModels\Commands\Game\CreateResourceCommand.cs" />
+    <Compile Include="ViewModels\Commands\Game\DeleteResourceCommand.cs" />
     <Compile Include="ViewModels\Commands\Windows\NewProjectWindowCommand.cs" />
     <Compile Include="ViewModels\Commands\File\OpenProjectCommand.cs" />
     <Compile Include="ViewModels\Commands\File\SaveProjectCommand.cs" />
     <Compile Include="ViewModels\Commands\Windows\SettingsWindowCommand.cs" />
     <Compile Include="ViewModels\Controls\SceneEditorViewModel.cs" />
+    <Compile Include="ViewModels\NewProjectWindowViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
@@ -133,6 +143,7 @@
       <DependentUpon>SceneEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\TexturedBox3DBuilder.cs" />
+    <Compile Include="Views\Converters\Vector2ToTextConverter.cs" />
     <Compile Include="Views\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Views\NewProjectWindow.xaml.cs">
       <DependentUpon>NewProjectWindow.xaml</DependentUpon>

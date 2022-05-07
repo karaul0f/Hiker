@@ -13,10 +13,12 @@ namespace HikerEditor.ViewModels.Commands
     /// </summary>
     public class NewProjectWindowCommand: ICommand
     {
-        NewProjectWindow _newProjectWindow;
+        private object _dataContext;
+        private NewProjectWindow _newProjectWindow;
 
-        public NewProjectWindowCommand()
+        public NewProjectWindowCommand(object dataContext)
         {
+            _dataContext = dataContext;
         }
 
         public event EventHandler CanExecuteChanged
@@ -27,7 +29,7 @@ namespace HikerEditor.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            _newProjectWindow = new NewProjectWindow();
+            _newProjectWindow = new NewProjectWindow(_dataContext);
             _newProjectWindow.Show();
         }
 

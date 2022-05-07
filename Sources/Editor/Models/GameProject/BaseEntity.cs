@@ -15,7 +15,7 @@ namespace HikerEditor.Models.GameProject
     /// <summary>
     /// Базовый класс сущности в игровом проекте
     /// </summary>
-    public class BaseEntity: IEntity
+    public class BaseEntity: IEntity, ISelectable
     {
         public string Name { get; set; }
 
@@ -27,20 +27,23 @@ namespace HikerEditor.Models.GameProject
 
         public event Action<IEntity> OnEntityChanged;
 
-        public BaseEntity()
+        public BaseEntity():this(Guid.NewGuid())
         {
-            
+        }
+
+        public BaseEntity(Guid guid) :base()
+        {
             Name = "BaseEntity";
-            Id = Guid.NewGuid();
+            Id = guid;
 
             var observableComponents = new ObservableCollection<IComponent>();
             observableComponents.CollectionChanged += ComponentsOnCollectionChanged;
 
             Components = observableComponents;
 
-            VisualComponent = new VisualComponent() 
-            { 
-                Image = (BaseResource)Editor.Editor.EditorInstance.GameProject.Resources[0], 
+            VisualComponent = new VisualComponent()
+            {
+                Image = (BaseResource)Editor.Editor.EditorInstance.GameProject.Resources[0],
                 WorldPosition = new Vector2() { X = 0, Y = 0 }
             };
 
