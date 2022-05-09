@@ -12,12 +12,10 @@ namespace HikerEditor.ViewModels.Commands.ECS
     /// </summary>
     public class CreateEntityCommand: ICommand
     {
-        private ObservableCollection<IEntity> _entityStorage;
         private IEditor _editor;
-        public CreateEntityCommand(IEditor editor, ObservableCollection<IEntity> entityStorage)
+        public CreateEntityCommand(IEditor editor)
         {
             _editor = editor;
-            _entityStorage = entityStorage;
         }
 
         public event EventHandler CanExecuteChanged
@@ -30,10 +28,10 @@ namespace HikerEditor.ViewModels.Commands.ECS
         {
             string entityName = parameter != null ? 
                 parameter.ToString() : 
-                "Entity" + _entityStorage.Count;
+                "Entity" + _editor.GameProject.Entities.Count;
 
-            var newEntityAction = new NewEntityAction(entityName);
-            _editor.Do(newEntityAction);
+            var createEntityAction = new CreateEntityAction(entityName);
+            _editor.Do(createEntityAction);
         }
 
         public bool CanExecute(object parameter)

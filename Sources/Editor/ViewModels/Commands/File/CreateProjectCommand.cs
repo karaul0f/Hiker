@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using HikerEditor.Models.Interfaces;
+using HikerEditor.ViewModels.Commands.File;
 
 namespace HikerEditor.ViewModels.Commands
 {
@@ -29,18 +30,28 @@ namespace HikerEditor.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            _editor.GameProject.ClearProject();
-            _editor.GameProject.Name = parameter.ToString();
+            var newProjectParam = parameter as NewProjectParameters;
+            if (newProjectParam != null)
+            {
+                _editor.GameProject.ClearProject();
+                _editor.GameProject.Name = newProjectParam.Name;
 
-            //FIXME: HARDCODE
-            _editor.GameProject.Save(@"D:\Workspace\" + parameter.ToString());
-            _editor.GameProject.Load(@"D:\Workspace\" + parameter.ToString());
-            _editor.LastWorkedDirectory = @"D:\Workspace\" + parameter.ToString();
+                string pathToProject = newProjectParam.FilePath + @"\" + newProjectParam.Name;
+                _editor.GameProject.Save(pathToProject);
+                _editor.GameProject.Load(pathToProject);
+                _editor.LastWorkedDirectory = pathToProject;
+            }
         }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            var newProjectParam = parameter as NewProjectParameters;
+            if (newProjectParam != null)
+            {
+                return !String.IsNullOrEmpty(newProjectParam.Name) && !String.IsNullOrEmpty(newProjectParam.FilePath);
+            }
+
+            return false;
         }
     }
 }

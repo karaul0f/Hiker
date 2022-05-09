@@ -55,16 +55,25 @@ namespace HikerEditor.Models.GameProject
             get => _image;
             set
             {
+                if (_image != null)
+                    _image.OnResourceChanged -= OnImageChanged;
+
                 _image = value;
                 UpdateSizeImage();
                 OnComponentChanged();
+                _image.OnResourceChanged += OnImageChanged;
             }
         }
 
-        void UpdateSizeImage()
+        private void UpdateSizeImage()
         {
-            var image = System.Drawing.Image.FromFile(_image.FilePath);
+            var image = System.Drawing.Image.FromFile(_image.FullFilePath);
             Size = new Vector2(image.Size.Width, image.Size.Height);
+        }
+
+        private void OnImageChanged(IResource image)
+        {
+            OnComponentChanged();
         }
     }
 }

@@ -36,8 +36,8 @@
             <ColumnDefinition MinWidth="200" Width="0.3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <GridSplitter Grid.Column="1" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
-        <GridSplitter Grid.Column="2" Grid.Row="2" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
+        <GridSplitter Grid.Column="1" Grid.Row="3" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
+        <GridSplitter Grid.Column="2" Grid.Row="3" ShowsPreview="False" VerticalAlignment="Stretch" Width="3" HorizontalAlignment="Left" />
 
         <Menu Height="24" VerticalAlignment="Top" Grid.ColumnSpan="2" >
             <MenuItem Header="{DynamicResource File}">
@@ -177,7 +177,19 @@
                     </ListBox>
                 </TabItem>
                 <TabItem Header="Systems">
-                    <ListBox />
+                    <ListBox ItemsSource="{Binding Systems}" SelectedItem="{Binding SelectedSystem}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Create System" Command="{Binding CreateSystemCommand}"/>
+                                <MenuItem Header="Delete System" Command="{Binding DeleteSystemCommand}" CommandParameter="{Binding SelectedSystem}"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </TabItem>
             </TabControl>
         </GroupBox>
@@ -186,7 +198,7 @@
         <GroupBox Header="Inspector" Grid.Column="3" Grid.Row="2">
             <StackPanel>
                 <TabControl Visibility="{Binding SelectedEntity, Converter={StaticResource NullToVisibilityConverter}}">
-                    <TabItem Header="Components">
+                    <TabItem Header="Entity">
                         <StackPanel>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
@@ -241,6 +253,7 @@
                     </TabItem>
                    
                 </TabControl>
+
                 <TabControl Visibility="{Binding SelectedResource, Converter={StaticResource NullToVisibilityConverter}}">
                     <TabItem Header="Resource">
                         <StackPanel>
@@ -251,6 +264,17 @@
                             <StackPanel Margin="0, 5" Orientation="Horizontal">
                                 <TextBlock Margin="0, 0, 5, 0"><Run>Filepath: </Run></TextBlock>
                                 <TextBox Width="200" Text="{Binding SelectedResource.FilePath}"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+
+                <TabControl Visibility="{Binding SelectedSystem, Converter={StaticResource NullToVisibilityConverter}}">
+                    <TabItem Header="System">
+                        <StackPanel>
+                            <StackPanel Margin="0, 5" Orientation="Horizontal">
+                                <TextBlock Margin="0, 0, 5, 0"><Run>Name: </Run></TextBlock>
+                                <TextBox Width="200" Text="{Binding SelectedSystem.Name}"></TextBox>
                             </StackPanel>
                         </StackPanel>
                     </TabItem>

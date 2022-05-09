@@ -67,7 +67,7 @@ namespace HikerEditor.Models.GameProject
             XDocument xDoc = new XDocument();
 
             XElement project = new XElement("Project");
-            XAttribute projectName = new XAttribute("ProjectName", Name);
+            XAttribute projectName = new XAttribute("Name", Name);
             project.Add(projectName);
 
             XElement resources = new XElement("Resources");
@@ -96,11 +96,13 @@ namespace HikerEditor.Models.GameProject
                 xEntity.Add(id);
                 xEntity.Add(name);
 
-                XElement xVisualComponent = new XElement("VisualComponent");
+                XElement xVisualComponent = new XElement("Component");
+                XAttribute componentName = new XAttribute("Name", entity.VisualComponent.Name);
                 XAttribute xPosition = new XAttribute("XPos", entity.VisualComponent.WorldPosition.X);
                 XAttribute yPosition = new XAttribute("YPos", entity.VisualComponent.WorldPosition.Y);
                 XAttribute image = new XAttribute("Image", entity.VisualComponent.Image.Name);
 
+                xVisualComponent.Add(componentName);
                 xVisualComponent.Add(xPosition);
                 xVisualComponent.Add(yPosition);
                 xVisualComponent.Add(image);
@@ -128,7 +130,7 @@ namespace HikerEditor.Models.GameProject
 
             XElement project = xDoc.Element("Project");
 
-            string projectName = project.Attribute("ProjectName").Value;
+            string projectName = project.Attribute("Name").Value;
             Name = projectName;
 
             XElement xResources = project.Element("Resources");
@@ -148,7 +150,8 @@ namespace HikerEditor.Models.GameProject
 
                 IEntity entity = new BaseEntity(Guid.Parse(id)) { Name = name };
                 
-                XElement xVisualComponent = xEntity.Element("VisualComponent");
+                XElement xVisualComponent = xEntity.Element("Component");
+                string componentName = xVisualComponent.Attribute("Name").Value;
                 float xPos = Single.Parse(xVisualComponent.Attribute("XPos").Value, NumberStyles.Any, CultureInfo.InvariantCulture);
                 float yPos = Single.Parse(xVisualComponent.Attribute("YPos").Value, NumberStyles.Any, CultureInfo.InvariantCulture);
                 string imageName = xVisualComponent.Attribute("Image")?.Value;

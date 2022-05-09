@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
 using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
@@ -12,13 +13,11 @@ namespace HikerEditor.ViewModels.Commands.Game
 {
     public class CreateResourceCommand: ICommand
     {
-        private ObservableCollection<IResource> _resourseStorage;
         private IEditor _editor;
 
-        public CreateResourceCommand(IEditor editor, ObservableCollection<IResource> resourseStorage)
+        public CreateResourceCommand(IEditor editor)
         {
             _editor = editor;
-            _resourseStorage = resourseStorage;
         }
 
         public event EventHandler CanExecuteChanged
@@ -31,9 +30,22 @@ namespace HikerEditor.ViewModels.Commands.Game
         {
             string resourceName = parameter != null ?
                 parameter.ToString() :
-                "Resource" + _resourseStorage.Count;
+                "Resource" + _editor.GameProject.Resources.Count;
 
-            var newResourceAction = new NewResourceAction(resourceName);
+            string pathToResourceForLoad = null;
+            if (_editor.LastWorkedDirectory != null)
+            {
+                using (var dialog = new System.Windows.Forms.OpenFileDialog())
+                {
+                    System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        pathToResourceForLoad = dialog.FileName;
+                    }
+                }
+            }
+            
+            var newResourceAction = new CreateResourceAction(_editor, resourceName, pathToResourceForLoad);
             _editor.Do(newResourceAction);
         }
 

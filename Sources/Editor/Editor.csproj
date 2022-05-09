@@ -92,10 +92,12 @@
     </ApplicationDefinition>
     <Compile Include="Models\Builder\MSVCBuilder.cs" />
     <Compile Include="Models\Editor\Actions\ChangeEntityPositionAction.cs" />
+    <Compile Include="Models\Editor\Actions\CreateSystemAction.cs" />
     <Compile Include="Models\Editor\Actions\DeleteEntityAction.cs" />
     <Compile Include="Models\Editor\Actions\DeleteResourceAction.cs" />
-    <Compile Include="Models\Editor\Actions\NewEntityAction.cs" />
-    <Compile Include="Models\Editor\Actions\NewResourceAction.cs" />
+    <Compile Include="Models\Editor\Actions\DeleteSystemAction.cs" />
+    <Compile Include="Models\Editor\Actions\CreateEntityAction.cs" />
+    <Compile Include="Models\Editor\Actions\CreateResourceAction.cs" />
     <Compile Include="Models\Editor\Editor.cs" />
     <Compile Include="Models\GameProject\BaseComponent.cs" />
     <Compile Include="Models\GameProject\BaseResource.cs" />
@@ -121,8 +123,11 @@
     <Compile Include="ViewModels\Commands\App\PlayAppCommand.cs" />
     <Compile Include="ViewModels\Commands\ECS\CreateEntityCommand.cs" />
     <Compile Include="ViewModels\Commands\ECS\CreateSystemCommand.cs" />
+    <Compile Include="ViewModels\Commands\ECS\DeleteSystemCommand.cs" />
     <Compile Include="ViewModels\Commands\ECS\DeleteEntityCommand.cs" />
+    <Compile Include="ViewModels\Commands\File\BrowseDirectoryCommand.cs" />
     <Compile Include="ViewModels\Commands\File\CreateProjectCommand.cs" />
+    <Compile Include="ViewModels\Commands\File\CreateProjectParameters.cs" />
     <Compile Include="ViewModels\Commands\Game\CreateResourceCommand.cs" />
     <Compile Include="ViewModels\Commands\Game\DeleteResourceCommand.cs" />
     <Compile Include="ViewModels\Commands\Windows\NewProjectWindowCommand.cs" />

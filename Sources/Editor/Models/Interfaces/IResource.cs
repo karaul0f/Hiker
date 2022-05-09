@@ -1,4 +1,6 @@
-﻿namespace HikerEditor.Models.Interfaces
+﻿using System;
+
+namespace HikerEditor.Models.Interfaces
 {
     /// <summary>
     /// Интерфейс для реализации ресурсов (файлов) в проекте
@@ -11,8 +13,13 @@
         string Name { get; set; }
 
         /// <summary>
-        /// Путь к файлу ресурса
+        /// Относительный путь к файлу ресурса
         /// </summary>
         string FilePath { get; set; }
+
+        /// <summary>
+        /// Событие изменения параметров ресурса
+        /// </summary>
+        event Action<IResource> OnResourceChanged;
     } 
 }

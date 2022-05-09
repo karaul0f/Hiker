@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
 
-namespace HikerEditor.ViewModels.Commands.Game
+namespace HikerEditor.ViewModels.Commands.ECS
 {
-    public class DeleteResourceCommand : ICommand
+    /// <summary>
+    /// Действие удаления системы
+    /// </summary>
+    public class DeleteSystemCommand: ICommand
     {
-        private ObservableCollection<IResource> _resourceStorage;
         private IEditor _editor;
-        public DeleteResourceCommand(IEditor editor, ObservableCollection<IResource> resourceStorage)
+        public DeleteSystemCommand(IEditor editor)
         {
             _editor = editor;
-            _resourceStorage = resourceStorage;
         }
 
         public event EventHandler CanExecuteChanged
@@ -29,18 +29,18 @@ namespace HikerEditor.ViewModels.Commands.Game
 
         public void Execute(object parameter)
         {
-            IResource resource = (IResource)parameter;
+            ISystem system = (ISystem)parameter;
 
-            if (resource != null)
+            if (system != null)
             {
-                var deleteResourceAction = new DeleteResourceAction(resource);
-                _editor.Do(deleteResourceAction);
+                var deleteSystemAction = new DeleteSystemAction(system);
+                _editor.Do(deleteSystemAction);
             }
         }
 
         public bool CanExecute(object parameter)
         {
-            return parameter is IResource;
+            return parameter is ISystem;
         }
     }
 }

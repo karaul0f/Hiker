@@ -53,6 +53,12 @@ namespace HikerEditor.Views.Controls
 
         public void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            if (e.Action == NotifyCollectionChangedAction.Reset)
+            {
+                ClearAll();
+                return;
+            }
+
             if (e.OldItems != null)
             {
                 foreach (IEntity item in e.OldItems)
@@ -92,13 +98,21 @@ namespace HikerEditor.Views.Controls
         private void Add(IEntity entity)
         {
             VisualComponent vc = (VisualComponent)entity.Components[0];
-            GeometryModel3D texturedBox = TexturedBox3DBuilder.Create(vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.Image.FilePath, new System.Windows.Size(vc.Size.X, vc.Size.Y));
+            GeometryModel3D texturedBox = TexturedBox3DBuilder.Create(vc.WorldPosition.X, -vc.WorldPosition.Y, 0, vc.Image.FullFilePath, new System.Windows.Size(vc.Size.X, vc.Size.Y));
             VisualEntities.Children.Add(texturedBox);
             _visualEntities[entity] = texturedBox;
 
             // FIXME: Сбрасывается положение визуального компонента, если он еще не привязан к сцене.
             _visualEntities[entity].Move(entity.VisualComponent.WorldPosition.X,
                 entity.VisualComponent.WorldPosition.Y, 0);
+        }
+
+        private void ClearAll()
+        {
+            foreach (var model in _visualEntities.Values)
+                VisualEntities.Children.Remove(model);
+
+            _visualEntities.Clear();
         }
 
         private void Delete(IEntity entity)

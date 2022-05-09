@@ -57,6 +57,11 @@ namespace HikerEditor.ViewModels
         public CreateSystemCommand CreateSystemCommand { get; set; }
 
         /// <summary>
+        /// Команда удаления системы
+        /// </summary>
+        public DeleteSystemCommand DeleteSystemCommand { get; set; }
+
+        /// <summary>
         /// Команда создания ресурса
         /// </summary>
         public CreateResourceCommand CreateResourceCommand { get; set; }
@@ -133,7 +138,11 @@ namespace HikerEditor.ViewModels
             set => SelectedObject = value as ISelectable;
         }
 
-        public ISystem SelectedSystem => Editor.SceneEditor.SelectedObject as ISystem;
+        public ISystem SelectedSystem
+        {
+            get => Editor.SceneEditor.SelectedObject as ISystem;
+            set => SelectedObject = value as ISelectable;
+        }
 
         public MainWindowViewModel()
         {
@@ -151,12 +160,13 @@ namespace HikerEditor.ViewModels
             BuildAppCommand = new BuildAppCommand(AppBuilder);
             PlayAppCommand = new PlayAppCommand(AppBuilder, Game);
 
-            CreateEntityCommand = new CreateEntityCommand(Editor, Entities);
-            CreateSystemCommand = new CreateSystemCommand(Systems);
-            CreateResourceCommand = new CreateResourceCommand(Editor, Resources);
+            CreateEntityCommand = new CreateEntityCommand(Editor);
+            CreateSystemCommand = new CreateSystemCommand(Editor);
+            CreateResourceCommand = new CreateResourceCommand(Editor);
 
-            DeleteEntityCommand = new DeleteEntityCommand(Editor, Entities);
+            DeleteEntityCommand = new DeleteEntityCommand(Editor);
             DeleteResourceCommand = new DeleteResourceCommand(Editor, Resources);
+            DeleteSystemCommand = new DeleteSystemCommand(Editor);
 
             MainTitle = Editor.GameProject.Name;
 

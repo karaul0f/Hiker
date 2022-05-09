@@ -12,12 +12,10 @@ namespace HikerEditor.ViewModels.Commands.ECS
 {
     public class DeleteEntityCommand: ICommand
     {
-        private ObservableCollection<IEntity> _entityStorage;
         private IEditor _editor;
-        public DeleteEntityCommand(IEditor editor, ObservableCollection<IEntity> entityStorage)
+        public DeleteEntityCommand(IEditor editor)
         {
             _editor = editor;
-            _entityStorage = entityStorage;
         }
 
         public event EventHandler CanExecuteChanged
@@ -39,7 +37,7 @@ namespace HikerEditor.ViewModels.Commands.ECS
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return parameter is IEntity;
         }
     }
 }

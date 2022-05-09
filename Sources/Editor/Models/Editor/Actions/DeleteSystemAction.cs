@@ -3,29 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HikerEditor.Models.GameProject;
 using HikerEditor.Models.Interfaces;
 
 namespace HikerEditor.Models.Editor.Actions
 {
-    public class NewResourceAction: IAction
+    public class DeleteSystemAction: IAction
     {
         /// <summary>
-        /// Имя нового ресурса
+        /// Удаляемая система
         /// </summary>
-        public string ResourceName { get; }
+        private ISystem _system;
 
-        public IResource Resource { get; }
+        /// <summary>
+        /// Удаленная сущность
+        /// </summary>
+        public ISystem RemovedSystem { get; private set; }
 
-        public NewResourceAction(string resourceName)
+        public DeleteSystemAction(ISystem system)
         {
-            Resource = new BaseResource() { Name = resourceName, FilePath = "/Resources/Images/sprite.png" };
-            ResourceName = resourceName;
+            _system = system;
         }
 
         public void Do(IEditor editor)
         {
-            editor.GameProject.Resources.Add(Resource);
+            editor.GameProject.Systems.Remove(_system);
+            RemovedSystem = _system;
         }
 
         public void Undo()

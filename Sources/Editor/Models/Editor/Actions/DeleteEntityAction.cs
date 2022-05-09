@@ -13,10 +13,13 @@ namespace HikerEditor.Models.Editor.Actions
     public class DeleteEntityAction: IAction
     {
         /// <summary>
-        /// Имя новой сущности
+        /// Удаляемой сущность
         /// </summary>
         private IEntity _entity;
 
+        /// <summary>
+        /// Удаленная сущность
+        /// </summary>
         public IEntity RemovedEntity { get; private set; }
 
         public DeleteEntityAction(IEntity entity)

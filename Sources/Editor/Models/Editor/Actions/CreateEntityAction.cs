@@ -8,7 +8,7 @@ namespace HikerEditor.Models.Editor.Actions
     /// <summary>
     /// Действие создания новой сущности
     /// </summary>
-    public class NewEntityAction: IAction
+    public class CreateEntityAction: IAction
     {
         /// <summary>
         /// Имя новой сущности
@@ -17,7 +17,7 @@ namespace HikerEditor.Models.Editor.Actions
 
         public IEntity Entity { get; }
 
-        public NewEntityAction(string entityName)
+        public CreateEntityAction(string entityName)
         {
             Entity = new BaseEntity();
             EntityName = entityName;

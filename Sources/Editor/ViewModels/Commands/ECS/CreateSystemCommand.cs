@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using HikerEditor.Models.Editor.Actions;
 using HikerEditor.Models.Interfaces;
 using HikerEditor.Models.GameProject;
 
@@ -11,11 +12,11 @@ namespace HikerEditor.ViewModels.Commands.ECS
     /// </summary>
     public class CreateSystemCommand: ICommand
     {
-        private ObservableCollection<ISystem> _systemStorage;
+        private IEditor _editor;
 
-        public CreateSystemCommand(ObservableCollection<ISystem> systemStorage)
+        public CreateSystemCommand(IEditor editor)
         {
-            _systemStorage = systemStorage;
+            _editor = editor;
         }
 
         public event EventHandler CanExecuteChanged
@@ -29,9 +30,10 @@ namespace HikerEditor.ViewModels.Commands.ECS
 
             string systemName = parameter != null ?
                 parameter.ToString() :
-                "System" + _systemStorage.Count;
+                "System" + _editor.GameProject.Systems.Count;
 
-            _systemStorage.Add(new BaseSystem() { Name = systemName });
+            var createSystemAction = new CreateSystemAction(systemName);
+            _editor.Do(createSystemAction);
         }
 
         public bool CanExecute(object parameter)
