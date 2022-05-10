@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="Loader\GameLoader.h">
+      <Filter>Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\IComponent.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\IEntity.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\IEcsSystem.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Systems\RenderSystem.h">
+      <Filter>Game\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\BaseEntity.h">
+      <Filter>Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Components\VisualComponent.h">
+      <Filter>Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\EcsWorld.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader\ILoader.h">
+      <Filter>Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Singleton.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\tinyxml2.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Resources\BaseResource.h">
+      <Filter>Game\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Resources\IResource.h">
+      <Filter>Game\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\EcsFilter.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Utils\tinyxml2.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{1ca293cc-ac39-41c1-9820-5e127170adbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader">
+      <UniqueIdentifier>{41a9e3f7-19a9-45ae-a01b-5db2f1b48afa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Systems">
+      <UniqueIdentifier>{d7d59172-cf91-4d3c-96f1-c03834fb4de5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entities">
+      <UniqueIdentifier>{8b27a5b4-589b-4800-a4af-12130e82c0df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components">
+      <UniqueIdentifier>{60a7c658-4fd1-44fb-8d22-224894da7751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS">
+      <UniqueIdentifier>{32964669-2e08-4ca3-983a-848bc8f67f05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{7f2f6dd8-2c12-4854-aca4-7fd2eeb95c4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Resources">
+      <UniqueIdentifier>{285bdd47-0ee8-4262-88f3-fdabcf21d95a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

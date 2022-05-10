@@ -35,8 +35,8 @@ namespace HikerEditor.ViewModels.Commands
 
                 if (result == DialogResult.OK)
                 {
-                    _editor.GameProject.Load(dialog.SelectedPath);
                     _editor.LastWorkedDirectory = dialog.SelectedPath;
+                    _editor.GameProject.Load(dialog.SelectedPath);
                 }
             }
         }
