@@ -100,11 +100,13 @@ namespace HikerEditor.Models.GameProject
                 XAttribute componentName = new XAttribute("Name", entity.VisualComponent.Name);
                 XAttribute xPosition = new XAttribute("XPos", entity.VisualComponent.WorldPosition.X);
                 XAttribute yPosition = new XAttribute("YPos", entity.VisualComponent.WorldPosition.Y);
+                XAttribute isBackground = new XAttribute("IsBackground", entity.VisualComponent.IsBackground);
                 XAttribute image = new XAttribute("Image", entity.VisualComponent.Image.Name);
 
                 xVisualComponent.Add(componentName);
                 xVisualComponent.Add(xPosition);
                 xVisualComponent.Add(yPosition);
+                xVisualComponent.Add(isBackground);
                 xVisualComponent.Add(image);
 
                 xEntity.Add(xVisualComponent);
@@ -154,9 +156,11 @@ namespace HikerEditor.Models.GameProject
                 string componentName = xVisualComponent.Attribute("Name").Value;
                 float xPos = Single.Parse(xVisualComponent.Attribute("XPos").Value, NumberStyles.Any, CultureInfo.InvariantCulture);
                 float yPos = Single.Parse(xVisualComponent.Attribute("YPos").Value, NumberStyles.Any, CultureInfo.InvariantCulture);
+                bool isBackground = bool.Parse(xVisualComponent.Attribute("IsBackground").Value);
                 string imageName = xVisualComponent.Attribute("Image")?.Value;
 
                 entity.VisualComponent.WorldPosition = new Vector2(xPos, yPos);
+                entity.VisualComponent.IsBackground = isBackground;
                 entity.VisualComponent.Image = (BaseResource)Resources.FirstOrDefault(r => r.Name == imageName);
 
                 Entities.Add(entity);

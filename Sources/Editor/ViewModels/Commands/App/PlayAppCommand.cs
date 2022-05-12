@@ -15,11 +15,13 @@ namespace HikerEditor.ViewModels.Commands
     {
         private IAppBuilder _appBuilder;
         private IGame _game;
+        private IEditor _editor;
 
-        public PlayAppCommand(IAppBuilder builder, IGame game)
+        public PlayAppCommand(IEditor editor, IAppBuilder builder, IGame game)
         {
             _appBuilder = builder;
             _game = game;
+            _editor = editor;
         }
 
         public event EventHandler CanExecuteChanged
@@ -30,13 +32,14 @@ namespace HikerEditor.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            _appBuilder.Build(null, null);
-            _game.Play(null);
+            _editor.GameProject.Save(_editor.LastWorkedDirectory);
+            _appBuilder.Build(_editor.GameProject, _editor.LastWorkedDirectory);
+            _game.Play(_editor.LastWorkedDirectory);
         }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _editor.LastWorkedDirectory != null && !String.IsNullOrEmpty(_editor.LastWorkedDirectory);
         }
     }
 }

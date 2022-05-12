@@ -19,6 +19,8 @@ namespace HikerEditor.Models.GameProject
         private Vector2 _size;
         private BaseResource _image;
 
+        private bool _isBackground;
+
         public string Name => "Visual Component";
 
         /// <summary>
@@ -62,6 +64,19 @@ namespace HikerEditor.Models.GameProject
                 UpdateSizeImage();
                 OnComponentChanged();
                 _image.OnResourceChanged += OnImageChanged;
+            }
+        }
+
+        /// <summary>
+        /// Является ли графика "фоновой"
+        /// </summary>
+        public bool IsBackground
+        {
+            get => _isBackground;
+            set
+            {
+                _isBackground = value;
+                OnComponentChanged();
             }
         }
 

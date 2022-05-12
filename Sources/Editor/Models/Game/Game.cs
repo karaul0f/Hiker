@@ -12,10 +12,11 @@ namespace HikerEditor.Models.Game
     {
         private static Game _instance;
 
-        public void Play(string pathToGame)
+        public void Play(string pathToGameDirectory)
         {
-            // FIXME: HARDCODE
-            Process.Start(@"D:\Workspace\Hiker2\Binaries\Runtime.exe");
+            ProcessStartInfo startInfo = new ProcessStartInfo(pathToGameDirectory + @"/" + "Runtime.exe");
+            startInfo.WorkingDirectory = pathToGameDirectory;
+            Process.Start(startInfo);
         }
 
         /// <summary>

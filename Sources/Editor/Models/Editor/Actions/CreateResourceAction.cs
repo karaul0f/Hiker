@@ -24,7 +24,7 @@ namespace HikerEditor.Models.Editor.Actions
                 if (!Directory.Exists(fullPathToResourceDirectory))
                     Directory.CreateDirectory(fullPathToResourceDirectory);
 
-                System.IO.File.Move(filePath, editor.LastWorkedDirectory + @"/Resources/" + filename);
+                System.IO.File.Copy(filePath, editor.LastWorkedDirectory + @"/Resources/" + filename);
                 destFilePath = @"/Resources/" + filename;
             }
             else

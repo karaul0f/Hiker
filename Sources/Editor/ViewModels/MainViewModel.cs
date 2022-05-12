@@ -157,8 +157,8 @@ namespace HikerEditor.ViewModels
             OpenProjectCommand = new OpenProjectCommand(Editor);
             SaveProjectCommand = new SaveProjectCommand(Editor);
 
-            BuildAppCommand = new BuildAppCommand(AppBuilder);
-            PlayAppCommand = new PlayAppCommand(AppBuilder, Game);
+            BuildAppCommand = new BuildAppCommand(Editor, AppBuilder);
+            PlayAppCommand = new PlayAppCommand(Editor, AppBuilder, Game);
 
             CreateEntityCommand = new CreateEntityCommand(Editor);
             CreateSystemCommand = new CreateSystemCommand(Editor);

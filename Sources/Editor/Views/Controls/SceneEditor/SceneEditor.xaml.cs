@@ -102,9 +102,11 @@ namespace HikerEditor.Views.Controls
             VisualEntities.Children.Add(texturedBox);
             _visualEntities[entity] = texturedBox;
 
+
+            float z = vc.IsBackground ? 0 : 0.0001f;
             // FIXME: Сбрасывается положение визуального компонента, если он еще не привязан к сцене.
             _visualEntities[entity].Move(entity.VisualComponent.WorldPosition.X,
-                entity.VisualComponent.WorldPosition.Y, 0);
+                entity.VisualComponent.WorldPosition.Y, z);
         }
 
         private void ClearAll()

@@ -15,10 +15,12 @@ namespace HikerEditor.ViewModels.Commands
     public class BuildAppCommand: ICommand
     {
         private IAppBuilder _appBuilder;
+        private IEditor _editor;
 
-        public BuildAppCommand(IAppBuilder builder)
+        public BuildAppCommand(IEditor editor, IAppBuilder builder)
         {
             _appBuilder = builder;
+            _editor = editor;
         }
 
         public event EventHandler CanExecuteChanged
@@ -34,7 +36,7 @@ namespace HikerEditor.ViewModels.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _editor.LastWorkedDirectory != null && !String.IsNullOrEmpty(_editor.LastWorkedDirectory);
         }
     }
 }

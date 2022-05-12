@@ -218,8 +218,12 @@
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
-                                        <TextBlock>Position:</TextBlock>
+                                        <TextBlock Margin="0, 5, 0, 0">Position:</TextBlock>
                                         <TextBlock Text="{Binding SelectedEntity.VisualComponent.WorldPosition, Converter={StaticResource Vector2ToTextConverter}}"/>
+                                        <StackPanel Margin="0, 5, 0, 0" Orientation="Horizontal">
+                                            <TextBlock >Is Background:</TextBlock>
+                                            <CheckBox Margin="5, 0" IsChecked="{Binding SelectedEntity.VisualComponent.IsBackground}" />
+                                        </StackPanel>
                                     </StackPanel>
                                 </Expander>
                             </StackPanel>

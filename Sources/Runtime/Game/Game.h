@@ -26,10 +26,14 @@ public:
 	{
 		_isRun = true;
 
-		GameLoader gameLoader(&_name, &_resources, &_ecsWorld, "/project.xml");
+		GameLoader gameLoader(&_resources, &_ecsWorld, "/project.xml");
 		gameLoader.Load();
 
 		_window = std::make_unique<sf::RenderWindow>(sf::VideoMode(640, 480), _name);
+
+		RenderSystem* renderSystem = new RenderSystem(&_ecsWorld, _window.get());
+		_ecsWorld.AddSystem(renderSystem);
+
 		_ecsWorld.Init();
 	}
 
@@ -37,18 +41,8 @@ public:
 	{
 		if(_isRun)
 		{
-			_ecsWorld.OnFrame();
-
 			if (_window->isOpen())
-			{
-				sf::Event event;
-				while (_window->pollEvent(event))
-				{
-					if (event.type == sf::Event::Closed)
-						_window->close();
-				}
-				_window->display();
-			}
+				_ecsWorld.OnFrame();
 			else
 				_isRun = false;
 		}
